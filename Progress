@@ -1,5 +1,17 @@
-LCL_chemotherapy Progress
-# Drugs in the study: 10 unique drugs total
+Command commands:
+ls - lists all my directories
+less - to look at a file
+cd - change directory, type this and then the directory to get into
+cd .. - go back out of a directory
+cp - copy, type cp /to/file /from
+pwd - print working directory
+mv - move, for files, from one dir to another
+mkdir - makes a new directory
+
+LCL_chemotherapy Progress:
+
+#1 Explored data available in /home/wheelerlab3/Data/LCL_chemotherapy/
+Drugs in the study: 10 unique drugs total
 
     Drug            populations                             uM_concentrations               best_phenotype  hrs_drug_treatment      serum_used      phenotype               commercial_assay   exception_populations   exception_uM_concentrations
 1.  cisplatin       CEU2,YRI2,CEU3,YRI3,ASW                 0,1,2.5,5,10,20                 IC50            48                      FBS             cell_growth_inhibition  alamarBlue         CHB2,JPT2,CHD           0,0.1,0.5,1,5,10,20,40
@@ -18,8 +30,16 @@ Repeats??
 2. cisplatin        CEU2,YRI2,CHB2,ASW      0,5             individual_concentration_normalized_to_control  24                      FBS             caspase-3/7_apoptosis   Caspase-Glo_3/7
 3. paclitaxel       CEU2,YRI2,CHB2,ASW      0,0.0125        individual_concentration_normalized_to_control  24                      FBS             caspase-3/7_apoptosis   Caspase-Glo_3/7
 
+
+#2 Transferred files from: /home/wheelerlab3/Data/LCL_chemotherapy/bimbam_files/
+
 Files containing data by population: ASN, CEU, YRI
-/home/wheelerlab3/Data/LCL_chemotherapy/bimbam_files/
 ASN.TGP_and_imputed.rmBAD.20130718.geno.gz              CEU.TGP_and_imputed.rmBAD.20130526.geno.gz      YRI.TGP_and_imputed.rmBAD.20130526.snp.info.gz
 ASN.TGP_and_imputed.rmBAD.20130718.snp.info.gz          CEU.TGP_and_imputed.rmBAD.20130526.snp.info.gz
 CEU.chr1.TGP_and_imputed.20130416.exclude_BAD_SNPs.fam  YRI.TGP_and_imputed.rmBAD.20130526.geno.gz
+
+Used cp to put into dir /home/ashley/LCL_chemotherapy
+    for cp, say file location and name, then where it should be copied to
+    ex: cp /home/wheelerlab3/Data/LCL_chemotherapy/bimbam_files/ASN.TGP_and_imputed.rmBAD.20130718.geno.gz /home/ashley/LCL_chemotherapy/
+
+
