@@ -42,4 +42,11 @@ Used cp to put into dir /home/ashley/LCL_chemotherapy
     for cp, say file location and name, then where it should be copied to
     ex: cp /home/wheelerlab3/Data/LCL_chemotherapy/bimbam_files/ASN.TGP_and_imputed.rmBAD.20130718.geno.gz /home/ashley/LCL_chemotherapy/
 
-
+#3 Create relationship matrix in gemma: requires genotype file and phenotype file
+will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
+    working with YRI:
+       Genotype file in BIMBAM format: YRI.TGP_and_imputed.rmBAD.20130526.geno.gz
+       Phenotype file: must make from master_cyctotoxicity file
+       
+#3.1 Make phenotype file in R
+    
