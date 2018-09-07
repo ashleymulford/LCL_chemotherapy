@@ -25,7 +25,7 @@ Drugs in the study: 10 unique drugs total
 9.  busulfan        CEU2,YRI2                               0,25,50,100,250,500,1000,2000   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
 10. paclitaxel      CEU2,YRI2,ASW                           0,0.00625,0.0125,0.05           AUC             72                      BGS             cell_growth_inhibition  alamarBlue
 
-Repeats??
+Repeats
 1. arac             CEU2,YRI2,CHB2,ASW      0,5,40          individual_concentration_normalized_to_control  24                      FBS             caspase-3/7_apoptosis   Caspase-Glo_3/7
 2. cisplatin        CEU2,YRI2,CHB2,ASW      0,5             individual_concentration_normalized_to_control  24                      FBS             caspase-3/7_apoptosis   Caspase-Glo_3/7
 3. paclitaxel       CEU2,YRI2,CHB2,ASW      0,0.0125        individual_concentration_normalized_to_control  24                      FBS             caspase-3/7_apoptosis   Caspase-Glo_3/7
@@ -48,5 +48,30 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
        Genotype file in BIMBAM format: YRI.TGP_and_imputed.rmBAD.20130526.geno.gz
        Phenotype file: must make from master_cyctotoxicity file
        
-#3.1 Make phenotype file in R
+#3.1 Make phenotype file in R, use only YRI, use only one phenotype
+    #no header, no IDs for .txt for gemma
+    ##With header/IDs (create for reference)
+        pheno <- read.table ("/home/ashley/LCL_chemotherapy/master_cyctotoxicity_info_130311_plus_igrowth.txt", header = T)
+        View(pheno)
+        YRI <- subset(pheno, pop == "YRI")
+        View(YRI)
+        pheno_YRI_araclog2IC50 <- YRI[, 1:13]
+        View(pheno_YRI_araclog2IC50)
+        write.table(pheno_YRI_araclog2IC50, file = "pheno_YRI_araclog2IC50.txt", sep = "\t")
+    ##Without header/IDs (create for use)
+        pheno_YRI_araclog2IC50_noids <- pheno_YRI_araclog2IC50[, 5:13]
+        View(pheno_YRI_araclog2IC50_noids)
+        write.table(pheno_YRI_araclog2IC50_noids, file = "pheno_YRI_araclog2IC50_noids.txt", sep = "\t", row.names = F, col.names = F)
+    
+# run gemma
+    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p pheno_YRI_araclog2IC50_noids.txt -gk 1 -o YRI_relationship_matrix
+    
+    ## error produced: segmentation fault
+    ## more individuals with phenotypes (180) than genotypes (178) - need the same amount and same individuals
+        removed extraneoes phenotypes: Y025 252 & Y044 177
+        genotype and phenotype files now the same size with same people
+        
+    ## Next must order phenotype file to match order of genotype file!
+    
+    
     
