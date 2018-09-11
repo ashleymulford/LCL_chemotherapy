@@ -83,3 +83,5 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     
 # run gemma again
     gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p ordered_pheno_YRI_araclog2IC50_noids.txt -gk 1 -o YRI_relationship_matrix
+    worked! created files: YRI_relationship_matrix.cXX.txt & YRI_relationship_matrix.log.txt
+    
