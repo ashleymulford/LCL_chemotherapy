@@ -71,7 +71,15 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
         removed extraneoes phenotypes: Y025 252 & Y044 177
         genotype and phenotype files now the same size with same people
         
-    ## Next must order phenotype file to match order of genotype file!
+    ## Next must order phenotype file to match order of genotype file
+    fam <- read.table("/home/ashley/LCL_chemotherapy/YRI.chr10.TGP_and_imputed.20130416.exclude_BAD_SNPs.fam")
+    colnames(fam) <- c("FID", "IID", "FatID", "MatID", "Sex", "Pheno")
+    pheno <- read.table("/home/ashley/LCL_chemotherapy/pheno_YRI_araclog2IC50.txt")
+    pheno_ordered <- left_join(fam, pheno, by = c("FID" = "V1", "IID" = "V2"))
+    write.table(pheno_ordered, "/home/ashley/LCL_chemotherapy/ordered_pheno_YRI_araclog2IC50.txt", col.names = T, row.names = T, sep = "/t")
+    ### file with no ids or col names is one needed for gemma use
+    pheno_ordered_noids <- pheno_ordered[, 10:17]
+    write.table(pheno_ordered_noids, "/home/ashley/LCL_chemotherapy/ordered_pheno_YRI_araclog2IC50_noids.txt", col.names = F, row.names = F, sep = "/t")
     
-    
-    
+# run gemma again
+    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p ordered_pheno_YRI_araclog2IC50_noids.txt -gk 1 -o YRI_relationship_matrix
