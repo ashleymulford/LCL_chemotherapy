@@ -42,7 +42,7 @@ Used cp to put into dir /home/ashley/LCL_chemotherapy
     for cp, say file location and name, then where it should be copied to
     ex: cp /home/wheelerlab3/Data/LCL_chemotherapy/bimbam_files/ASN.TGP_and_imputed.rmBAD.20130718.geno.gz /home/ashley/LCL_chemotherapy/
 
-#3 Create relationship matrix in gemma: requires genotype file and phenotype file
+#3 Create relationship matrix (GRM) in gemma: requires genotype file and phenotype file
 will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     working with YRI:
        Genotype file in BIMBAM format: YRI.TGP_and_imputed.rmBAD.20130526.geno.gz
@@ -97,13 +97,19 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     YRI_master_phenos <- subset(master_phenos, pop == "YRI")
     YRI_master_phenos_ordered <- left_join(fam, YRI_master_pheno, by = c("FID" = "FID", "IID" = "IID", "FatID" = "father", "MatID" = "mother", "Sex" = "sex"))
     
-    ## for arac
+    ## for arac:
     YRI_arac_pheno <- select(YRI_master_phenos_ordered, 1:13, - Pheno, contains("ARAC"))
     
-    ## general
+    ## general:
     YRI_drug_pheno <- select(YRI_master_phenos_ordered, 1:13, - Pheno, contains("DRUGABBREV"))
     
-#5 run GWAS in gemma using grm with maf
+    ### discovered: in drug_info, 10 unique drugs listed, phenos only for 8. No phenos for hydoxyurea or busulfan
+    
+    
+#5 run GWAS in gemma using GRM with maf
+    For cisplatin: pheno IC50, use rank normalized (Rn)
+    
+    
 
 
 
