@@ -63,6 +63,8 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
         View(pheno_YRI_araclog2IC50_noids)
         write.table(pheno_YRI_araclog2IC50_noids, file = "pheno_YRI_araclog2IC50_noids.txt", sep = "\t", row.names = F, col.names = F)
     
+    ###cleared environment in R
+    
 # run gemma
     gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p pheno_YRI_araclog2IC50_noids.txt -gk 1 -o YRI_relationship_matrix
     
@@ -89,5 +91,22 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p ordered_pheno_YRI_araclog2IC50_noids.txt -gk 1 -maf 0.05 -o YRI_relationship_matrix_maf
     created files: YRI_relationship_matrix_maf.cXX.txt & YRI_relationship_matrix_maf.log.txt
     
+    
+#4 make drug based phenotype files in R
+    master_phenos <- read.table ("/home/ashley/LCL_chemotherapy/master_cyctotoxicity_info_130311_plus_igrowth.txt", header = T)
+    YRI_master_phenos <- subset(master_phenos, pop == "YRI")
+    YRI_master_phenos_ordered <- left_join(fam, YRI_master_pheno, by = c("FID" = "FID", "IID" = "IID", "FatID" = "father", "MatID" = "mother", "Sex" = "sex"))
+    
+    ## for arac
+    YRI_arac_pheno <- select(YRI_master_phenos_ordered, 1:13, - Pheno, contains("ARAC"))
+    
+    ## general
+    YRI_drug_pheno <- select(YRI_master_phenos_ordered, 1:13, - Pheno, contains("DRUGABBREV"))
+    
+#5 run GWAS in gemma using grm with maf
+
+
+
+
 
 
