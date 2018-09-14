@@ -74,14 +74,14 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
         genotype and phenotype files now the same size with same people
         
     ## Next must order phenotype file to match order of genotype file
-    fam <- read.table("/home/ashley/LCL_chemotherapy/YRI.chr10.TGP_and_imputed.20130416.exclude_BAD_SNPs.fam")
-    colnames(fam) <- c("FID", "IID", "FatID", "MatID", "Sex", "Pheno")
-    pheno <- read.table("/home/ashley/LCL_chemotherapy/pheno_YRI_araclog2IC50.txt")
-    pheno_ordered <- left_join(fam, pheno, by = c("FID" = "V1", "IID" = "V2"))
-    write.table(pheno_ordered, "/home/ashley/LCL_chemotherapy/ordered_pheno_YRI_araclog2IC50.txt", col.names = T, row.names = T, sep = "/t")
-    ### file with no ids or col names is one needed for gemma use
-    pheno_ordered_noids <- pheno_ordered[, 10:17]
-    write.table(pheno_ordered_noids, "/home/ashley/LCL_chemotherapy/ordered_pheno_YRI_araclog2IC50_noids.txt", col.names = F, row.names = F, sep = "/t")
+        fam <- read.table("/home/ashley/LCL_chemotherapy/YRI.chr10.TGP_and_imputed.20130416.exclude_BAD_SNPs.fam")
+        colnames(fam) <- c("FID", "IID", "FatID", "MatID", "Sex", "Pheno")
+        pheno <- read.table("/home/ashley/LCL_chemotherapy/pheno_YRI_araclog2IC50.txt")
+        pheno_ordered <- left_join(fam, pheno, by = c("FID" = "V1", "IID" = "V2"))
+        write.table(pheno_ordered, "/home/ashley/LCL_chemotherapy/ordered_pheno_YRI_araclog2IC50.txt", col.names = T, row.names = T, sep = "/t")
+        ### file with no ids or col names is one needed for gemma use
+        pheno_ordered_noids <- pheno_ordered[, 10:17]
+        write.table(pheno_ordered_noids, "/home/ashley/LCL_chemotherapy/ordered_pheno_YRI_araclog2IC50_noids.txt", col.names = F, row.names = F, sep = "/t")
     
 # run gemma again
     gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p ordered_pheno_YRI_araclog2IC50_noids.txt -gk 1 -o YRI_relationship_matrix
@@ -106,13 +106,21 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     ### discovered: in drug_info, 10 unique drugs listed, phenos only for 8. No phenos for hydoxyurea or busulfan
     
     
-#5 run GWAS in gemma using GRM with maf
-    For cisplatin: pheno IC50, use rank normalized (Rn)
+#5 run (univariate mixed linear) GWAS in gemma using GRM
+    #For cisplatin: pheno IC50, use rank normalized (Rn)
     
+    ##In R: 
+    ###file with ids (for reference)
+    YRI_cisplatin_bestpheno <- select(YRI_cisplatin_pheno, 1:12, contains("CIS_RnIC50"))
+    write.table(YRI_cisplatin_bestpheno, "/home/ashley/LCL_chemotherapy/YRI_cisplatin_bestpheno.txt", col.names = T, row.names = F, sep = "/t")
+    ###file without ids (for gemma)
+    YRI_cisplatin_bestpheno_noids <- select(YRI_cisplatin_bestpheno, 5:13)
+    write.table(YRI_cisplatin_bestpheno, "/home/ashley/LCL_chemotherapy/YRI_cisplatin_bestpheno_noids.txt", col.names = F, row.names = F, sep = "/t")
     
-
-
-
-
-
-
+    ##In Gemma:
+    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cisplatin_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info.gz -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cisplatin
+    created files: YRI_GWAS_cisplatin.assoc.txt & YRI_GWAS_cisplatin.log.txt
+ 
+    ##repeat with other drugs 
+    
+#6 Make plots
