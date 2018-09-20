@@ -122,10 +122,31 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     
     ##error: segmentation fault (again :(((( )
     
-    ##removed -a file.snp.info.gz
+    ## unzip snp file with:
+    gunzip filename.snp.info.gz
+    run again
+    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cisplatin_bestpheno_noids.txt -n 9 -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cisplatin
+    
     ##code is running...
     created files: YRI_GWAS_cisplatin.assoc.txt & YRI_GWAS_cisplatin.log.txt
     
+    ##code takes ~ an hour to run. To run in the background instead:
+    use .sh file
+    cp /home/wheelerlab3/testjob.sh /home/ashley/LCL_chemotherapy/
+    ##In LCL_chemothearpy:
+    mkdir logs
+    ##open .sh file in R and edit, input what to run at bottom and adjust names
+    ##run in command line with:
+    qsub backgroundjob.sh
+    ##check status with:
+    qstat
+ 
     ##repeat with other drugs 
-    
+
+
 #6 Make plots
+
+
+
+
+
