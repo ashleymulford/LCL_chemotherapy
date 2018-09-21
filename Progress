@@ -51,7 +51,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
 #3.1 Make phenotype file in R, use only YRI, use only one phenotype
     #no header, no IDs for .txt for gemma
     ##With header/IDs (create for reference)
-        pheno <- read.table ("/home/ashley/LCL_chemotherapy/master_cyctotoxicity_info_130311_plus_igrowth.txt", header = T)
+        pheno <- read.table("/home/ashley/LCL_chemotherapy/master_cyctotoxicity_info_130311_plus_igrowth.txt", header = T)
         View(pheno)
         YRI <- subset(pheno, pop == "YRI")
         View(YRI)
@@ -110,11 +110,11 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     #For cisplatin: pheno IC50, use rank normalized (Rn)
     
     ##In R: 
-    ###file with ids (for reference)
+    ###file with ids and phenotype (for reference)
     YRI_cisplatin_bestpheno <- select(YRI_cisplatin_pheno, 1:12, contains("CIS_RnIC50"))
     write.table(YRI_cisplatin_bestpheno, "/home/ashley/LCL_chemotherapy/YRI_cisplatin_bestpheno.txt", col.names = T, row.names = F, sep = "/t")
-    ###file without ids (for gemma)
-    YRI_cisplatin_bestpheno_noids <- select(YRI_cisplatin_bestpheno, 5:13)
+    ###file phenotype only (for gemma)
+    YRI_cisplatin_bestpheno_noids <- select(YRI_cisplatin_bestpheno, contains("CIS"))
     write.table(YRI_cisplatin_bestpheno, "/home/ashley/LCL_chemotherapy/YRI_cisplatin_bestpheno_noids.txt", col.names = F, row.names = F, sep = "/t")
     
     ##In Gemma:
@@ -144,8 +144,24 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     ##repeat with other drugs 
 
 
-#6 Make plots
+#6 Make plots in R
+    ##import packages
+    library(data.table)
+    library(dplyr)
+    library(ggplot2)
+    library(qqman)
+    
+    ##Example with cisplatin pheno:
+    ##QQ Plot
+    GWAS_cis <- fread("/home/ashley/LCL_chemotherapy/YRI_GWAS_cisplatin")
+    png(filename = "YRI_GWAS_cisplatin.qqplot.png", res=100)
+    qq(GWAS_cis$p_wald)
+    dev.off()
 
+    ##Manhattan Plot
+    png(filename = "YRI_GWAS_cisplatin.manplot.png", res=100)
+    manhattan(GWAS_cis, chr = "chr", bp = "rs", p = "p_wald")
+    dev.off
 
 
 
