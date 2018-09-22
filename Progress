@@ -125,7 +125,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     ## unzip snp file with:
     gunzip filename.snp.info.gz
     run again
-    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cisplatin_bestpheno_noids.txt -n 9 -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cisplatin
+    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cisplatin_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cisplatin
     
     ##code is running...
     created files: YRI_GWAS_cisplatin.assoc.txt & YRI_GWAS_cisplatin.log.txt
