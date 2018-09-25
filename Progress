@@ -130,6 +130,10 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     ##code is running...
     created files: YRI_GWAS_cisplatin.assoc.txt & YRI_GWAS_cisplatin.log.txt
     
+    ##p-value is nan/-nan. This is a problem...
+    ##try with carboplatin
+    
+    
     ##code takes ~ an hour to run. To run in the background instead:
     use .sh file
     cp /home/wheelerlab3/testjob.sh /home/ashley/LCL_chemotherapy/
