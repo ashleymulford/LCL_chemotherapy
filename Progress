@@ -132,7 +132,12 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     
     ##p-value is nan/-nan. This is a problem...
     ##try with carboplatin
+    ##wanted to try unzipping genotype file, as this worked with snp file
+    gunzip filename.geno.gz
+    ##run with unzipped geno
+    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno -p YRI_carboplatin_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_carboplatin
     
+    ##code ran and sure enough I got p-values this time!!
     
     ##code takes ~ an hour to run. To run in the background instead:
     use .sh file
