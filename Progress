@@ -160,17 +160,17 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     library(ggplot2)
     library(qqman)
     
-    ##Example with cisplatin pheno:
+    ##Example with carboplatin pheno:
     ##QQ Plot
     GWAS_cis <- fread("/home/ashley/LCL_chemotherapy/YRI_GWAS_cisplatin")
-    png(filename = "YRI_GWAS_cisplatin.qqplot.png", res=100)
-    qq(GWAS_cis$p_wald)
+    png(filename = "YRI_GWAS_carboplatin.qqplot.png", res=100)
+    qq(GWAS_carbo$p_wald)
     dev.off()
 
     ##Manhattan Plot
-    png(filename = "YRI_GWAS_cisplatin.manplot.png", res=100)
-    manhattan(GWAS_cis, chr = "chr", bp = "ps", p = "p_wald")
-    dev.off
+    png(filename = "YRI_GWAS_carboplatin.manplot.png", res=100)
+    manhattan(GWAS_carbo, chr = "chr", bp = "ps", p = "p_wald")
+    dev.off()
 
 
 
