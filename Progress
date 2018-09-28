@@ -169,7 +169,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
 
     ##Manhattan Plot
     png(filename = "YRI_GWAS_cisplatin.manplot.png", res=100)
-    manhattan(GWAS_cis, chr = "chr", bp = "rs", p = "p_wald")
+    manhattan(GWAS_cis, chr = "chr", bp = "ps", p = "p_wald")
     dev.off
 
 
