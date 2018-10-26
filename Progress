@@ -178,7 +178,9 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
 #7 Predixcan
    
 #7.1 Convert files from bimbam format to dosage format:
-    use python script 
+    use python script: BIMBAM_to_PX_dosages.py
+    #input: geno file and snp info file, both in BIMBAM format
+    #output: single combined file in dosage format, which will be used for predixcan input
    
 #7.2 Run predixcan python script:
    
@@ -187,5 +189,4 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
    
    #Running Association with Phenotype
    ./PrediXcan.py --assoc --pheno phenotype_file --pred_exp predicted_expression_file --linear --filter filter_file filter_val --output_dir output_dirExample for Prediction and Association
-   
    
