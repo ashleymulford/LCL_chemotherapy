@@ -179,16 +179,16 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
    
 #7.1 Get files/info needed for Predixcan:
 
-    #Dosage file: Must make!
+    #Dosage file_path: Wants a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
         Convert files from bimbam format to dosage format:
         use python script: BIMBAM_to_PX_dosages.py
             #input: geno file and snp info file, both in BIMBAM format
                 #input files:
                 geno: YRI.TGP_and_imputed.rmBAD.20130526.geno
                 snp: YRI.TGP_and_imputed.rmBAD.20130526.snp.info
-            #output: single combined file in dosage format, which will be used for predixcan input
-                #output file:
-                dosages.txt
+            #output: combined file in dosage format, which is sebsquently split into 22 files
+                #output files:
+                dosages/dosageschr*.txt
                 
     #Dosage_prefix: always chr!
     
