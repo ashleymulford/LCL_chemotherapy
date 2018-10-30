@@ -216,13 +216,13 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
         #Template for step one:
             ./PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
         #Example with 1st db:
-            ./PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/dosages.txt --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V6p-HapMap-2016-09-08/TW_Adipose_Subcutaneous_0.5.db --output_prefix YRI_results_Adipose_Subcutaneous
+            ./PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V6p-HapMap-2016-09-08/TW_Adipose_Subcutaneous_0.5.db --output_prefix YRI_results_Adipose_Subcutaneous
         #Run for all 49 prediction databases to produce a total of 49 output files
        
     #Running Association with Phenotype:
         #Template for step two:
             ./PrediXcan.py --assoc --pheno phenotype_file --pred_exp predicted_expression_file --linear --filter filter_file filter_val --output_dir output_dirExample for Prediction and Association
-   
+        #Example:
    
    
    
