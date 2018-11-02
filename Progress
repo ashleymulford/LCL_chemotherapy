@@ -187,8 +187,9 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
                 geno: YRI.TGP_and_imputed.rmBAD.20130526.geno
                 snp: YRI.TGP_and_imputed.rmBAD.20130526.snp.info
             #Run: 
-                python 24_BIMBAM_to_PX_dosages.py --anno YRI.TGP_and_imputed.rmBAD.20130526.snp.info --BIMBAM YRI.TGP_and_imputed.rmBAD.20130526.geno --output dosage
-            #output: combined file in dosage format, which is sebsquently split into 22 files with awk command
+                python 24_BIMBAM_to_PX_dosages.py --anno YRI.TGP_and_imputed.rmBAD.20130526.snp.info --BIMBAM YRI.TGP_and_imputed.rmBAD.20130526.geno --output dosages.txt
+            #output: combined file in dosage format, which is sebsquently split into 22 files
+            #use awk command: awk '$1 == #' dosages.txt > chr#.txt, where # is 1 through 22, run 22 times
                 #output files:
                 predixcan_dosages/dosageschr*.txt
                 
