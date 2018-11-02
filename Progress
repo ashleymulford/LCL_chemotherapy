@@ -192,6 +192,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             #use awk command: awk '$1 == #' dosages.txt > chr#.txt, where # is 1 through 22, run 22 times
                 #output files, chr1-22:
                 predixcan_dosages/chr#.txt
+                #must zip files for PrediXcan to run, use gzip
                 
     #Dosage_prefix: always chr!
     
@@ -206,7 +207,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     #Weights: 49 total prediction databases, run all in loop!
         44 are european predictors derived from various organ tissues samples
             Example: Path to 1st of 44:
-            home/wheelerlab3/Data/PrediXcan_db/GTEx-V6p-HapMap-2016-09-08/TW_Adipose_Subcutaneous_0.5.db
+            /home/wheelerlab3/Data/PrediXcan_db/GTEx-V6p-HapMap-2016-09-08/TW_Adipose_Subcutaneous_0.5.db
         5 are multi-ethnic predictors derived from white blood cell samples
     
     #Output_prefix: Change with each run!
