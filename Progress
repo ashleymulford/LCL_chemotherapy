@@ -226,9 +226,11 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     #Running Association with Phenotype:
         #Template for step two:
             PrediXcan.py --assoc --pheno phenotype_file --pred_exp predicted_expression_file --linear --filter filter_file filter_val --output_dir output_dirExample for Prediction and Association
-        #Example:
-   
-   
+        #Example with 1st db and arac pheno:
+            PrediXcan.py --assoc --pheno /home/ashley/LCL_chemotherapy/phenotypes/YRI_arac_bestpheno_noids.txt --pred_exp /home/ashley/LCL_chemotherapy/predict_output/YRI_results_Adipose_Subcutaneous_predicted_expression.txt --linear --filter filter_file filter_val --output_dir assoc_output
+            
+        #Run each of the 49 predicted_expression files with each drug phenotype (same .txt files from GWAS), total of 8 phenotypes
+        #Run a total of 392 commands
    
    
    
