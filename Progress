@@ -179,7 +179,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
    
 #7.1 Get files/info needed for Predixcan:
 
-    #Dosage file_path: Wants a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
+    #Dosagefile_path: Wants a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
         Convert files from bimbam format to dosage format:
         use python script: BIMBAM_to_PX_dosages.py
             #input: geno file and snp info file, both in BIMBAM format
@@ -196,7 +196,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
                 
     #Dosage_prefix: always chr!
     
-    #Samples file: Must make!
+    #Samples_file: Must make!
         Make file with FID and IID only (in correct order corresponding to columns of individuals in geno file)
         Use R, extract first two columns of fam file:
             samples <- fam[1:2]
@@ -214,6 +214,10 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
         Make a prefix for each db:
             Example for 1st of 44: YRI_results_Adipose_Subcutaneous
     
+    #Pheno: Must make new with three columns: FID, IID, Pheno (include header)
+        #Example with cis:
+            YRI_cisplatin_predpheno <- select(YRI_cisplatin_pheno, 1:2, contains("CIS_RnIC50"))
+            write.table(YRI_cisplatin_predpheno, "/home/ashley/LCL_chemotherapy/prediXcan_phenos/YRI_cisplatin_predpheno.txt", col.names = T, row.names = F, sep = "\t", quote = FALSE)
     
 #7.2 Run predixcan python script:
     #Predicting/Imputing Expression:
@@ -229,7 +233,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
         #Example with 1st db and arac pheno:
             PrediXcan.py --assoc --pheno /home/ashley/LCL_chemotherapy/phenotypes/YRI_arac_bestpheno_noids.txt --pred_exp /home/ashley/LCL_chemotherapy/predict_output/YRI_results_Adipose_Subcutaneous_predicted_expression.txt --linear --filter filter_file filter_val --output_dir assoc_output
             
-        #Run each of the 49 predicted_expression files with each drug phenotype (three columns: FID, IID, Pheno (include header)), total of 8 phenotypes
+        #Run each of the 49 predicted_expression files with each drug phenotype, total of 8
         #Run a total of 392 commands
    
    
