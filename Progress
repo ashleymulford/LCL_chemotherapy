@@ -216,7 +216,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     
     #Pheno: Must make new with three columns: FID, IID, Pheno (include header)
         #Example with cis:
-            YRI_cisplatin_predpheno <- select(YRI_cisplatin_pheno, 1:2, contains("CIS_RnIC50"))
+            YRI_cisplatin_predpheno <- select(YRI_cisplatin_bestpheno, 1:2, contains("CIS_RnIC50"))
             write.table(YRI_cisplatin_predpheno, "/home/ashley/LCL_chemotherapy/prediXcan_phenos/YRI_cisplatin_predpheno.txt", col.names = T, row.names = F, sep = "\t", quote = FALSE)
     
 #7.2 Run predixcan python script:
