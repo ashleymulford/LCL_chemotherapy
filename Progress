@@ -237,6 +237,17 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             
         #Run each of the 49 predicted_expression files with each drug phenotype, total of 8
         #Run a total of 392 commands
+        
+        #Alternate method in gemma - to account for relatedness: (do this instead)
+            #Must make genotype file equivalent input for gemma from output files from step one.
+            #Use 03_pred_exp_to_GEMMA_input.R from angela's github
+            #created dir: assoc_gemma_input
+            
+            #Run gemma: example with 1st db and carboplatin
+            gemma -g /home/ashley/LCL_chemotherapy/assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin
+            
+            #Works! will output to output, move to assoc_gemma_output
+            run for all phenos and all db (392 times)
    
    
-   
+ 
