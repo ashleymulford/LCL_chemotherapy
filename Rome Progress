@@ -1,0 +1,19 @@
+## Rome Semester work
+
+# To Do List:
+## Go through other populations and figure out what data is available, work towards expanding scope of project beyond YRI
+## Analyze YRI results from gwas and predixcan
+## Write up abstract, background, and proposal including objectives, methods, and budget.
+## Sumbit grant and grad school applications
+
+
+# Set up instructions
+## log into global protect
+## mount with sftp net
+## open R and set working directory
+## terminal through putty as usually
+
+
+# Population makeup 
+## analyze with R
+## compile in google sheets
