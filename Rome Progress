@@ -4,6 +4,7 @@
 ## Go through other populations and figure out what data is available, work towards expanding scope of project beyond YRI
   CEU - Central European, Utah USA
   YRI - Yoruba, Nigeria
+  JPT - Japanese, Tokyo Japan
   ASW - African American, SW USA
   CHB - Han Chinese, Bejing China
   CHD - Han Chinese, Denver USA
@@ -28,10 +29,15 @@
   ## pheno_CHD <- subset(pheno, pop == "CHD")
   ## pheno_ASW <- subset(pheno, pop == "ASW")
   ## pheno_CEU <- subset(pheno, pop == "CEU")
+  ## pheno_JPT <- subset(pheno, pop == "JPT")
   # Go through which pops have data for which drugs
 ## compile in google sheets
   
 
+# Run predixcan with CEU
 
+
+
+# 
 
 
