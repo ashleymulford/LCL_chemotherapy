@@ -33,8 +33,10 @@
   # Go through which pops have data for which drugs
 ## compile in google sheets
   
+#Catch up other pops
+##make relationship matrices
 
-# Run predixcan with CEU
+# Run predixcan V7
 
 
 
