@@ -34,6 +34,10 @@
 ## compile in google sheets
   
 #Catch up other pops
+#For asn: both pheno and fam had extra individuals, used inner_join to keep only those which appear in both.
+
+ASN_pheno_ordered <- inner_join(fam, asn, by = c("FID" = "FID", "IID" = "IID", "FatID" = "father", "MatID" = "mother", "Sex" = "sex"))
+
 ##make relationship matrices
 
 
