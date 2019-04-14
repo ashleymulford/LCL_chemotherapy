@@ -33,13 +33,30 @@
   # Go through which pops have data for which drugs
 ## compile in google sheets
   
-#Catch up other pops
-#For asn: both pheno and fam had extra individuals, used inner_join to keep only those which appear in both.
-
-ASN_pheno_ordered <- inner_join(fam, asn, by = c("FID" = "FID", "IID" = "IID", "FatID" = "father", "MatID" = "mother", "Sex" = "sex"))
-
+#ASN Population (CHB + JPT, does not include CHD)
+ 
+#For asn: both pheno and fam had extra individuals, created two files.  
+  
+  ##used left_join to keep all individuals in fam file, including those we do not have pheno data on.
+    ASN_pheno_ordered_allfam <- left_join(fam, asn, by = c("FID" = "FID", "IID" = "IID", "FatID" = "father", "MatID" = "mother", "Sex" = "sex"))
+  ##used inner_join to keep only those which appear in both fam and pheno file.
+    ASN_pheno_ordered <- inner_join(fam, asn, by = c("FID" = "FID", "IID" = "IID", "FatID" = "father", "MatID" = "mother", "Sex" = "sex"))
+ 
+#made four pheno files:
+  
+  ##All individuals from fam file, with IDs:
+    write.table(ASN_pheno_ordered_allfam_araclog2IC50, file = "ASN_ordered_pheno_allfam_araclog2IC50.txt", col.names = T, row.names = T, sep = "\t")
+  ##Without IDS:
+    write.table(ASN_pheno_ordered_allfam_araclog2IC50_noids, "ASN_ordered_pheno_allfam_araclog2IC50_noids.txt", col.names = F, row.names = F, sep = "\t")
+  
+  ##Individuals from fam with pheno data, with IDS:
+    write.table(ASN_pheno_ordered_araclog2IC50, file = "ASN_ordered_pheno_araclog2IC50.txt", col.names = T, row.names = T, sep = "\t")
+  ##Wtihout IDS:
+    write.table(ASN_pheno_ordered_araclog2IC50_noids, "ASN_ordered_pheno_araclog2IC50_noids.txt", col.names = F, row.names = F, sep = "\t")
+ 
+ 
 ##make relationship matrices
-
+gemma -g ASN.TGP_and_imputed.rmBAD.20130718.geno -p ASN_ordered_pheno_allfam_araclog2IC50_noids.txt -gk 1 -o ASN_relationship_matrix
 
 # Run predixcan V7
 
