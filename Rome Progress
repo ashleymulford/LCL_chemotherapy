@@ -55,8 +55,26 @@
     write.table(ASN_pheno_ordered_araclog2IC50_noids, "ASN_ordered_pheno_araclog2IC50_noids.txt", col.names = F, row.names = F, sep = "\t")
  
  
-##make relationship matrices
+##make relationship matrix
 gemma -g ASN.TGP_and_imputed.rmBAD.20130718.geno -p ASN_ordered_pheno_allfam_araclog2IC50_noids.txt -gk 1 -o ASN_relationship_matrix
+
+
+#Create pheno files for GWAS, we have data for 4 of 8 drug phenos for ASN
+ #Use file with all individuals:
+  ASN_arac_pheno <- select(ASN_pheno_ordered_allfam, 1:13, - Pheno, contains("ARAC"))
+  ASN_cape_pheno <- select(ASN_pheno_ordered_allfam, 1:13, - Pheno, contains("CAPE"))
+  ASN_carbo_pheno <- select(ASN_pheno_ordered_allfam, 1:13, - Pheno, contains("CARBO"))
+  ASN_cis_pheno <- select(ASN_pheno_ordered_allfam, 1:13, - Pheno, contains("CIS"))
+ 
+ #isolate best phenotype: Example with CIS, repeat with other drug phenos
+  With IDs:
+  ASN_cisplatin_bestpheno <- select(ASN_cis_pheno, 1:12, contains("CIS_RnIC50"))
+  write.table(ASN_cisplatin_bestpheno, "ASN_cisplatin_bestpheno.txt", col.names = T, row.names = F, sep = "/t")
+    
+  Without IDs:
+  ASN_cisplatin_bestpheno_noids <- select(ASN_cisplatin_bestpheno, contains("CIS"))
+  write.table(ASN_cisplatin_bestpheno_noids, "ASN_cisplatin_bestpheno_noids.txt", col.names = F, row.names = F, sep = "/t")
+    
 
 # Run predixcan V7
 
