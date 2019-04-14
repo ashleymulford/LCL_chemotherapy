@@ -69,12 +69,18 @@ gemma -g ASN.TGP_and_imputed.rmBAD.20130718.geno -p ASN_ordered_pheno_allfam_ara
  #isolate best phenotype: Example with CIS, repeat with other drug phenos
   With IDs:
   ASN_cisplatin_bestpheno <- select(ASN_cis_pheno, 1:12, contains("CIS_RnIC50"))
-  write.table(ASN_cisplatin_bestpheno, "ASN_cisplatin_bestpheno.txt", col.names = T, row.names = F, sep = "/t")
+  write.table(ASN_cisplatin_bestpheno, "ASN_cisplatin_bestpheno.txt", col.names = T, row.names = F, sep = "\t")
     
   Without IDs:
   ASN_cisplatin_bestpheno_noids <- select(ASN_cisplatin_bestpheno, contains("CIS"))
-  write.table(ASN_cisplatin_bestpheno_noids, "ASN_cisplatin_bestpheno_noids.txt", col.names = F, row.names = F, sep = "/t")
-    
+  write.table(ASN_cisplatin_bestpheno_noids, "ASN_cisplatin_bestpheno_noids.txt", col.names = F, row.names = F, sep = "\t")
+  
+#ASN GWAS, example with carboplatin
+gemma -g ASN.TGP_and_imputed.rmBAD.20130718.geno -p ASN_carboplatin_bestpheno_noids.txt -a ASN.TGP_and_imputed.rmBAD.20130718.snp.info -k ASN_relationship_matrix_maf.cXX.txt -lmm 4 -o ASN_GWAS_carboplatin
+
+#Make plots in R
+
+
 
 # Run predixcan V7
 
