@@ -88,7 +88,7 @@ gemma -g ASN.TGP_and_imputed.rmBAD.20130718.geno -p ASN_carboplatin_bestpheno_no
     
     ##Example with carboplatin pheno:
     ##QQ Plot
-    GWAS_cis <- read.table(file = "ASN_GWAS_cisplatin")
+    GWAS_cis <- read.table(file = "ASN_GWAS_cisplatin.assoc.txt")
     png(filename = "ASN_GWAS_carboplatin.qqplot.png", res=100)
     qq(GWAS_carbo$p_wald)
     dev.off()
