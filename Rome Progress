@@ -80,6 +80,25 @@ gemma -g ASN.TGP_and_imputed.rmBAD.20130718.geno -p ASN_carboplatin_bestpheno_no
 
 #Make plots in R
 
+ ##import packages
+    library(data.table)
+    library(dplyr)
+    library(ggplot2)
+    library(qqman)
+    
+    ##Example with carboplatin pheno:
+    ##QQ Plot
+    GWAS_cis <- fread("/home/ashley/LCL_chemotherapy/ASN_GWAS_cisplatin")
+    png(filename = "ASN_GWAS_carboplatin.qqplot.png", res=100)
+    qq(GWAS_carbo$p_wald)
+    dev.off()
+
+    ##Manhattan Plot
+    png(filename = "ASN_GWAS_carboplatin.manplot.png", res=100)
+    manhattan(GWAS_carbo, chr = "chr", bp = "ps", p = "p_wald")
+    dev.off()
+
+    ##repeat with other drugs
 
 
 # Run predixcan V7
