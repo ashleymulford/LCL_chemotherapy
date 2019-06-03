@@ -244,14 +244,14 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             #created dir: assoc_gemma_input
             
             #Run gemma: example with 1st db and carboplatin
-            gemma -g /home/ashley/LCL_chemotherapy/assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin
+            gemma -g /home/ashley/LCL_chemotherapy/assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
             
             #Works! will output to output, move to assoc_gemma_output
             run for all phenos and all db (392 times)
    
    
  # 7.3 Run PrediXcan GTEx V7 with YRI and ASN 
-    #for ASN progress see Rome Progress
+    #for ASN progress see Rome Progress file
     #same as above but weights from /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/
     
         #Template for step one:
@@ -260,9 +260,19 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Subcutaneous_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Adipose_Subcutaneous
         #ASN Example with 1st db:
             PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/ASN/ASN_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/ASN/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Subcutaneous_imputed_europeans_tw_0.5_signif.db --output_prefix ASN_results_Adipose_Subcutaneous
-  
-    #Run for all 49 prediction databases to produce a total of 49 output files
+            #for ASN run MESA too, see above
     
+    #Run 03_pred_exp_to_GEMMA_input.R from angela's github to create input for step two of predixcan using gemma to account for relatedness
+    
+    #Run gemma:
+        #YRI example with 1st db and carboplatin:
+            gemma -g /home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/YRI/YRI_phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
+            #YRI has 8 drugs phenos
+            
+        #ASN example with 1st db and carboplatin:
+            gemma -g /home/ashley/LCL_chemotherapy/ASN/ASN_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/ASN/ASN_phenotypes/ASN_carboplatin_bestpheno_noids.txt -k ASN_relationship_matrix_maf.cXX.txt -lmm 4 -o ASN_assoc_carboplatin_[tissue]
+            #ASN has 4 drugs phenos
+            
     
     
     
