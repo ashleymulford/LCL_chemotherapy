@@ -51,7 +51,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
 #3.1 Make phenotype file in R, use only YRI, use only one phenotype
     #no header, no IDs for .txt for gemma
     ##With header/IDs (create for reference)
-        pheno <- read.table("/home/ashley/LCL_chemotherapy/master_cyctotoxicity_info_130311_plus_igrowth.txt", header = T)
+        pheno <- read.table("/home/ashley/LCL_chemotherapy/master_cytotoxicity_info_130311_plus_igrowth.txt", header = T)
         View(pheno)
         YRI <- subset(pheno, pop == "YRI")
         View(YRI)
