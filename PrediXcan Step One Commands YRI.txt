@@ -1,0 +1,95 @@
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Subcutaneous_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Adipose_Subcutaneous
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Visceral_Omentum_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Adipose_Visceral_Omentum
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adrenal_Gland_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Adrenal_Gland
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Artery_Aorta_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Artery_Aorta
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Artery_Coronary_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Artery_Coronary
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Artery_Tibial_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Artery_Tibial
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Amygdala_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Amygdala
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Anterior_cingulate_cortex_BA24_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Anterior
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Caudate_basal_ganglia_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Caudate
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Cerebellar_Hemisphere_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Cerebellar_Hemisphere
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Cerebellum_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Cerebellum
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Cortex_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Cortex
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Frontal_Cortex_BA9_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Frontal_Cortex
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Hippocampus_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Hippocampus
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Hypothalamus_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Hypothalamus
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Nucleus_accumbens_basal_ganglia_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Nucleus
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Putamen_basal_ganglia_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Putamen
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Spinal_cord_cervical_c-1_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Spinal
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Brain_Substantia_nigra_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Brain_Substantia
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Breast_Mammary_Tissue_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Breast_Mammary_Tissue
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Cells_EBV-transformed_lymphocytes_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Cells_EBV-transformed_lymphocytes
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Cells_Transformed_fibroblasts_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Cells_Transformed_fibroblasts
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Colon_Sigmoid_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Colon_Sigmoid
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Colon_Transverse_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Colon_Transverse
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Esophagus_Gastroesophageal_Junction_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Esophagus_Gastroesophageal_Junction
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Esophagus_Mucosa_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Esophagus_Mucosa
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Esophagus_Muscularis_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Esophagus_Muscularis
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Heart_Atrial_Appendage_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Heart_Atrial_Appendage
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Heart_Left_Ventricle_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Heart_Left_Ventricle
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Liver_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Liver
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Lung_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Lung
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Minor_Salivary_Gland_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Minor_Salivary_Gland
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Muscle_Skeletal_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Muscle_Skeletal
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Nerve_Tibial_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Nerve_Tibial
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Ovary_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Ovary
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Pancreas_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Pancreas
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Pituitary_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Pituitary
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Prostate_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Prostate
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Skin_Not_Sun_Exposed_Suprapubic_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Skin_Not_Sun_Exposed_Suprapubic
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Skin_Sun_Exposed_Lower_leg_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Skin_Sun_Exposed_Lower_leg
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Small_Intestine_Terminal_Ileum_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Small_Intestine_Terminal_Ileum
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Spleen_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Spleen
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Stomach_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Stomach
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Testis_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Testis
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Thyroid_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Thyroid
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Uterus_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Uterus
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Vagina_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Vagina
+
+PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Whole_Blood_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Whole_Blood
