@@ -149,6 +149,8 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     qsub backgroundjob.sh
     ##check status with:
     qstat
+    ##end a task with:
+    qdel task_num
  
     ##repeat with other drugs 
 
