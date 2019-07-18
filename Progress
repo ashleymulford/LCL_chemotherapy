@@ -252,7 +252,7 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             run for all phenos and all db (392 times)
    
    
- # 7.3 Run PrediXcan GTEx V7 with YRI and ASN 
+ #7.3 Run PrediXcan GTEx V7 with YRI and ASN 
     #for ASN progress see Rome Progress file
     #same as above but weights from /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/
     
@@ -276,11 +276,16 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             #ASN has 4 drugs phenos
       
       
- # 7.4 Incorported CEU data, ran GWAS and PrediXcan using above process. Must rerun PrediXcan with MESA dbs due to file read issue
+ #7.4 Incorported CEU data, ran GWAS and PrediXcan using above process. Must rerun PrediXcan with MESA dbs due to file read issue
 
         #Template for step one:
             PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
         
         #MESA dbs (--weights) located in: /home/ryan/enet_scripts/new_MESA/dbs/ use: filtered_rsid_hg19.db    
+
+#8 Going through results
+    #Lots of assoc files, want to condense and pull out significant results
+    #Created R script to pull out 10^-3 significant and 10^-5 significant rows (two output files) for each drug in each population
+    #ie 20 sig files and 20 most sig files, though not all drugs had 10^-5 significant results
 
 
