@@ -1,9 +1,13 @@
+
+#Create lists, one of drugs and on of populations 
 declare -a drugs=("arac" "capecitabine" "carboplatin" "cisplatin" "daunorubicin" "etoposide" "paclitaxel" "pemetrexed")
 declare -a pops=("CEU" "YRI")
 
+#Use loop to run PrediXcan step two through GEMMA (accounts for relatedness)
 for db in /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/*.db
 
   do 
+  #create tissue prefix for output
   prefix=${db#/home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_}
   prefix=${prefix%_imputed_europeans_tw_0.5_signif.db}
   
