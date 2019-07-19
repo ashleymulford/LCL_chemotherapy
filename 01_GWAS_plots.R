@@ -5,3 +5,5 @@ dev.off()
 png(filename = "CEU_GWAS_cisplatin.manplot.png", res=100)
 manhattan(GWAS_cis, chr = "chr", bp = "ps", p = "p_wald")
 dev.off()
+
+
