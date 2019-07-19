@@ -184,13 +184,13 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
 
     #Dosagefile_path: Wants a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
         Convert files from bimbam format to dosage format:
-        use python script: BIMBAM_to_PX_dosages.py
+        Script: 99_BIMBAM_to_PX_dosages.py (found in Ad_PX_pipe, forked from aandaleon)
             #input: geno file and snp info file, both in BIMBAM format
                 #input files:
                 geno: YRI.TGP_and_imputed.rmBAD.20130526.geno
                 snp: YRI.TGP_and_imputed.rmBAD.20130526.snp.info
             #Run: 
-                python 24_BIMBAM_to_PX_dosages.py --anno YRI.TGP_and_imputed.rmBAD.20130526.snp.info --BIMBAM YRI.TGP_and_imputed.rmBAD.20130526.geno --output dosages.txt
+                python 99_BIMBAM_to_PX_dosages.py --anno YRI.TGP_and_imputed.rmBAD.20130526.snp.info --BIMBAM YRI.TGP_and_imputed.rmBAD.20130526.geno --output dosages.txt
             #output: combined file in dosage format, which is sebsquently split into 22 files
             #use awk command: awk '$1 == #' dosages.txt > chr#.txt, where # is 1 through 22, run 22 times
                 #output files, chr1-22:
@@ -208,55 +208,19 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             sample.txt
     
     #Weights: 49 total prediction databases, run all in loop!
-        44 are european predictors derived from various organ tissues samples
-            Example: Path to 1st of 44:
-            /home/wheelerlab3/Data/PrediXcan_db/GTEx-V6p-HapMap-2016-09-08/TW_Adipose_Subcutaneous_0.5.db
-        5 are multi-ethnic predictors derived from white blood cell samples
-    
+        #44 are european predictors derived from various organ tissues samples
+        #Located in: /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/
+        #5 are multi-ethnic predictors derived from white blood cell samples
+        #Located in: /home/ryan/enet_scripts/new_MESA/dbs/
+        
     #Output_prefix: Change with each run!
         Make a prefix for each db:
             Example for 1st of 44: YRI_results_Adipose_Subcutaneous
     
-    #Pheno: Must make new with three columns: FID, IID, Pheno (include header)
-        #Example with cis:
-            YRI_cisplatin_predpheno <- select(YRI_cisplatin_bestpheno, 1:2, 13)
-            write.table(YRI_cisplatin_predpheno, "/home/ashley/LCL_chemotherapy/prediXcan_phenos/YRI_cisplatin_predpheno.txt", col.names = T, row.names = F, sep = "\t", quote = FALSE)
     
-#7.2 Run predixcan python script:
-    #Predicting/Imputing Expression:
-        #Template for step one:
-            PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
-        #Example with 1st db:
-            PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V6p-HapMap-2016-09-08/TW_Adipose_Subcutaneous_0.5.db --output_prefix YRI_results_Adipose_Subcutaneous
-        #Run for all 49 prediction databases to produce a total of 49 output files
-            #first 44 in /home/wheelerlab3/Data/PrediXcan_db/GTEx-V6p-HapMap-2016-09-08/
-            #last 5 in /home/angela/MESA_dbs/
-       
-    #Running Association with Phenotype:
-        #Template for step two:
-            PrediXcan.py --assoc --pheno phenotype_file --pred_exp predicted_expression_file --linear --output_dir output_dirExample for Prediction and Association
-        #Example with 1st db and arac pheno:
-            PrediXcan.py --assoc --pheno /home/ashley/LCL_chemotherapy/prediXcan_phenos/YRI_arac_predpheno.txt --pred_exp /home/ashley/LCL_chemotherapy/predict_output/YRI_results_Adipose_Subcutaneous_predicted_expression.txt --linear --output_prefix YRI_arac_results_Adipose_Subcutaneous
-            
-        #Run each of the 49 predicted_expression files with each drug phenotype, total of 8
-        #Run a total of 392 commands
-        
-        #Alternate method in gemma - to account for relatedness: (do this instead)
-            #Must make genotype file equivalent input for gemma from output files from step one.
-            #Use 03_pred_exp_to_GEMMA_input.R from angela's github
-            #created dir: assoc_gemma_input
-            
-            #Run gemma: example with 1st db and carboplatin
-            gemma -g /home/ashley/LCL_chemotherapy/assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
-            
-            #Works! will output to output, move to assoc_gemma_output
-            run for all phenos and all db (392 times)
-   
-   
- #7.3 Run PrediXcan GTEx V7 with YRI and ASN 
+ #7.2 Run PrediXcan GTEx V7 with YRI and ASN 
     #Script: 03_PrediXcan1_loop.sh
     #for ASN progress see Rome Progress file
-    #same as above but weights from /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/
     
         #Template for step one:
             PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
@@ -266,9 +230,10 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/ASN/ASN_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/ASN/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Subcutaneous_imputed_europeans_tw_0.5_signif.db --output_prefix ASN_results_Adipose_Subcutaneous
             #for ASN run MESA too, see above
     
-    #Run 03_pred_exp_to_GEMMA_input.R from angela's github to create input for step two of predixcan using gemma to account for relatedness
+    #Convert PrediXcan Step one output to "geno" input for GEMMA
+    #Script: 03_pred_exp_to_GEMMA_input.R (found in px_his_chol, forked from WheelerLab)
     
-    #Run gemma:
+    #Run gemma to account for relatedness:
     #Script: 05_PrediXcan2_loop.sh
         #YRI example with 1st db and carboplatin:
             gemma -g /home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/YRI/YRI_phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
@@ -279,14 +244,15 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             #ASN has 4 drugs phenos
       
       
- #7.4 Incorported CEU data, ran GWAS and PrediXcan using above process. Must rerun PrediXcan with MESA dbs due to file read issue
+ #7.3 Incorported CEU data, ran GWAS and PrediXcan using above process. Must rerun PrediXcan with MESA dbs due to file read issue
 
         #Template for step one:
             PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
         
         #MESA dbs (--weights) located in: /home/ryan/enet_scripts/new_MESA/dbs/ use: filtered_rsid_hg19.db    
 
-#8 Going through results
+
+#8 Going through results!
     #GWAS
     #Script: 06a_GWAS_output_condesner.R
     #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
