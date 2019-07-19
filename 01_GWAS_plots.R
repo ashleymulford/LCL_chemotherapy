@@ -5,7 +5,7 @@ library(data.table)
 "%&%" = function(a,b) paste(a,b,sep="")
 
 #Create color vector
-colors<-c("#68B5FF", #CB64FF", "#FF5CA0", "#FEAB12", "#6FE210")
+colors<-c("#68B5FF", "#CB64FF", "#FF5CA0", "#FEAB12", "#6FE210")
 
 #Create list of drugs for file input
 drug_list <- c("arac", "capecitabine", "carboplatin", "cisplatin", "daunorubicin", "etoposide", "paclitaxel", "pemetrexed")
