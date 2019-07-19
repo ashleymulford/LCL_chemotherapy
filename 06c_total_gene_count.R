@@ -13,9 +13,9 @@ gene_count_list2 <- c()
 gene_count_list3 <- c()
 
 #Make YRI column using loop
-  #Read in files
+  #Read in file
   #Save gene count, number of rows = number of genes per tissue
-  #Add values to list
+  #Add value to list
 for(tiss in tiss_list){
   arac_output <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output/YRI_assoc_arac_" %&% tiss %&% ".assoc.txt")
   gene_count<-nrow(arac_output)
