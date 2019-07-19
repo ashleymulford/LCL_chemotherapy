@@ -288,4 +288,4 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
     #Created R script to pull out 10^-3 significant and 10^-5 significant rows (two output files) for each drug in each population
     #ie 20 sig files and 20 most sig files, though not all drugs had 10^-5 significant results
     #Modifed R script to condense GWAS files as well, but with 10^-5 and 10^-7 significance
-
+    #Created R script which outputs file for total number of genes in PrediXcan per population per tissue
