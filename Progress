@@ -1,13 +1,3 @@
-Command commands:
-ls - lists all my directories
-less - to look at a file
-cd - change directory, type this and then the directory to get into
-cd .. - go back out of a directory
-cp - copy, type cp /to/file /from
-pwd - print working directory
-mv - move, for files, from one dir to another
-mkdir - makes a new directory
-
 LCL_chemotherapy Progress:
 
 #1 Explored data available in /home/wheelerlab3/Data/LCL_chemotherapy/
