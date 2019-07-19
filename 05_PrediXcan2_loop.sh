@@ -1,4 +1,3 @@
-
 #Create lists, one of drugs and on of populations 
 declare -a drugs=("arac" "capecitabine" "carboplatin" "cisplatin" "daunorubicin" "etoposide" "paclitaxel" "pemetrexed")
 declare -a pops=("CEU" "YRI")
