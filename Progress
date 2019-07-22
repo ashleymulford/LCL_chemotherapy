@@ -15,163 +15,111 @@ Drugs in the study: 10 unique drugs total
 9.  busulfan        CEU2,YRI2                               0,25,50,100,250,500,1000,2000   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
 10. paclitaxel      CEU2,YRI2,ASW                           0,0.00625,0.0125,0.05           AUC             72                      BGS             cell_growth_inhibition  alamarBlue
 
-Repeats
-1. arac             CEU2,YRI2,CHB2,ASW      0,5,40          individual_concentration_normalized_to_control  24                      FBS             caspase-3/7_apoptosis   Caspase-Glo_3/7
-2. cisplatin        CEU2,YRI2,CHB2,ASW      0,5             individual_concentration_normalized_to_control  24                      FBS             caspase-3/7_apoptosis   Caspase-Glo_3/7
-3. paclitaxel       CEU2,YRI2,CHB2,ASW      0,0.0125        individual_concentration_normalized_to_control  24                      FBS             caspase-3/7_apoptosis   Caspase-Glo_3/7
+#Will be working with: YRI (8 drugs), CEU (8 drugs), and ASN (4 drugs) 
 
 
-#2 Transferred files from: /home/wheelerlab3/Data/LCL_chemotherapy/bimbam_files/
-
-Files containing data by population: ASN, CEU, YRI
-ASN.TGP_and_imputed.rmBAD.20130718.geno.gz              CEU.TGP_and_imputed.rmBAD.20130526.geno.gz      YRI.TGP_and_imputed.rmBAD.20130526.snp.info.gz
-ASN.TGP_and_imputed.rmBAD.20130718.snp.info.gz          CEU.TGP_and_imputed.rmBAD.20130526.snp.info.gz
-CEU.chr1.TGP_and_imputed.20130416.exclude_BAD_SNPs.fam  YRI.TGP_and_imputed.rmBAD.20130526.geno.gz
-
-Used cp to put into dir /home/ashley/LCL_chemotherapy
-    for cp, say file location and name, then where it should be copied to
-    ex: cp /home/wheelerlab3/Data/LCL_chemotherapy/bimbam_files/ASN.TGP_and_imputed.rmBAD.20130718.geno.gz /home/ashley/LCL_chemotherapy/
-
-#3 Create relationship matrix (GRM) in gemma: requires genotype file and phenotype file
-will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
-    working with YRI:
+#2 Create relationship matrix (GRM) in gemma: requires genotype file and phenotype file
+#Individuals in these populations are related, parent child trios, must account for this when running association studies
+#will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -maf 0.05 -o output_name
+    #working with YRI:
        Genotype file in BIMBAM format: YRI.TGP_and_imputed.rmBAD.20130526.geno.gz
        Phenotype file: must make from master_cyctotoxicity file
        
-#3.1 Make phenotype file in R, use only YRI, use only one phenotype
+#Make phenotype file in R, use only YRI, use only one phenotype
     #no header, no IDs for .txt for gemma
-    ##With header/IDs (create for reference)
+    #With header/IDs (create for reference)
         pheno <- read.table("/home/ashley/LCL_chemotherapy/master_cytotoxicity_info_130311_plus_igrowth.txt", header = T)
-        View(pheno)
         YRI <- subset(pheno, pop == "YRI")
-        View(YRI)
         pheno_YRI_araclog2IC50 <- YRI[, 1:13]
-        View(pheno_YRI_araclog2IC50)
-        write.table(pheno_YRI_araclog2IC50, file = "pheno_YRI_araclog2IC50.txt", sep = "\t")
-    ##Without header/IDs (create for use)
+    #Without header/IDs (create for use)
         pheno_YRI_araclog2IC50_noids <- pheno_YRI_araclog2IC50[, 5:13]
-        View(pheno_YRI_araclog2IC50_noids)
-        write.table(pheno_YRI_araclog2IC50_noids, file = "pheno_YRI_araclog2IC50_noids.txt", sep = "\t", row.names = F, col.names = F)
+
+    #More individuals with phenotypes (180) than genotypes (178) - need the same amount and same individuals
+    #Individuals also must be in the same order in both geno and pheno files
     
-    ###cleared environment in R
-    
-# run gemma
-    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p pheno_YRI_araclog2IC50_noids.txt -gk 1 -o YRI_relationship_matrix
-    
-    ## error produced: segmentation fault
-    ## more individuals with phenotypes (180) than genotypes (178) - need the same amount and same individuals
-        removed extraneoes phenotypes: Y025 252 & Y044 177
-        genotype and phenotype files now the same size with same people
-        
-    ## Next must order phenotype file to match order of genotype file
+    #Next must order phenotype file to match order of genotype file
         fam <- read.table("/home/ashley/LCL_chemotherapy/YRI.chr10.TGP_and_imputed.20130416.exclude_BAD_SNPs.fam")
         colnames(fam) <- c("FID", "IID", "FatID", "MatID", "Sex", "Pheno")
-        pheno <- read.table("/home/ashley/LCL_chemotherapy/pheno_YRI_araclog2IC50.txt")
-        pheno_ordered <- left_join(fam, pheno, by = c("FID" = "V1", "IID" = "V2"))
+        pheno_ordered <- left_join(fam, pheno_YRI_araclog2IC50, by = c("FID" = "FID", "IID" = "IID"))
         write.table(pheno_ordered, "/home/ashley/LCL_chemotherapy/ordered_pheno_YRI_araclog2IC50.txt", col.names = T, row.names = T, sep = "\t")
-        ### file with no ids or col names is one needed for gemma use
+        #file with no ids or col names is one needed for gemma use
         pheno_ordered_noids <- pheno_ordered[, 10:17]
         write.table(pheno_ordered_noids, "/home/ashley/LCL_chemotherapy/ordered_pheno_YRI_araclog2IC50_noids.txt", col.names = F, row.names = F, sep = "\t")
     
-# run gemma again
-    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p ordered_pheno_YRI_araclog2IC50_noids.txt -gk 1 -o YRI_relationship_matrix
-    worked! created files: YRI_relationship_matrix.cXX.txt & YRI_relationship_matrix.log.txt
-    
-# run gemma with maf
+#Run gemma
     gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p ordered_pheno_YRI_araclog2IC50_noids.txt -gk 1 -maf 0.05 -o YRI_relationship_matrix_maf
     created files: YRI_relationship_matrix_maf.cXX.txt & YRI_relationship_matrix_maf.log.txt
     
     
-#4 make drug based phenotype files in R
+#3 Make drug based phenotype files in R
     master_phenos <- read.table ("/home/ashley/LCL_chemotherapy/master_cyctotoxicity_info_130311_plus_igrowth.txt", header = T)
     YRI_master_phenos <- subset(master_phenos, pop == "YRI")
     YRI_master_phenos_ordered <- left_join(fam, YRI_master_pheno, by = c("FID" = "FID", "IID" = "IID", "FatID" = "father", "MatID" = "mother", "Sex" = "sex"))
     
-    ## for arac:
+    # for arac:
     YRI_arac_pheno <- select(YRI_master_phenos_ordered, 1:13, - Pheno, contains("ARAC"))
     
-    ## general:
+    # general:
     YRI_drug_pheno <- select(YRI_master_phenos_ordered, 1:13, - Pheno, contains("DRUGABBREV"))
+     
     
-    ### discovered: in drug_info, 10 unique drugs listed, phenos only for 8. No phenos for hydoxyurea or busulfan
-    
-    
-#5 run (univariate mixed linear) GWAS in gemma using GRM
+#4 Run (univariate mixed linear) GWAS in gemma using GRM
     #For cisplatin: pheno IC50, use rank normalized (Rn)
     
-    ##In R: 
-    ###file with ids and phenotype (for reference)
+    #In R: 
+    #file with ids and phenotype (for reference)
     YRI_cisplatin_bestpheno <- select(YRI_cisplatin_pheno, 1:12, contains("CIS_RnIC50"))
     write.table(YRI_cisplatin_bestpheno, "/home/ashley/LCL_chemotherapy/YRI_cisplatin_bestpheno.txt", col.names = T, row.names = F, sep = "/t")
-    ###file phenotype only (for gemma)
+    #file phenotype only (for gemma)
     YRI_cisplatin_bestpheno_noids <- select(YRI_cisplatin_bestpheno, contains("CIS"))
     write.table(YRI_cisplatin_bestpheno_noids, "/home/ashley/LCL_chemotherapy/YRI_cisplatin_bestpheno_noids.txt", col.names = F, row.names = F, sep = "/t")
     
-    ##In Gemma:
+    #In Gemma:
     gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cisplatin_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info.gz -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cisplatin
     
-    ##error: segmentation fault (again :(((( )
+    #error: segmentation fault
     
-    ## unzip snp file with:
+    #Unzip snp file with:
     gunzip filename.snp.info.gz
     run again
     gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cisplatin_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cisplatin
     
-    ##code is running...
+    #Code is running...
     created files: YRI_GWAS_cisplatin.assoc.txt & YRI_GWAS_cisplatin.log.txt
     
-    ##p-value is nan/-nan. This is a problem...
-    ##try with carboplatin
-    ##wanted to try unzipping genotype file, as this worked with snp file
+    #p-value is nan/-nan.
+    #try with carboplatin
+    #wanted to try unzipping genotype file, as this worked with snp file
     gunzip filename.geno.gz
-    ##run with unzipped geno
+    #run with unzipped geno
     gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno -p YRI_carboplatin_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_carboplatin
     
-    ##code ran and sure enough I got p-values this time!!
+    #code ran and sure enough I got p-values this time!!
     
-    ##code takes ~ an hour to run. To run in the background instead:
+    #code takes ~ an hour to run. To run in the background instead:
     use .sh file
     cp /home/wheelerlab3/testjob.sh /home/ashley/LCL_chemotherapy/
-    ##In LCL_chemothearpy:
+    #In LCL_chemothearpy:
     mkdir logs
-    ##open .sh file in R and edit, input what to run at bottom and adjust names
-    ##run in command line with:
+    #open .sh file in R and edit, input what to run at bottom and adjust names
+    #run in command line with:
     qsub backgroundjob.sh
-    ##check status with:
+    #check status with:
     qstat
-    ##end a task with:
+    #end a task with:
     qdel task_num
  
-    ##repeat with other drugs 
+    ##repeat the steps above with other drugs and populations
 
 
-#6 Make plots in R
+#5 Make plots in R
 #Script: 01_GWAS_plots.R
-    ##import packages
-    library(data.table)
-    library(dplyr)
-    library(ggplot2)
-    library(qqman)
-    
-    ##Example with carboplatin pheno:
-    ##QQ Plot
-    GWAS_cis <- fread("/home/ashley/LCL_chemotherapy/YRI_GWAS_cisplatin")
-    png(filename = "YRI_GWAS_carboplatin.qqplot.png", res=100)
-    qq(GWAS_carbo$p_wald)
-    dev.off()
+#Creates plots for each drug in a population, run once per pop
 
-    ##Manhattan Plot
-    png(filename = "YRI_GWAS_carboplatin.manplot.png", res=100)
-    manhattan(GWAS_carbo, chr = "chr", bp = "ps", p = "p_wald")
-    dev.off()
-
-    ##repeat with other drugs
-    
   
-#7 Predixcan
+#6 Predixcan
    
-#7.1 Get files/info needed for Predixcan:
-
+#6.1 Get files/info needed for Predixcan:
     #Dosagefile_path: Wants a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
         Convert files from bimbam format to dosage format:
         Script: 99_BIMBAM_to_PX_dosages.py (found in Ad_PX_pipe, forked from aandaleon)
@@ -185,76 +133,57 @@ will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -o output_name
             #use awk command: awk '$1 == #' dosages.txt > chr#.txt, where # is 1 through 22, run 22 times
                 #output files, chr1-22:
                 predixcan_dosages/chr#.txt
-                #must zip files for PrediXcan to run, use gzip
-                
+                #must zip files for PrediXcan to run, use gzip     
     #Dosage_prefix: always chr!
-    
     #Samples_file: Must make!
-        Make file with FID and IID only (in correct order corresponding to columns of individuals in geno file)
-        Use R, extract first two columns of fam file:
+        #Make file with FID and IID only (in correct order corresponding to columns of individuals in geno file)
+        #Use R, extract first two columns of fam file:
             samples <- fam[1:2]
             write.table(samples, file = "samples.txt", sep = "\t", row.names = F, col.names = F, quote = F)
             #output file:
             sample.txt
-    
-    #Weights: 49 total prediction databases, run all in loop!
-        #44 are european predictors derived from various organ tissues samples
+    #Weights: Prediction databases, run all in loop!
+        #European predictors derived from various organ tissues samples
         #Located in: /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/
-        #5 are multi-ethnic predictors derived from white blood cell samples
-        #Located in: /home/ryan/enet_scripts/new_MESA/dbs/
-        
+        #5 additional multi-ethnic predictors derived from white blood cell samples
+        #Located in: /home/ryan/enet_scripts/new_MESA/dbs/  use: filtered_rsid_hg19.db   
     #Output_prefix: Change with each run!
-        Make a prefix for each db:
-            Example for 1st of 44: YRI_results_Adipose_Subcutaneous
+        #Make a prefix for each db:
+            #Example for YRI and db 1: YRI_results_Adipose_Subcutaneous
     
-    
- #7.2 Run PrediXcan GTEx V7 with YRI and ASN 
+ #6.2 Run PrediXcan with GTEx V7 tissue dbs
     #Script: 03_PrediXcan1_loop.sh
-    #for ASN progress see Rome Progress file
-    
+        #Goes through each tissue db, run once per pop
         #Template for step one:
             PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
         #YRI Example with 1st db:
-            PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Subcutaneous_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Adipose_Subcutaneous
-        #ASN Example with 1st db:
-            PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/ASN/ASN_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/ASN/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Subcutaneous_imputed_europeans_tw_0.5_signif.db --output_prefix ASN_results_Adipose_Subcutaneous
-            #for ASN run MESA too, see above
-    
+            PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Subcutaneous_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Adipose_Subcutaneous    
     #Convert PrediXcan Step one output to "geno" input for GEMMA
-    #Script: 03_pred_exp_to_GEMMA_input.R (found in px_his_chol, forked from WheelerLab)
-    
+        #Script: 03_pred_exp_to_GEMMA_input.R (found in px_his_chol, forked from WheelerLab)
+            #Creates "geno" input files for gemma
     #Run gemma to account for relatedness:
-    #Script: 05_PrediXcan2_loop.sh
+        #Script: 05_PrediXcan2_loop.sh
+        #Goes through each tissue db, run once per drug per pop
         #YRI example with 1st db and carboplatin:
             gemma -g /home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/YRI/YRI_phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
             #YRI has 8 drugs phenos
-            
-        #ASN example with 1st db and carboplatin:
-            gemma -g /home/ashley/LCL_chemotherapy/ASN/ASN_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/ASN/ASN_phenotypes/ASN_carboplatin_bestpheno_noids.txt -k ASN_relationship_matrix_maf.cXX.txt -lmm 4 -o ASN_assoc_carboplatin_[tissue]
-            #ASN has 4 drugs phenos
-      
-      
- #7.3 Incorported CEU data, ran GWAS and PrediXcan using above process. Must rerun PrediXcan with MESA dbs due to file read issue
+         
+ #6.3 Run PrediXcan with MESA dbs:
+    #Same process as above but pulls dbs from diff directory
 
-        #Template for step one:
-            PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
-        
-        #MESA dbs (--weights) located in: /home/ryan/enet_scripts/new_MESA/dbs/ use: filtered_rsid_hg19.db    
-
-
-#8 Going through results!
-    #GWAS
-    #Script: 06a_GWAS_output_condesner.R
-    #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
-    #run three times total, one per population, total of six output files
+#7 Going through results!
+    #Condensing GWAS results:
+        #Script: 06a_GWAS_output_condesner.R
+            #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
+            #run three times total, one per population, total of six output files
+    #Condensing PrediXcan results:
+        #Script 1: 06b_PrediXcan_output_condenser.R
+            #Lots of assoc files, want to condense for significant results only
+            #Pulls out results with 10^-3 significant and 10^-5 significance for each drug in each population, outputs two files
+            #run twenty times total, one per drug per population, total of forty output files
+        #Script 2: 06c_total_gene_count.R
+            #Creates data frame of the number of genes measured in each tissue per population
+    #Go through top hits:
+        #look up top hits by ID on NCBI
     
-    #PrediXcan
-    #Script 1: 06b_PrediXcan_output_condenser.R
-    #Lots of assoc files, want to condense for significant results only
-    #Pulls out results with 10^-3 significant and 10^-5 significance for each drug in each population, outputs two files
-    #run twenty times total, one per drug per population, total of forty output files
-    #Script 2: 06c_total_gene_count.R
-    #Creates data frame of the number of genes measured in each tissue per population
-    
-    
-    
+#8 Make plots from PrediXcan condensed results
