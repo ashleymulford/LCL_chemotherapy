@@ -22,5 +22,4 @@ for(drug in drug_list){
   png(filename = "CEU_GWAS_" %&% drug %&% ".manplot.png", res=100)
   manhattan(GWAS_CEU, chr = "chr", bp = "ps", p = "p_wald", col = colors)
   dev.off()
-
 }
