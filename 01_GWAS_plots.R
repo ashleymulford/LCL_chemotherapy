@@ -1,5 +1,6 @@
-#Import necessary library
+#Import necessary libraries
 library(data.table)
+library(qqman)
 
 #Create function to paste in drug name
 "%&%" = function(a,b) paste(a,b,sep="")
