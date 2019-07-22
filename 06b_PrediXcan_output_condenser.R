@@ -15,19 +15,14 @@ tiss_list <- c("Adipose_Subcutaneous", "Adipose_Visceral_Omentum", "Adrenal_Glan
   #Compile significant subsets into single data frame
 for(tiss in tiss_list){
   arac_output <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output/YRI_assoc_arac_" %&% tiss %&% ".assoc.txt")
-
   arac_output<-add_column(arac_output, tissue = tiss, .before = "chr")
-  
   arac_output_significant<-subset(arac_output, p_wald <= 10^-3)
-  
   if(exists("YRI_assoc_arac_sign")){
-    
     YRI_assoc_arac_sign<-merge(x = YRI_assoc_arac_sign, y = arac_output_significant, all = TRUE)
   }
   else{
     YRI_assoc_arac_sign<-arac_output_significant
   }
-  
 }
 
 #Subset again for significance, threshold = 10^-5
@@ -35,6 +30,5 @@ YRI_assoc_arac_mostsig <- subset(YRI_assoc_arac_sign, p_wald <= 10^-5)
 
 #Output data frames into directory
 fwrite(YRI_assoc_arac_sign, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_condensed/YRI_assoc_arac", na = "NA", quote = F, sep = "\t", col.names = T) 
-
 fwrite(YRI_assoc_arac_mostsig, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_condensed/YRI_assoc_arac_mostsig", na = "NA", quote = F, sep = "\t", col.names = T) 
 
