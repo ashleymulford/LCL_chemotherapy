@@ -1,19 +1,16 @@
 LCL_chemotherapy Progress:
 
 #1 Explored data available in /home/wheelerlab3/Data/LCL_chemotherapy/
-Drugs in the study: 10 unique drugs total
 
-    Drug            populations                             uM_concentrations               best_phenotype  hrs_drug_treatment      serum_used      phenotype               commercial_assay   exception_populations   exception_uM_concentrations
-1.  cisplatin       CEU2,YRI2,CEU3,YRI3,ASW                 0,1,2.5,5,10,20                 IC50            48                      FBS             cell_growth_inhibition  alamarBlue         CHB2,JPT2,CHD           0,0.1,0.5,1,5,10,20,40
-2.  carboplatin     CEU2,YRI2,CHB2,JPT2,CEU3,YRI3,CHD,ASW   0,10,20,40,80                   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
-3.  capecitabine    CEU2,YRI2,CHB2,JPT2,CEU3,YRI3,ASW       0,2.5,10,20,40                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
-4.  daunorubicin    CEU2,YRI2,YRI3                          0,0.0125,0.025,0.05,0.1,0.2,1   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
-5.  pemetrexed      CEU2,YRI2,CEU3,YRI3                     0,0.02,0.1,0.5                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
-6.  arac            CEU2,YRI2,CHB2,JPT2,CEU3,YRI3,ASW       0,1,5,10,40                     AUC             72                      FBS             cell_growth_inhibition  alamarBlue
-7.  etoposide       CEU2,YRI2,YRI3                          0,0.02,0.1,0.5,2.5              IC50            72                      FBS             cell_growth_inhibition  alamarBlue
-8.  hydroxyurea     CEU2,YRI2                               0,5,10,25,50,100,250,500        IC50            72                      FBS             cell_growth_inhibition  alamarBlue
-9.  busulfan        CEU2,YRI2                               0,25,50,100,250,500,1000,2000   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
-10. paclitaxel      CEU2,YRI2,ASW                           0,0.00625,0.0125,0.05           AUC             72                      BGS             cell_growth_inhibition  alamarBlue
+    Drug            populations         uM_concentrations               best_phenotype  hrs_drug_treatment      serum_used      phenotype               commercial_assay   exception_populations   exception_uM_concentrations
+1.  cisplatin       CEU,YRI,ASN         0,1,2.5,5,10,20                 IC50            48                      FBS             cell_growth_inhibition  alamarBlue         ASN                     0,0.1,0.5,1,5,10,20,40
+2.  carboplatin     CEU,YRI,ASN         0,10,20,40,80                   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
+3.  capecitabine    CEU,YRI,ASN         0,2.5,10,20,40                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
+4.  daunorubicin    CEU,YRI             0,0.0125,0.025,0.05,0.1,0.2,1   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
+5.  pemetrexed      CEU,YRI             0,0.02,0.1,0.5                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
+6.  arac            CEU,YRI,ASN         0,1,5,10,40                     AUC             72                      FBS             cell_growth_inhibition  alamarBlue
+7.  etoposide       CEU,YRI             0,0.02,0.1,0.5,2.5              IC50            72                      FBS             cell_growth_inhibition  alamarBlue
+8.  paclitaxel      CEU,YRI             0,0.00625,0.0125,0.05           AUC             72                      BGS             cell_growth_inhibition  alamarBlue
 
 #Will be working with: YRI (8 drugs), CEU (8 drugs), and ASN (4 drugs) 
 
@@ -163,7 +160,7 @@ Drugs in the study: 10 unique drugs total
             #Creates "geno" input files for gemma
     #Run gemma to account for relatedness:
         #Script: 05_PrediXcan2_loop.sh
-        #Goes through each tissue db, run once per drug per pop
+        #Goes through each tissue db, drug, and pop; must run ASN separtely though as it has 4 of 8 drugs
         #YRI example with 1st db and carboplatin:
             gemma -g /home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/YRI/YRI_phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
             #YRI has 8 drugs phenos
