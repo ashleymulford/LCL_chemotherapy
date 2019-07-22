@@ -1,12 +1,13 @@
 #Import necessary libraries
 library(data.table)
 library(qqman)
+library(colorscape)
 
 #Create function to paste in drug name
 "%&%" = function(a,b) paste(a,b,sep="")
 
 #Create color vector
-colors<-c("#68B5FF", "#CB64FF", "#FF5CA0", "#FEAB12", "#6FE210")
+colors<-sequential_hcl(4,"SunsetDark")
 
 #Create list of drugs for file input
 drug_list <- c("arac", "capecitabine", "carboplatin", "cisplatin", "daunorubicin", "etoposide", "paclitaxel", "pemetrexed")
