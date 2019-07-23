@@ -169,9 +169,19 @@ LCL_chemotherapy Progress:
     #Same process as above but pulls dbs from diff directory
 
 
-#7 Going through results!
+#7 Run MulTiXcan
+    #outputs one file that measures across all tissues
+    #Create pheno files in R: three columns: FID, IID, Pheno (include headers)
+    #Script:
+        #Uses out from PrediXcan step one to measure expression across all tissues
+        #outputs one file per drug per pop
+        #Template for MultiXcan:
+            MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
+    
 
-#7.1 GWAS results:  
+#8 Going through results!
+
+#8.1 GWAS results:  
     #Condensing GWAS results:
         #Script: 06a_GWAS_output_condesner.R
             #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
@@ -179,7 +189,7 @@ LCL_chemotherapy Progress:
     #Go through top SNPs on NCBI:
     
 
-#7.2 PrediXcan results:
+#8.2 PrediXcan results:
     #Condensing PrediXcan results:
         #Script 1: 06b_PrediXcan_output_condenser.R
             #Lots of assoc files, want to condense for significant results only
@@ -190,27 +200,7 @@ LCL_chemotherapy Progress:
     #Go through top hits:
         #look up top hits by ID on NCBI
     
-#8 Make plots from PrediXcan condensed results
-
-
-#9 Run MulTiXcan
-#outputs one file that measures across all tissues
-
-python MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_predict_output
-#Here is the folder with all of you expression files in it for one phenotype using one set (MESA, GTEx v6, GTEx v7, etc.) of predictors
---expression_pattern "1000GTW_(.*)_0.5.db_predicted_expression.txt" #This is the pattern of you predicted expression files.  My prefix was "1000GTW_", and my suffic was "_0.5.db_predicted_expression.txt" (the default for PrediXcan).  The stuff in the middle is your tissue.
---input_phenos_file /home/peter/AA_nonGAIN_SCZ/PrediXcan/titleresidualphenoMGS.txt  #This was my phenotype file.  It had a header as FID 	IID 	Pheno
---input_phenos_column Pheno  #This is how you specify the phenotype column header 
---mode linear 
---output /home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output
-
-#A big drawback of MultiXcan is that it will not match your predicted expression IIDs and phenotypes automatically.
-#This means that if you have your individuals ordered as 1, 2, 3, 4, 5 in your expression file,
-# you need to have the same in your phenotype file.
-#You unfortunately can't have extra individuals in either your phenotype or gene expression files.
-
-
-
+#9 Make plots from PrediXcan condensed results
 
 
 
