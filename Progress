@@ -170,7 +170,7 @@ LCL_chemotherapy Progress:
 
 
 #7 Run MulTiXcan
-    #outputs one file that measures across all tissues
+    #Measures across all tissues, use only GTEx v7, no MESA
     #Create pheno files in R: three columns: FID, IID, Pheno (include headers)
     #Script:
         #Uses out from PrediXcan step one to measure expression across all tissues
