@@ -3,14 +3,14 @@ LCL_chemotherapy Progress:
 #1 Explored data available in /home/wheelerlab3/Data/LCL_chemotherapy/
 
     Drug            populations         uM_concentrations               best_phenotype  hrs_drug_treatment      serum_used      phenotype               commercial_assay   exception_populations   exception_uM_concentrations
-1.  cisplatin       CEU,YRI,ASN         0,1,2.5,5,10,20                 IC50            48                      FBS             cell_growth_inhibition  alamarBlue         ASN                     0,0.1,0.5,1,5,10,20,40
-2.  carboplatin     CEU,YRI,ASN         0,10,20,40,80                   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
-3.  capecitabine    CEU,YRI,ASN         0,2.5,10,20,40                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
-4.  daunorubicin    CEU,YRI             0,0.0125,0.025,0.05,0.1,0.2,1   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
-5.  pemetrexed      CEU,YRI             0,0.02,0.1,0.5                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
-6.  arac            CEU,YRI,ASN         0,1,5,10,40                     AUC             72                      FBS             cell_growth_inhibition  alamarBlue
-7.  etoposide       CEU,YRI             0,0.02,0.1,0.5,2.5              IC50            72                      FBS             cell_growth_inhibition  alamarBlue
-8.  paclitaxel      CEU,YRI             0,0.00625,0.0125,0.05           AUC             72                      BGS             cell_growth_inhibition  alamarBlue
+1.  arac            CEU,YRI,ASN         0,1,5,10,40                     AUC             72                      FBS             cell_growth_inhibition  alamarBlue
+2.  capecitabine    CEU,YRI,ASN         0,2.5,10,20,40                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
+3.  carboplatin     CEU,YRI,ASN         0,10,20,40,80                   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
+4.  cisplatin       CEU,YRI,ASN         0,1,2.5,5,10,20                 IC50            48                      FBS             cell_growth_inhibition  alamarBlue         ASN                     0,0.1,0.5,1,5,10,20,40
+5.  daunorubicin    CEU,YRI             0,0.0125,0.025,0.05,0.1,0.2,1   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
+6.  etoposide       CEU,YRI             0,0.02,0.1,0.5,2.5              IC50            72                      FBS             cell_growth_inhibition  alamarBlue
+7.  paclitaxel      CEU,YRI             0,0.00625,0.0125,0.05           AUC             72                      BGS             cell_growth_inhibition  alamarBlue
+8.  pemetrexed      CEU,YRI             0,0.02,0.1,0.5                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
 
 #Will be working with: YRI (8 drugs), CEU (8 drugs), and ASN (4 drugs) 
 
