@@ -48,7 +48,8 @@ LCL_chemotherapy Progress:
     created files: YRI_relationship_matrix_maf.cXX.txt & YRI_relationship_matrix_maf.log.txt
     
     
-#3 Make drug based phenotype files in R
+#3 Make drug based phenotype files in R for GWAS
+    #Script: 03_GWAS_GEMMA_phenos.R
     master_phenos <- read.table ("/home/ashley/LCL_chemotherapy/master_cyctotoxicity_info_130311_plus_igrowth.txt", header = T)
     YRI_master_phenos <- subset(master_phenos, pop == "YRI")
     YRI_master_phenos_ordered <- left_join(fam, YRI_master_pheno, by = c("FID" = "FID", "IID" = "IID", "FatID" = "father", "MatID" = "mother", "Sex" = "sex"))
@@ -93,7 +94,7 @@ LCL_chemotherapy Progress:
     
     #code ran and sure enough I got p-values this time!!
     
-    #Script: 04_GEMMA_loop.sh
+    #Script: 04_GWAS_GEMMA_loop.sh
         #Loops through drugs and pops, outputs one file per pop
         #must run ASN separate from YRI and CEU as it has fewer drugs
     
