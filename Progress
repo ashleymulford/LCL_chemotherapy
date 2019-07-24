@@ -110,8 +110,8 @@ LCL_chemotherapy Progress:
 
 
 #5 Make plots in R
-#Script: 05_GWAS_plots.R
-#Creates plots for each drug in a population, run once per pop
+    #Script: 05_GWAS_plots.R
+        #Creates plots for each drug in a population, run once per pop
 
   
 #6 Predixcan
