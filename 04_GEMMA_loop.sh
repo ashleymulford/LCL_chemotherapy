@@ -2,6 +2,7 @@
 declare -a drugs=("arac" "capecitabine" "${drug}" "cisplatin" "daunorubicin" "etoposide" "paclitaxel" "pemetrexed")
 declare -a pops=("CEU" "${pop}")
 
+#Use loop to run GWAS through GEMMA (accounts for relatedness)
 for drug in ${drugs[@]}
   do
   for pop in ${pops[@]}
