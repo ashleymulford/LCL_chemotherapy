@@ -187,7 +187,6 @@ LCL_chemotherapy Progress:
             #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
             #run three times total, one per population, total of six output files
     #Go through top SNPs on NCBI:
-    
 
 #8.2 PrediXcan results:
     #Condensing PrediXcan results:
