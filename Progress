@@ -93,7 +93,9 @@ LCL_chemotherapy Progress:
     
     #code ran and sure enough I got p-values this time!!
     
-    Script:04_GEMMA_loop.sh
+    #Script: 04_GEMMA_loop.sh
+        #Loops through drugs and pops, outputs one file per pop
+        #must run ASN separate from YRI and CEU as it has fewer drugs
     
     #code takes ~ an hour to run. To run in the background instead:
     #run in command line with:
