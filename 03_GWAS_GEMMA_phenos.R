@@ -44,7 +44,6 @@ CEU_dauno_pheno<-select(CEU_phenos_ordered, contains("DAUNO_RnIC50"))
 YRI_peme_pheno<-select(YRI_phenos_ordered, contains("PEME_RnAUC"))
 CEU_peme_pheno<-select(CEU_phenos_ordered, contains("PEME_RnAUC"))
 
-
 #Output pheno data frames
 write.table(YRI_arac_pheno, "/home/ashley/LCL_chemotherapy/YRI/YRI_arac_pheno.txt", col.names = F, row.names = F, sep = "\t", quote = F)
 write.table(CEU_arac_pheno, "/home/ashley/LCL_chemotherapy/CEU/CEU_arac_pheno.txt", col.names = F, row.names = F, sep = "\t", quote = F)
