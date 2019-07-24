@@ -93,12 +93,9 @@ LCL_chemotherapy Progress:
     
     #code ran and sure enough I got p-values this time!!
     
+    Script:04_GEMMA_loop.sh
+    
     #code takes ~ an hour to run. To run in the background instead:
-    use .sh file
-    cp /home/wheelerlab3/testjob.sh /home/ashley/LCL_chemotherapy/
-    #In LCL_chemothearpy:
-    mkdir logs
-    #open .sh file in R and edit, input what to run at bottom and adjust names
     #run in command line with:
     qsub backgroundjob.sh
     #check status with:
