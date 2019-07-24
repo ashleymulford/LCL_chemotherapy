@@ -173,7 +173,7 @@ LCL_chemotherapy Progress:
     #Measures across all tissues, use only GTEx v7, no MESA
     #Create pheno files in R: three columns: FID, IID, Pheno (include headers)
     #Script: 06_MultiXcan_loop.sh
-        #Uses out from PrediXcan step one to measure expression across all tissues
+        #Uses output from PrediXcan step one to measure expression across all tissues
         #outputs one file per drug per pop
         #Template for MultiXcan:
             MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
