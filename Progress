@@ -110,7 +110,7 @@ LCL_chemotherapy Progress:
 
 
 #5 Make plots in R
-#Script: 01_GWAS_plots.R
+#Script: 05_GWAS_plots.R
 #Creates plots for each drug in a population, run once per pop
 
   
@@ -149,7 +149,7 @@ LCL_chemotherapy Progress:
             #Example for YRI and db 1: YRI_results_Adipose_Subcutaneous
     
 #6.2 Run PrediXcan with GTEx V7 tissue dbs
-    #Script: 03_PrediXcan1_loop.sh
+    #Script: 06a_PrediXcan1_loop.sh
         #Goes through each tissue db, run once per pop
         #Template for step one:
             PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
@@ -159,7 +159,7 @@ LCL_chemotherapy Progress:
         #Script: 03_pred_exp_to_GEMMA_input.R (found in px_his_chol, forked from WheelerLab)
             #Creates "geno" input files for gemma
     #Run gemma to account for relatedness:
-        #Script: 05_PrediXcan2_loop.sh
+        #Script: 06b_PrediXcan2_loop.sh
         #Goes through each tissue db, drug, and pop; must run ASN separtely though as it has 4 of 8 drugs
         #YRI example with 1st db and carboplatin:
             gemma -g /home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/YRI/YRI_phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
@@ -172,7 +172,7 @@ LCL_chemotherapy Progress:
 #7 Run MulTiXcan
     #Measures across all tissues, use only GTEx v7, no MESA
     #Create pheno files in R: three columns: FID, IID, Pheno (include headers)
-    #Script: 06_MultiXcan_loop.sh
+    #Script: 07_MultiXcan_loop.sh
         #Uses output from PrediXcan step one to measure expression across all tissues
         #outputs one file per drug per pop
         #Template for MultiXcan:
@@ -183,7 +183,7 @@ LCL_chemotherapy Progress:
 
 #8.1 GWAS results:  
     #Condensing GWAS results:
-        #Script: 07a_GWAS_output_condesner.R
+        #Script: 08a_GWAS_output_condesner.R
             #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
             #run three times total, one per population, total of six output files
     #Go through top SNPs on NCBI:
@@ -191,11 +191,11 @@ LCL_chemotherapy Progress:
 
 #8.2 PrediXcan results:
     #Condensing PrediXcan results:
-        #Script 1: 07b_PrediXcan_output_condenser.R
+        #Script 1: 08b_PrediXcan_output_condenser.R
             #Lots of assoc files, want to condense for significant results only
             #Pulls out results with 10^-3 significant and 10^-5 significance for each drug in each population, outputs two files
             #run twenty times total, one per drug per population, total of forty output files
-        #Script 2: 07c_total_gene_count.R
+        #Script 2: 08c_total_gene_count.R
             #Creates data frame of the number of genes measured in each tissue per population
     #Go through top hits:
         #look up top hits by ID on NCBI
