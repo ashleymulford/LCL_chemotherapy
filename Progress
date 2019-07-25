@@ -194,7 +194,8 @@ LCL_chemotherapy Progress:
 #9 PrediXcan results:
     #Combining Predixcan results:
         #Script: 09a_PrediXcan_output_combiner.R
-    
+            #Combine all tissue files into one file (per drug per pop)
+            #run twenty times total
     #Condensing PrediXcan results:
         #Script: 09b_PrediXcan_output_condenser.R
             #Lots of assoc files, want to condense for significant results only
@@ -205,6 +206,8 @@ LCL_chemotherapy Progress:
     #Adjust p-values by running FDR
         #Script: 09d_PrediXcan_FDR_adjuster.R
             #input: combined files (one per drug per pop)
+            #adjust p-values to account for false discovery
+            #
     #Make Plots:
     #Go through top hits:
         #look up top hits by ID on NCBI
