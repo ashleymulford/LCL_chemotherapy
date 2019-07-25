@@ -187,6 +187,7 @@ LCL_chemotherapy Progress:
         #Script: 08a_GWAS_output_condesner.R
             #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
             #run three times total, one per population, total of six output files
+    #Already made plots in step 5
     #Go through top SNPs on NCBI:
 
 #8.2 PrediXcan results:
@@ -197,6 +198,8 @@ LCL_chemotherapy Progress:
             #run twenty times total, one per drug per population, total of forty output files
         #Script 2: 08c_total_gene_count.R
             #Creates data frame of the number of genes measured in each tissue per population
+    #Adjust p-values by running FDR
+    #Make Plots:
     #Go through top hits:
         #look up top hits by ID on NCBI
 
