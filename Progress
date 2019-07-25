@@ -180,33 +180,41 @@ LCL_chemotherapy Progress:
             MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
     
 
-#8 Analyze results
+#Analyze results
 
-#8.1 GWAS results:  
+#8 GWAS results:  
     #Condensing GWAS results:
-        #Script: 08a_GWAS_output_condesner.R
+        #Script: 08_GWAS_output_condesner.R
             #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
             #run three times total, one per population, total of six output files
     #Already made plots in step 5
     #Go through top SNPs on NCBI:
 
-#8.2 PrediXcan results:
+
+#9 PrediXcan results:
+    #Combining Predixcan results:
+        #Script: 09a_PrediXcan_output_combiner.R
+    
     #Condensing PrediXcan results:
-        #Script 1: 08b_PrediXcan_output_condenser.R
+        #Script: 09b_PrediXcan_output_condenser.R
             #Lots of assoc files, want to condense for significant results only
             #Pulls out results with 10^-3 significant and 10^-5 significance for each drug in each population, outputs two files
             #run twenty times total, one per drug per population, total of forty output files
-        #Script 2: 08c_total_gene_count.R
+        #Script: 09c_PrediXcan_total_gene_count.R
             #Creates data frame of the number of genes measured in each tissue per population
     #Adjust p-values by running FDR
+        #Script: 09d_PrediXcan_FDR_adjuster.R
+            #input: combined files (one per drug per pop)
     #Make Plots:
     #Go through top hits:
         #look up top hits by ID on NCBI
 
-#8.3 MulTiXcan results:
+
+#10 MulTiXcan results:
+    #Adjust p-values by running FDR:
+        #Script: 10_MulTiXcan_FDR_adjuster.R
   
   
-#9 Make plots from PrediXcan condensed results
 
 
 
