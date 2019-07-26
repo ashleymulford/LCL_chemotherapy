@@ -13,7 +13,6 @@ colors<-sequential_hcl(4,"SunsetDark")
 drug_list <- c("arac", "capecitabine", "carboplatin", "cisplatin", "daunorubicin", "etoposide", "paclitaxel", "pemetrexed")
 
 #Make QQ and Manhattan plots using loop
-  
 for(drug in drug_list){
   CEU_assoc_adj <- fread("/home/ashley/LCL_chemotherapy/CEU/CEU_assoc_gemma_output_combined/CEU_assoc_adjusted_" %&% drug %&% ".txt")
   #Remove alleles columns (empty since GEMMA was used for PrediXcan assoc instead of GWAS)
