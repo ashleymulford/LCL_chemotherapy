@@ -1,4 +1,4 @@
-LCL_chemotherapy Progress:
+#LCL_chemotherapy Progress:
 
 #1 Explored data available in /home/wheelerlab3/Data/LCL_chemotherapy/
 
@@ -181,7 +181,7 @@ LCL_chemotherapy Progress:
             MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
     
 
-#Analyze results
+#Analyze results:
 
 #8 GWAS results:  
     #Condensing GWAS results:
@@ -214,7 +214,7 @@ LCL_chemotherapy Progress:
         #Script: 09e_PrediXcan_plots.R
             #Creates qq and manhattan plots for each drug in each population
             #Run three times, once per pop (loops through drugs)
-        #Go through top hits:
+    #Go through top hits:
         #look up top hits by ID on NCBI
 
 
@@ -227,7 +227,7 @@ LCL_chemotherapy Progress:
         #Script: 10b_MulTiXcan_plots.R
             #Creates qq and manhattan plots for each drug in each population
             #Run three times, once per pop (loops through drugs)
-            
+    #Go through top hits:     
             
             
 
