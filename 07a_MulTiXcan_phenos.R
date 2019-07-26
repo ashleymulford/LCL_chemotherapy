@@ -1,6 +1,7 @@
+#Import necessary library
 library(data.table)
 
-#import master pheno file and subset by pop
+#Read in master pheno file and subset by pop
 master_phenos <- read.table("/home/ashley/LCL_chemotherapy/master_cytotoxicity_info_130311_plus_igrowth.txt", header = T)
 YRI_phenos <- subset(master_phenos, pop == "YRI")
 CEU_phenos <- subset(master_phenos, pop == "CEU")
@@ -8,7 +9,7 @@ CHB_phenos <- subset(master_phenos, pop == "CHB")
 JPT_phenos <- subset(master_phenos, pop == "JPT")
 ASN_phenos <- full_join(JPT_phenos, CHB_phenos)
 
-#import fam file for each pop and set column names
+#Read in fam file for each pop and set column names
 YRI_fam <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI.chr10.TGP_and_imputed.20130416.exclude_BAD_SNPs.fam")
 CEU_fam <- fread("/home/ashley/LCL_chemotherapy/CEU/CEU.chr10.TGP_and_imputed.20130416.exclude_BAD_SNPs.fam")
 ASN_fam <- fread("/home/ashley/LCL_chemotherapy/ASN/ASN.chr10.TGP_and_imputed.20130718.phased.R2gt0.8.fam")
@@ -16,7 +17,7 @@ colnames(YRI_fam) <- c("FID", "IID", "FatID", "MatID", "Sex", "Pheno")
 colnames(CEU_fam) <- c("FID", "IID", "FatID", "MatID", "Sex", "Pheno")
 colnames(ASN_fam) <- c("FID", "IID", "FatID", "MatID", "Sex", "Pheno")
 
-#join pheno with with fam, keeping row order consistent with that of fam
+#Join pheno with with fam, keeping row order consistent with that of fam
 YRI_phenos_ordered <- left_join(YRI_fam, YRI_phenos, by = c("FID" = "FID", "IID" = "IID"))
 CEU_phenos_ordered <- left_join(CEU_fam, CEU_phenos, by = c("FID" = "FID", "IID" = "IID"))
 ASN_phenos_ordered <- left_join(ASN_fam, ASN_phenos, by = c("FID" = "FID", "IID" = "IID"))
