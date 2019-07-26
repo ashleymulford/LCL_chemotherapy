@@ -12,7 +12,7 @@ LCL_chemotherapy Progress:
 7.  paclitaxel      CEU,YRI             0,0.00625,0.0125,0.05           AUC             72                      BGS             cell_growth_inhibition  alamarBlue
 8.  pemetrexed      CEU,YRI             0,0.02,0.1,0.5                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
 
-#Will be working with: YRI (8 drugs), CEU (8 drugs), and ASN (4 drugs) 
+#Working with: YRI (8 drugs), CEU (8 drugs), and ASN (4 drugs) 
 
 
 #2 Create relationship matrix (GRM) in gemma: requires genotype file and phenotype file
