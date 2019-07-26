@@ -111,7 +111,8 @@ LCL_chemotherapy Progress:
 
 #5 Make plots in R
     #Script: 05_GWAS_plots.R
-        #Creates plots for each drug in a population, run once per pop
+        #Creates qq and manhattan plots for each drug in each population
+        #Run three times, once per pop (loops through drugs)
 
   
 #6 Predixcan
@@ -207,17 +208,28 @@ LCL_chemotherapy Progress:
         #Script: 09d_PrediXcan_FDR_adjuster.R
             #input: combined files (one per drug per pop)
             #adjust p-values to account for false discovery
-            #
+            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
+            #run three times, once per pop (loops through drugs)
     #Make Plots:
-    #Go through top hits:
+        #Script: 09e_PrediXcan_plots.R
+            #Creates qq and manhattan plots for each drug in each population
+            #Run three times, once per pop (loops through drugs)
+        #Go through top hits:
         #look up top hits by ID on NCBI
 
 
 #10 MulTiXcan results:
     #Adjust p-values by running FDR:
-        #Script: 10_MulTiXcan_FDR_adjuster.R
-  
-  
+        #Script: 10a_MulTiXcan_FDR_adjuster.R
+            #adjust p-values to account for false discovery
+            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
+            #run three times, once per pop (loops through drugs)        
+        #Script: 10b_MulTiXcan_plots.R
+            #Creates qq and manhattan plots for each drug in each population
+            #Run three times, once per pop (loops through drugs)
+            
+            
+            
 
 
 
