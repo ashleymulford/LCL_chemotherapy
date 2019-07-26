@@ -20,11 +20,11 @@ for(drug in drug_list){
   #Remove all rows with NAs
   CEU_assoc_adj<-na.omit(CEU_assoc_adj)
   
-  png(filename = "CEU_assoc_adj_" %&% drug %&% ".qqplot.png", res=100)
+  png(filename = "CEU_PrediXcan_" %&% drug %&% ".qqplot.png", res=100)
   qq(CEU_assoc_adj$p_wald)
   dev.off()
   
-  png(filename = "CEU_assoc_adj_" %&% drug %&% ".manplot.png", res=100)
+  png(filename = "CEU_PrediXcan_" %&% drug %&% ".manplot.png", res=100)
   manhattan(CEU_assoc_adj, chr = "CHR", bp = "BP", p = "p_wald", col = colors)
   dev.off()
 }
