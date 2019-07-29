@@ -225,6 +225,8 @@
         #Script: 9e_PrediXcan_adj_output_condenser.R
             #Thresholds for p-values adj FDR: .3, .2, and .075
     #Look up top hits by ID on NCBI:
+      #ASN Carboplatin top hit:
+        #FAM173B aka ATPSCKMT - ATP synthase c subunit lysine N-methyltransferase
 
 
 #10 MulTiXcan results:
