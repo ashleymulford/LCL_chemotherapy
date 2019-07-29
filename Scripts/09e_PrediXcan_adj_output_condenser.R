@@ -9,10 +9,10 @@ library(tibble)
 drug_list <- c("arac", "capecitabine", "carboplatin", "cisplatin", "daunorubicin", "etoposide", "paclitaxel", "pemetrexed")
 
 #Make a data frame with significant results
-#Read in file
-#Add column containing drug name
-#Subset for significance, threshold = .3
-#Compile significant subsets into single data frame
+  #Read in file
+  #Add column containing drug name
+  #Subset for significance, threshold = .3
+  #Compile significant subsets into single data frame
 for(drug in drug_list){
   YRI_pred <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_assoc_adjusted_" %&% drug %&% ".txt")
   YRI_pred<-add_column(YRI_pred, drug = drug, .before = "tissue")
