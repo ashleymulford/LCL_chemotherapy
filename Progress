@@ -189,13 +189,13 @@
             #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
             #run three times total, one per population, total of six output files
     #Already made QQ and Manhattan plots in step 5
-    #Go through top SNPs on NCBI:
     #Make LocusZoom Plots: http://locuszoom.org/genform.php?type=yourdata
         #p-value column: p_wald, marker coulmn: rs
         #Set pop accordingly (under optional controls)
             #Made two version of each, one with individual pop (2010) and one with super pop (2014)
-        #Created plots for: ASN carbo, CEU etop, and YRI cis, dauno, and etop
-
+        #Created plots for: ASN carbo (3), CEU etop (1), and YRI cis (1), dauno (2), and etop (5)
+    #Go through top SNPs on NCBI:
+    
 
 #9 PrediXcan results:
     #Combining Predixcan results:
@@ -220,7 +220,13 @@
             #Creates QQ and Manhattan plots for each drug in each population
             #Run three times, once per pop (loops through drugs)
     #Go through top hits:
-        #look up top hits by ID on NCBI
+        #In YRI: carboplatin and paclitaxel have FDR<.2
+                 etoposide has FDR<.3
+        #In CEU: carboplatin has FDR<.2
+                 cisplatin, paclitaxel, and pemetrexed have FDR<.3
+        #In ASN: carboplatin has FDR<.075
+                 capecitabine has FDR<.2
+    #Look up top hits by ID on NCBI
 
 
 #10 MulTiXcan results:
@@ -233,7 +239,14 @@
             #Creates QQ and Manhattan plots for each drug in each population
             #Run three times, once per pop (loops through drugs)
     #Go through top hits:     
-            
+        #In YRI: capecitabine has FDR<.05
+                 cisplatin and paclitaxel have FDR<.075
+                 arac and pemetrexed have FDR<.15
+                 carboplatin has FDR<.3        
+        #In CEU: daunorubicin has FDR<.15
+                 cisplatin, etoposide, and paclitaxel have FDR<.3
+        #In ASN: nothing remotely significant
+        
             
 
 
