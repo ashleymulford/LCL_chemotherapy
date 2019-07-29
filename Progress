@@ -235,6 +235,7 @@
             #adjust p-values to account for false discovery
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
             #run three times, once per pop (loops through drugs)        
+    #Make Plots:
         #Script: 10b_MulTiXcan_plots.R
             #Creates QQ and Manhattan plots for each drug in each population
             #Run three times, once per pop (loops through drugs)
@@ -246,7 +247,9 @@
         #In CEU: daunorubicin has FDR<.15
                  cisplatin, etoposide, and paclitaxel have FDR<.3
         #In ASN: nothing remotely significant
-        
+    #Compile top hits into single file, one per pop (just YRI and CEU)
+        #Script: 10c_MulTiXcan_condenser.R
+            #Thresholds for p-values adj FDR: .3, .15, .075, and .05
             
 
 
