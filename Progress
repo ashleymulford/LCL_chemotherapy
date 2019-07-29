@@ -184,7 +184,7 @@
 #Analyze results:
 
 #8 GWAS results:  
-    #Condensing GWAS results:
+    #Condense GWAS results:
         #Script: 08_GWAS_output_condesner.R
             #Pulls out results with 10^-5 and 10^-7 significance from each drug file, outputs two files
             #run three times total, one per population, total of six output files
@@ -198,25 +198,20 @@
     
 
 #9 PrediXcan results:
-    #Combining Predixcan results:
+    #Combine Predixcan results:
         #Script: 09a_PrediXcan_output_combiner.R
             #Combine all tissue files into one file (per drug per pop)
             #run twenty times total
-    #Condensing PrediXcan results:
-        #Script: 09b_PrediXcan_output_condenser.R
-            #Lots of assoc files, want to condense for significant results only
-            #Pulls out results with 10^-3 significant and 10^-5 significance for each drug in each population, outputs two files
-            #run twenty times total, one per drug per population, total of forty output files
-        #Script: 09c_PrediXcan_total_gene_count.R
+        #Script: 09b_PrediXcan_total_gene_count.R
             #Creates data frame of the number of genes measured in each tissue per population
     #Adjust p-values by running FDR
-        #Script: 09d_PrediXcan_FDR_adjuster.R
+        #Script: 09c_PrediXcan_FDR_adjuster.R
             #input: combined files (one per drug per pop)
             #adjust p-values to account for false discovery
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
             #run three times, once per pop (loops through drugs)
     #Make Plots:
-        #Script: 09e_PrediXcan_plots.R
+        #Script: 09d_PrediXcan_plots.R
             #Creates QQ and Manhattan plots for each drug in each population
             #Run three times, once per pop (loops through drugs)
     #Go through top hits:
@@ -226,6 +221,9 @@
                  cisplatin, paclitaxel, and pemetrexed have FDR<.3
         #In ASN: carboplatin has FDR<.075
                  capecitabine has FDR<.2
+    #Compile top hits into single file, one per pop
+        #Script: 9e_PrediXcan_adj_output_condenser.R
+            #Thresholds for p-values adj FDR: .3, .2, and .075
     #Look up top hits by ID on NCBI
 
 
