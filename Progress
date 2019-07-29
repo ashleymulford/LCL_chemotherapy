@@ -193,6 +193,7 @@
     #Make LocusZoom Plots:
         #p-value column: p_wald, marker coulmn: rs
         #Set pop accordingly (under optional controls)
+            #Made two version of each, one with individual pop and one with super pop
         #Created plots for: ASN carbo, CEU etop, and YRI cis, dauno, and etop
 
 
