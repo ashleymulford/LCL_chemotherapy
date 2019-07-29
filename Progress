@@ -248,7 +248,7 @@
                  cisplatin, etoposide, and paclitaxel have FDR<.3
         #In ASN: nothing remotely significant
     #Compile top hits into single file, one per pop (just YRI and CEU)
-        #Script: 10c_MulTiXcan_condenser.R
+        #Script: 10c_MulTiXcan_output_condenser.R
             #Thresholds for p-values adj FDR: .3, .15, .075, and .05
             
 
