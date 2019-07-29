@@ -224,7 +224,7 @@
     #Compile top hits into single file, one per pop
         #Script: 9e_PrediXcan_adj_output_condenser.R
             #Thresholds for p-values adj FDR: .3, .2, and .075
-    #Look up top hits by ID on NCBI
+    #Look up top hits by ID on NCBI:
 
 
 #10 MulTiXcan results:
@@ -248,7 +248,20 @@
     #Compile top hits into single file, one per pop (just YRI and CEU)
         #Script: 10c_MulTiXcan_adj_output_condenser.R
             #Thresholds for p-values adj FDR: .3, .15, .075, and .05
-            
+    #Look up top hits by ID on NCBI:
+      #YRI Capecitabine top hits:
+        #CCAR1 - cell division cycle and apoptosis regulator 1
+        #RNF24 - ring finger protein 24 
+        #SOX6 - SRY-box transcription factor 6
+        #MGME1 - mitochondrial genome maintenance exonuclease 1
+        #RAB8B - member RAS oncogene family
+        #GPR37 - G protein-coupled receptor 37
+        #KLK12 - kallikrein related peptidase 12
+        #SEPHS1P6 - selenophosphate synthetase 1 pseudogene 6
+        
+        
+        
+        
 
 
 
