@@ -31,9 +31,9 @@ CEU_mult_sign075 <- subset(CEU_mult_sign3, pvalues_adjusted_fdr <= .075)
 CEU_mult_sign05 <- subset(CEU_mult_sign3, pvalues_adjusted_fdr <= .05)
 
 #Output data frames into directory
-fwrite(CEU_mult_sign3, "/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_multixacn_condensed_fdr3", na = "NA", quote = F, sep = "\t", col.names = T) 
-fwrite(CEU_mult_sign15, "/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_multixacn_condensed_fdr15", na = "NA", quote = F, sep = "\t", col.names = T) 
-fwrite(CEU_mult_sign075, "/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_multixacn_condensed_fdr075", na = "NA", quote = F, sep = "\t", col.names = T) 
-fwrite(CEU_mult_sign05, "/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_multixacn_condensed_fdr05", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(CEU_mult_sign3, "/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_multixcan_condensed_fdr3", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(CEU_mult_sign15, "/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_multixcan_condensed_fdr15", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(CEU_mult_sign075, "/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_multixcan_condensed_fdr075", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(CEU_mult_sign05, "/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_multixcan_condensed_fdr05", na = "NA", quote = F, sep = "\t", col.names = T) 
 
 
