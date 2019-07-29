@@ -29,7 +29,6 @@ for(drug in drug_list){
 YRI_pred_sign2 <- subset(YRI_pred_sign3, pvalues_adjusted_fdr <= .2)
 YRI_pred_sign075 <- subset(YRI_pred_sign3, pvalues_adjusted_fdr <= .075)
 
-
 #Output data frames into directory
 fwrite(YRI_pred_sign3, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_assoc_adj_condensed_fdr3", na = "NA", quote = F, sep = "\t", col.names = T) 
 fwrite(YRI_pred_sign2, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_assoc_adj_condensed_fdr2", na = "NA", quote = F, sep = "\t", col.names = T) 
