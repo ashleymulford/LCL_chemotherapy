@@ -190,7 +190,10 @@
             #run three times total, one per population, total of six output files
     #Already made QQ and Manhattan plots in step 5
     #Go through top SNPs on NCBI:
-    #Make LocusZoom Plots
+    #Make LocusZoom Plots:
+        #p-value column: p_wald, marker coulmn: rs
+        #Set pop accordingly (under optional controls)
+        #Created plots for: ASN carbo, CEU etop, and YRI cis, dauno, and etop
 
 
 #9 PrediXcan results:
