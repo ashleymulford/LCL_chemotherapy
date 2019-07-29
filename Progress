@@ -190,7 +190,7 @@
             #run three times total, one per population, total of six output files
     #Already made QQ and Manhattan plots in step 5
     #Go through top SNPs on NCBI:
-    #Make LocusZoom Plots:
+    #Make LocusZoom Plots: http://locuszoom.org/genform.php?type=yourdata
         #p-value column: p_wald, marker coulmn: rs
         #Set pop accordingly (under optional controls)
             #Made two version of each, one with individual pop (2010) and one with super pop (2014)
