@@ -253,7 +253,7 @@
                  cisplatin, etoposide, and paclitaxel have FDR<.3
         #In ASN: nothing remotely significant
     #Compile top hits into single file, one per pop (just YRI and CEU)
-        #Script: 10c_MulTiXcan_adj_output_condenser.R
+        #Script: 10c_MulTiXcan_adj_output_condenser_FUMA.R
             #Condenses all drug results into one file
             #Removes decimals from gene IDs (necessary for FUMA, see below)
             #Thresholds for p-values adj FDR: .3, .15, .075, and .05
@@ -270,12 +270,14 @@
         #chr 6:  VIMP1 - aka VIM2P vimentin 2, pseudogene
         #chr 8:  FAM90A20P - family with sequence similarity 90 member A20, pseudogene
         #chr 11: RP11-680H20.2 - ?
-    #Plot with FUMA
+    #Plot with FUMA: https://fuma.ctglab.nl/gene2func
         #Takes two gene lists, with Ensembl IDs, must removal decimals for FUMA to read gene IDs
         #Gene list one: significant genes (p-values meet a given threshold)
+            #Output files from 10c_MulTiXcan_adj_output_condenser_FUMA.R
         #Gene list two: all genes tested (from bp_chrome.txt)
-        #Script: 11_BP_chrome_fuma.R
-            #removes decimals from gene IDs (gene list two)
+            #Script: 11_BP_chrome_FUMA.R
+                #removes decimals from gene IDs (gene list two)
+        #Use GTEx v7  
         
 
 
