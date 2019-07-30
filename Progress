@@ -194,7 +194,12 @@
         #Set pop accordingly (under optional controls)
             #Made two version of each, one with individual pop (2010) and one with super pop (2014)
         #Created plots for: ASN carbo (3), CEU etop (1), and YRI cis (1), dauno (2), and etop (5)
-    #Go through top SNPs on NCBI:
+            #CEU had no genome-wide significant results, made one graph of the most significant SNP
+    #Go through top SNPs on NCBI: (genome-wide significant)
+      #ASN Carboplatin: chr 9: rs2100011, rs2254812, rs2254813
+      #YRI Cisplatin: chr 3: rs10510241
+           Daunorubicin: chr 4: rs60507300, rs61079639
+           Etoposide: chr 12: rs2711728, rs2711729, rs7960974, rs7971310, rs7979399
     
 
 #9 PrediXcan results:
@@ -226,7 +231,7 @@
             #Thresholds for p-values adj FDR: .3, .2, and .075
     #Look up top hits by ID on NCBI:
       #ASN Carboplatin top hit:
-        #FAM173B aka ATPSCKMT - ATP synthase c subunit lysine N-methyltransferase
+        #chr 5: FAM173B aka ATPSCKMT - ATP synthase c subunit lysine N-methyltransferase
 
 
 #10 MulTiXcan results:
@@ -252,16 +257,17 @@
             #Thresholds for p-values adj FDR: .3, .15, .075, and .05
     #Look up top hits by ID on NCBI:
       #YRI Capecitabine top hits:
-        #CCAR1 - cell division cycle and apoptosis regulator 1
-        #RNF24 - ring finger protein 24 
-        #SOX6 - SRY-box transcription factor 6
-        #MGME1 - mitochondrial genome maintenance exonuclease 1
-        #RAB8B - member RAS oncogene family
-        #GPR37 - G protein-coupled receptor 37
-        #KLK12 - kallikrein related peptidase 12
-        #SEPHS1P6 - selenophosphate synthetase 1 pseudogene 6
-        
-        
+        #chr 10: CCAR1 - cell division cycle and apoptosis regulator 1
+        #chr 20: RNF24 - ring finger protein 24 
+        #chr 11: SOX6 - SRY-box transcription factor 6
+        #chr 20: MGME1 - mitochondrial genome maintenance exonuclease 1
+        #chr 15: RAB8B - member RAS oncogene family
+        #chr 7:  GPR37 - G protein-coupled receptor 37
+        #chr 19: KLK12 - kallikrein related peptidase 12
+        #chr 2:  SEPHS1P6 - selenophosphate synthetase 1 pseudogene 6
+        #chr 6:  VIMP1 - aka VIM2P vimentin 2, pseudogene
+        #chr 8:  FAM90A20P - family with sequence similarity 90 member A20, pseudogene
+        #chr 11: RP11-680H20.2 - ?
         
         
 
