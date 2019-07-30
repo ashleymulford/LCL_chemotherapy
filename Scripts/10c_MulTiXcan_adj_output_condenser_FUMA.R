@@ -9,10 +9,10 @@ library(tibble)
 drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 
 #Make a data frame with significant results
-#Read in file
-#Add column containing drug name
-#Subset for significance, threshold = .3
-#Compile significant subsets into single data frame
+  #Read in file
+  #Add column containing drug name
+  #Subset for significance, threshold = .3
+  #Compile significant subsets into single data frame
 for(drug in drug_list){
   CEU_mult <- fread("/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_" %&% drug %&% "_multixcan_wchr.txt")
   CEU_mult<-add_column(CEU_mult, drug = drug, .before = "pvalue")
@@ -25,11 +25,15 @@ for(drug in drug_list){
   }
 }
 
+#Pull out gene column and create vector
 genes<-select(CEU_mult_sign3, 1)
 genes<-as.vector(unlist(genes))
 
+#Remove gene column from data frame
 CEU_mult_sign3<-select(CEU_mult_sign3, 2:14)
 
+#Create list of gene names for FUMA
+  #Create a substring of original gene name, leaving out everything after the decimal
 for (gene in genes) {
   gene<-substr(gene,0,15)
   if(exists("gene_list_fuma")){
@@ -40,6 +44,7 @@ for (gene in genes) {
   }
 }
 
+#Add new gene column to data frame
 CEU_mult_sign3<-add_column(CEU_mult_sign3, gene = gene_list_fuma, .before = "drug")
 
 #Subset again for significance, threshold = .2, .15, .075, and .05
