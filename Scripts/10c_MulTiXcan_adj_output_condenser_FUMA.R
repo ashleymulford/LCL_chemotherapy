@@ -2,7 +2,7 @@
 library(data.table)
 library(tibble)
 
-#Create function to paste in tissue name
+#Create function to paste in drug name
 "%&%" = function(a,b) paste(a,b,sep="")
 
 #Create list of drugs for file input
