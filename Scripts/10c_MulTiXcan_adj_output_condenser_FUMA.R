@@ -1,5 +1,6 @@
 #Import necessasry libraries
 library(data.table)
+library(dplyr)
 library(tibble)
 
 #Create function to paste in drug name
