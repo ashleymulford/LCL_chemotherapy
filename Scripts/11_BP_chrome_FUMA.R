@@ -1,5 +1,6 @@
 #Import necessary libraries
 library(data.table)
+library(dplyr)
 library(tibble)
 
 #Read in bp_chrome table
