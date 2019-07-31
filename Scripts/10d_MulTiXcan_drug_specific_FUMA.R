@@ -1,3 +1,8 @@
+#Import necessasry libraries
+library(data.table)
+library(dplyr)
+library(tibble)
+
 #Read in file
 CEU_mult_dauno<-fread("/home/ashley/LCL_chemotherapy/CEU/CEU_multixcan_output/CEU_dauno_multixcan_wchr.txt")
 
