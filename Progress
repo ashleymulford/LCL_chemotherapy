@@ -227,11 +227,23 @@
         #In ASN: carboplatin has FDR<.075
                  capecitabine has FDR<.2
     #Compile top hits into single file, one per pop
-        #Script: 9e_PrediXcan_adj_output_condenser.R
+        #Script: 09e_PrediXcan_adj_output_condenser.R
             #Thresholds for p-values adj FDR: .3, .2, and .075
     #Look up top hits by ID on NCBI:
       #ASN Carboplatin top hit:
         #chr 5: FAM173B aka ATPSCKMT - ATP synthase c subunit lysine N-methyltransferase
+    #Plot with FUMA: https://fuma.ctglab.nl/gene2func
+        #Takes two gene lists, with Ensembl IDs, must removal decimals for FUMA to read gene IDs
+        #Gene list one: significant genes (p-values meet a given threshold)
+            #Script: 09f_PrediXcan_adj_output_condenser_FUMA.R
+                #want about 100 genes, must adjust threshold for each pop to get this
+                    #YRI fdr<.6
+                    #CEU fdr<.7
+                    #ASN fdr<.8
+        #Gene list two: all genes tested (from bp_chrome.txt)
+            #Script: 09g_BP_chrome_FUMA.R
+                #removes decimals from gene IDs (gene list two)
+        #Use GTEx v7  
 
 
 #10 MulTiXcan results:
@@ -275,8 +287,8 @@
         #Gene list one: significant genes (p-values meet a given threshold)
             #Output files from 10c_MulTiXcan_adj_output_condenser_FUMA.R
         #Gene list two: all genes tested (from bp_chrome.txt)
-            #Script: 11_BP_chrome_FUMA.R
-                #removes decimals from gene IDs (gene list two)
+            #Output file from Script: 09g_BP_chrome_FUMA.R
+            #same as in FUMA for PrediXcan data
         #Use GTEx v7  
         
 
