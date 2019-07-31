@@ -1,6 +1,7 @@
 #Import necessary libraries
 library(data.table)
 library(dpylr)
+library(tibble)
 
 #Create function to paste in drug name
 "%&%" = function(a,b) paste(a,b,sep="")
