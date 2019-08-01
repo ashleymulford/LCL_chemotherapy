@@ -264,9 +264,8 @@
                  cisplatin, etoposide, and paclitaxel have FDR<.3
         #In ASN: nothing remotely significant
     #Compile top hits into single file, one per pop (just YRI and CEU)
-        #Script: 10c_MulTiXcan_adj_output_condenser.R
+        #Script: 10c_MulTiXcan_BH_output_condenser.R
             #Condenses all drug results into one file
-            #Removes decimals from gene IDs (necessary for FUMA, see below)
             #Thresholds for p-values adj FDR: .3, .15, .075, and .05
     #Look up top hits by ID on NCBI:
       #YRI Capecitabine top hits:
@@ -283,7 +282,7 @@
         #chr 11: RP11-680H20.2 - ?
     #Plot with FUMA: https://fuma.ctglab.nl/gene2func
         #Takes two gene lists, with Ensembl IDs, must remove decimals for FUMA to read gene IDs
-        #Script: 10d_MulTiXcan_adj_output_condenser_FUMA.R
+        #Script: 10d_MulTiXcan_BF_output_condenser_FUMA.R
             #Ouptus gene list one: significant genes (p-values meet a given threshold)
                 #Want about 100 genes in input file
             #Outputs gene list two: all genes tested
