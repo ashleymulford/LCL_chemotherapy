@@ -51,6 +51,9 @@ YRI_mult_sign<-select(YRI_mult_sign, 2:13)
 #Add new gene column to data frame
 YRI_mult_sign<-add_column(YRI_mult_sign, gene = gene_list_fuma, .before = "drug")
 
+#Output data frame into directory
+fwrite(YRI_mult_sign, "/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_multixcan_bonferroni_FUMA", na = "NA", quote = F, sep = "\t", col.names = T) 
+
 #Pull out gene column and create vector (all genes tested)
 genes_list<-select(YRI_mult, 1)
 genes_list<-as.vector(unlist(genes_list))
@@ -70,9 +73,7 @@ for (gn in genes_list) {
 #Turn list into data frame
 gn_list_fuma<-as.data.frame(gn_list_fuma)
 
-
-#Output data frames into directory
-fwrite(YRI_mult_sign, "/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_multixcan_bonferroni_FUMA", na = "NA", quote = F, sep = "\t", col.names = T) 
+#Output data frame into directory
 fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_multixcan_genes_FUMA.txt", na = "NA", quote = F, sep = "\t", col.names = T)
 
 
