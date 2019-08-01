@@ -1,5 +1,7 @@
 #LCL_chemotherapy Progress:
 
+#Individual Populations:
+
 #1 Explored data available in /home/wheelerlab3/Data/LCL_chemotherapy/
 
     Drug            populations         uM_concentrations               best_phenotype  hrs_drug_treatment      serum_used      phenotype               commercial_assay   exception_populations   exception_uM_concentrations
@@ -210,11 +212,16 @@
         #Script: 09b_PrediXcan_total_gene_count.R
             #Creates data frame of the number of genes measured in each tissue per population
     #Adjust p-values by running FDR
-        #Script: 09c_PrediXcan_FDR_adjuster.R
+        #Script: 09c1_PrediXcan_BH_adjuster.R
             #input: combined files (one per drug per pop)
-            #adjust p-values to account for false discovery
+            #adjust p-values to account for false discovery, method: BH
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
             #run three times, once per pop (loops through drugs)
+        #Script:09c2_PrediXcan_Bonferroni_adjuster.R
+            #input: combined files (one per drug per pop)
+            #adjust p-values to account for false discovery, method: Bonferroni
+            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
+            #run three times, once per pop (loops through drugs)            
     #Make Plots:
         #Script: 09d_PrediXcan_plots.R
             #Creates QQ and Manhattan plots for each drug in each population
@@ -236,10 +243,14 @@
 
 #10 MulTiXcan results:
     #Adjust p-values by running FDR:
-        #Script: 10a_MulTiXcan_FDR_adjuster.R
-            #adjust p-values to account for false discovery
+        #Script: 10a1_MulTiXcan_FDR_BH_adjuster.R
+            #adjust p-values to account for false discovery, method: BH
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
-            #run three times, once per pop (loops through drugs)        
+            #run three times, once per pop (loops through drugs)
+        #Script: 10a2_MulTiXcan_FDR_Bonferroni_adjuster.R
+            #adjust p-values to account for false discovery, mehtod: Bonferroni
+            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
+            #run three times, once per pop (loops through drugs)
     #Make Plots:
         #Script: 10b_MulTiXcan_plots.R
             #Creates QQ and Manhattan plots for each drug in each population
@@ -281,11 +292,5 @@
 
 
 
-
-
-
-
-
-
-#Combining Populations
+#Combined Populations
 
