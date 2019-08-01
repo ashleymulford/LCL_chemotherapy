@@ -243,11 +243,11 @@
 
 #10 MulTiXcan results:
     #Adjust p-values by running FDR:
-        #Script: 10a1_MulTiXcan_FDR_BH_adjuster.R
+        #Script: 10a1_MulTiXcan_BH_adjuster.R
             #adjust p-values to account for false discovery, method: BH
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
             #run three times, once per pop (loops through drugs)
-        #Script: 10a2_MulTiXcan_FDR_Bonferroni_adjuster.R
+        #Script: 10a2_MulTiXcan_Bonferroni_adjuster.R
             #adjust p-values to account for false discovery, mehtod: Bonferroni
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
             #run three times, once per pop (loops through drugs)
