@@ -239,6 +239,7 @@
     #Look up top hits by ID on NCBI:
       #ASN Carboplatin top hit:
         #chr 5: FAM173B aka ATPSCKMT - ATP synthase c subunit lysine N-methyltransferase
+    #Could make additional plots with FUMA, but not really worth it, not enough significant results with PrediXcan
         
 
 #10 MulTiXcan results:
@@ -288,8 +289,18 @@
             #Outputs gene list two: all genes tested
             #removes decimals in gene IDs
         #Use GTEx v7
+        #Ran FUMA with YRI (all drugs) Bonferroni adjusted, CEU and ASN did not have enough significant results
 
 
 
 #Combined Populations
+    #create one genotype file (BIMBAM format) with all populations combined
+        #must determine which SNPs are in all three populations (test only those)
+    #create annotation file to keep track of which individuals are in which population
+
+
+
+
+
+
 
