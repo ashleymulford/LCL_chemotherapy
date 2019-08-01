@@ -232,21 +232,7 @@
     #Look up top hits by ID on NCBI:
       #ASN Carboplatin top hit:
         #chr 5: FAM173B aka ATPSCKMT - ATP synthase c subunit lysine N-methyltransferase
-    #Plot with FUMA: https://fuma.ctglab.nl/gene2func
-        #Takes two gene lists, with Ensembl IDs, must removal decimals for FUMA to read gene IDs
-        #Gene list one: significant genes (p-values meet a given threshold)
-            #Combined only, no drug specific
-            #Script: 09f_PrediXcan_adj_output_condenser_FUMA.R
-                #want about 100 genes, must adjust threshold for each pop to get this
-                    #YRI fdr<.6
-                    #CEU fdr<.7
-                    #ASN fdr<.8
-        #Gene list two: all genes tested (from bp_chrome.txt)
-            #Script: 09g_BP_chrome_FUMA.R
-                #removes decimals from gene IDs (gene list two)
-        #Use GTEx v7
-        #Made one plot per pop
-
+        
 
 #10 MulTiXcan results:
     #Adjust p-values by running FDR:
@@ -267,7 +253,7 @@
                  cisplatin, etoposide, and paclitaxel have FDR<.3
         #In ASN: nothing remotely significant
     #Compile top hits into single file, one per pop (just YRI and CEU)
-        #Script: 10c_MulTiXcan_adj_output_condenser_FUMA.R
+        #Script: 10c_MulTiXcan_adj_output_condenser.R
             #Condenses all drug results into one file
             #Removes decimals from gene IDs (necessary for FUMA, see below)
             #Thresholds for p-values adj FDR: .3, .15, .075, and .05
@@ -285,18 +271,21 @@
         #chr 8:  FAM90A20P - family with sequence similarity 90 member A20, pseudogene
         #chr 11: RP11-680H20.2 - ?
     #Plot with FUMA: https://fuma.ctglab.nl/gene2func
-        #Takes two gene lists, with Ensembl IDs, must removal decimals for FUMA to read gene IDs
-        #Gene list one: significant genes (p-values meet a given threshold)
-            #Want about 100 genes in input file
-            #For combined: File output from 10c_MulTiXcan_adj_output_condenser_FUMA.R
-            #For drug specific: Script: 10d_MulTiXcan_drug_specific_FUMA.R
-        #Gene list two: all genes tested (from bp_chrome.txt)
-            #Output file from Script: 09g_BP_chrome_FUMA.R
-            #same as in FUMA for PrediXcan data
+        #Takes two gene lists, with Ensembl IDs, must remove decimals for FUMA to read gene IDs
+        #Script: 10d_MulTiXcan_adj_output_condenser_FUMA.R
+            #Ouptus gene list one: significant genes (p-values meet a given threshold)
+                #Want about 100 genes in input file
+            #Outputs gene list two: all genes tested
+            #removes decimals in gene IDs
         #Use GTEx v7
-        #Made plots with YRI combined (all drugs) and with specific drugs (capecitabine, cisplatin, paclitaxel, arac, and pemetrexed)
-        #Made plots with CEU combined (all drugs) and with specific drug (daunorubicin)
-        #No ASN plots
 
 
+
+
+
+
+
+
+
+#Combining Populations
 
