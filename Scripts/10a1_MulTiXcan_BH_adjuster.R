@@ -15,7 +15,7 @@ drug_list<-c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 #Make a data frame from MulTiXcan results that includes chr #, bp, and FDR adj p-value
   #Read in MulTiXcan output file
   #Create vector of p-values
-  #Adjust p-values with BH (FDR) method
+  #Adjust p-values with BH method
   #Add new column with adjusted p-values to data frame
   #Join MulTiXcan data frame with bp_chrome data frame to add columns with chr # and bp
   #Ouput data frame into directory
