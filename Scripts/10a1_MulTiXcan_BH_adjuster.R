@@ -26,5 +26,5 @@ for (drug in drug_list) {
   pvalues_adjusted_fdr<-p.adjust(pvalues, method = "BH")
   YRI_multixcan <- add_column(YRI_multixcan,  pvalues_adjusted_fdr = pvalues_adjusted_fdr , .before = "n_models")
   YRI_multixcan_wchr <- left_join(YRI_multixcan, bp_chrome, by = c("gene" = "gene"))
-  fwrite(YRI_multixcan_wchr, "/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_" %&% drug %&% "_multixcan_wchr.txt", col.names = T, row.names = F, sep = "\t", quote = F)
+  fwrite(YRI_multixcan_wchr, "/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_" %&% drug %&% "_multixcan_BH_wchr.txt", col.names = T, row.names = F, sep = "\t", quote = F)
 }
