@@ -294,9 +294,11 @@
 
 
 #Combined Populations
-    #create one genotype file (BIMBAM format) with all populations combined
-        #must determine which SNPs are in all three populations (test only those)
-    #create annotation file to keep track of which individuals are in which population
+    #Order of populations in files created: ASN, CEU, YRI
+    #Create snp.info file with snps found in all three populations
+    #Create pheno file with individuals from all three populations (order must match fam/geno files)
+    #Create fam file with all three populations
+    #create geno file (BIMBAM format) with all three populations
 
 
 
