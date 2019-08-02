@@ -293,12 +293,18 @@
 
 
 
-#Combined Populations
+#Combined Populations:
+
+#11 Create files:
     #Order of populations in files created: ASN, CEU, YRI
     #Create snp.info file with snps found in all three populations
+        #Script: 11a_ALL_snp_info.R
     #Create pheno file with individuals from all three populations (order must match fam/geno files)
+        #Script: 11b_ALL_pheno.R
     #Create fam file with all three populations
+        #Script: 11c_ALL_fam.R
     #create geno file (BIMBAM format) with all three populations
+        #Script: 11d_ALL_geno.R
 
 
 
