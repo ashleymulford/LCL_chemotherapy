@@ -1,3 +1,7 @@
+#Import necessary libraries
+library(data.table)
+library(dpylr)
+
 #Read in snp.info files for each pop
 ASN_snp_info<-fread("/home/ashley/LCL_chemotherapy/ASN/ASN.TGP_and_imputed.rmBAD.20130718.snp.info")
 CEU_snp_info<-fread("/home/ashley/LCL_chemotherapy/CEU/CEU.TGP_and_imputed.rmBAD.20130526.snp.info")
