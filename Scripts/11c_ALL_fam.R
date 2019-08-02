@@ -1,6 +1,7 @@
 #Import necessary libraries
 library(data.table)
 library(dpylr)
+library(tibble)
 
 #Read in fam file for each pop and set column names, then add pop column
 YRI_fam<-fread("/home/ashley/LCL_chemotherapy/YRI/YRI.chr10.TGP_and_imputed.20130416.exclude_BAD_SNPs.fam")
