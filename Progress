@@ -324,7 +324,7 @@
     #Make individual drug pheno files for input
         #Script: 13a_GWAS_phenos_ALL.R
     #Run GWAS for all drugs
-        #Script: GWAS_GEMMA_ALL_loop.sh
+        #Script: 13b_GWAS_GEMMA_ALL_loop.sh
 
 
 
