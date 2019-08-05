@@ -118,7 +118,7 @@
         #Run three times, once per pop (loops through drugs)
 
   
-#6 Predixcan
+#6 Run Predixcan
    
 #6.1 Get files/info needed for Predixcan:
     #Dosagefile_path: Wants a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
@@ -319,6 +319,7 @@
         fwrite(ALL_arac, "/home/ashley/LCL_chemotherapy/ALL/ALL_phenotypes/ALL_arac_bestpheno_noids.txt", na = "NA", col.names = F)
     #created files
     
+    
 #13 Run (univariate mixed linear) GWAS in gemma using GRM
     #Template: gemma -g genotype.geno -p phenotype.txt -a anno_snp.info -k relationship_matrix.txt  -lmm 4 -o pop_GWAS_drug
     #Make individual drug pheno files for input
@@ -327,6 +328,16 @@
         #Script: 13b_GWAS_GEMMA_ALL_loop.sh
 
 
+#14 Make QQ and Manhattan plots in R
+    #Script: 05_GWAS_plots.R
+        #Creates qq and manhattan plots for each drug
+        #Run with pop ALL
+        
+    
+#15 Run PrediXcan
+
+
+#16 Run MulTiXcan
 
 
 
