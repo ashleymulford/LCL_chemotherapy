@@ -333,6 +333,8 @@
     #Script: 05_GWAS_plots.R
         #Creates qq and manhattan plots for each drug
         #Run with pop ALL
+    #Genome wide significance for ALL: 
+        Etoposide: chr 12: rs2711728, rs2711729 (same as YRI GWAS results)
         
     
 #15 Run PrediXcan
