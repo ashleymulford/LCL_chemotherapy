@@ -357,9 +357,9 @@
 
 #16 Run MulTiXcan
     #Measures across all tissues, use only GTEx v7, no MESA
-    #Script: 16a_MulTiXcan_phenos.R
+    #Script: 16a_MulTiXcan_phenos_ALL.R
         #Create pheno files in R: three columns: FID, IID, Pheno (include headers)
-    #Script: 16b_MulTiXcan_loop.sh
+    #Script: 16b_MulTiXcan_loop_ALL.sh
         #Uses output from PrediXcan step one to measure expression across all tissues
         #outputs one file per drug per pop
         #Template for MultiXcan:
