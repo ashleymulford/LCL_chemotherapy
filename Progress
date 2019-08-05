@@ -19,7 +19,7 @@
 
 #2 Create relationship matrix (GRM) in gemma: requires genotype file and phenotype file
 #Individuals in these populations are related, parent child trios, must account for this when running association studies
-#will use: gemma -g genotype.gz -p phenotype.txt -gk 1 -maf 0.05 -o output_name
+#will use: gemma -g genotype.geno.gz -p phenotype.txt -gk 1 -maf 0.05 -o output_name
     #working with YRI:
        Genotype file in BIMBAM format: YRI.TGP_and_imputed.rmBAD.20130526.geno.gz
        Phenotype file: must make from master_cyctotoxicity file
@@ -64,6 +64,7 @@
      
     
 #4 Run (univariate mixed linear) GWAS in gemma using GRM
+    #Template: gemma -g genotype.geno -p phenotype.txt -a anno_snp.info -k relationship_matrix.txt  -lmm 4 -o pop_GWAS_drug
     #For cisplatin: pheno IC50, use rank normalized (Rn)
     
     #In R: 
@@ -309,6 +310,21 @@
         #files with all pops are orderd: ASN (201 people, though only 90 have pheno info), CEU (178 people), and YRI (178 people)
 
 
+#12 Create relationship matrix in GEMMA
+    #Template: gemma -g genotype.geno.gz -p phenotype.txt -gk 1 -maf 0.05 -o output_name
+    #Make pheno file with any individual drug
+        #ex: arac
+        ALL_pheno<-fread("/home/ashley/LCL_chemotherapy/ALL/ALL_pheno_orderedbyfam_ASN_CEU_YRI.txt")
+        ALL_arac<-select(ALL_pheno, 29)
+        fwrite(ALL_arac, "/home/ashley/LCL_chemotherapy/ALL/ALL_phenotypes/ALL_arac_bestpheno_noids.txt", na = "NA", col.names = F)
+    #created files
+    
+#13 Run (univariate mixed linear) GWAS in gemma using GRM
+    #Template: gemma -g genotype.geno -p phenotype.txt -a anno_snp.info -k relationship_matrix.txt  -lmm 4 -o pop_GWAS_drug
+    #Make individual drug pheno files for input
+        #Script: 13a_GWAS_phenos_ALL.R
+    #Run GWAS for all drugs
+        #Script: GWAS_GEMMA_ALL_loop.sh
 
 
 
