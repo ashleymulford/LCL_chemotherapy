@@ -355,8 +355,14 @@
         PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
     
 
-
 #16 Run MulTiXcan
-
-
+    #Measures across all tissues, use only GTEx v7, no MESA
+    #Script: 16a_MulTiXcan_phenos.R
+        #Create pheno files in R: three columns: FID, IID, Pheno (include headers)
+    #Script: 16b_MulTiXcan_loop.sh
+        #Uses output from PrediXcan step one to measure expression across all tissues
+        #outputs one file per drug per pop
+        #Template for MultiXcan:
+            MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
+    
 
