@@ -121,9 +121,9 @@
 #6 Run Predixcan
    
 #6.1 Get files/info needed for Predixcan:
-    #Dosagefile_path: Wants a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
-        Convert files from bimbam format to dosage format:
-        Script: 99_BIMBAM_to_PX_dosages.py (found in Ad_PX_pipe, forked from aandaleon)
+    #Dosagefile_path: need a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
+        #Convert files from bimbam format to dosage format:
+        #Script: 99_BIMBAM_to_PX_dosages.py (found in Ad_PX_pipe, forked from aandaleon)
             #input: geno file and snp info file, both in BIMBAM format
                 #input files:
                 geno: YRI.TGP_and_imputed.rmBAD.20130526.geno
@@ -141,8 +141,7 @@
         #Use R, extract first two columns of fam file:
             samples <- fam[1:2]
             write.table(samples, file = "samples.txt", sep = "\t", row.names = F, col.names = F, quote = F)
-            #output file:
-            sample.txt
+            #output file: sample.txt
     #Weights: Prediction databases, run all in loop!
         #European predictors derived from various organ tissues samples
         #Located in: /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/
@@ -337,6 +336,24 @@
         
     
 #15 Run PrediXcan
+    #Make dosages: need a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
+        #Convert files from bimbam format to dosage format:
+        #Script: 99_BIMBAM_to_PX_dosages.py (found in Ad_PX_pipe, forked from aandaleon)
+            #input: geno file and snp info file, both in BIMBAM format
+        #Run: python 99_BIMBAM_to_PX_dosages.py --anno ALL_snp.info --BIMBAM ALL_orderedby_ASN_CEU_YRI.geno --output dosages.txt
+            #output: combined file in dosage format, which is sebsquently split into 22 files
+        #Use awk command: awk '$1 == #' dosages.txt > chr#.txt, where # is 1 through 22, run 22 times
+                #output files, chr1-22: predixcan_dosages/chr#.txt
+                #must zip files for PrediXcan to run, use gzip    
+    #Make sample file: FID and IID only (in correct order corresponding to columns of individuals in geno file)
+    #Weights: Prediction databases, run all in loop!
+        #European predictors derived from various organ tissues samples
+            #Located in: /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/
+        #5 additional multi-ethnic predictors derived from white blood cell samples
+            #Located in: /home/ryan/enet_scripts/new_MESA/dbs/  use: filtered_rsid_hg19.db  
+    #Template for step one:
+        PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
+    
 
 
 #16 Run MulTiXcan
