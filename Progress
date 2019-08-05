@@ -356,6 +356,10 @@
     #Template for step one:
         PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
     
+    For WheelerLab2:
+    git clone https://github.com/hakyimlab/PrediXcan
+    wget https://s3.amazonaws.com/predictdb2/GTEx-V7_HapMap-2017-11-29.tar.gz
+    
 
 #16 Run MulTiXcan
     #Measures across all tissues, use only GTEx v7, no MESA
