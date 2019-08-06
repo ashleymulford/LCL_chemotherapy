@@ -50,7 +50,7 @@
     created files: YRI_relationship_matrix_maf.cXX.txt & YRI_relationship_matrix_maf.log.txt
     
     
-#3 Make drug based phenotype files in R for GWAS
+#3 Make drug based phenotype files in R for GWAS:
     #Script: 03_GWAS_GEMMA_phenos.R
     master_phenos <- read.table ("/home/ashley/LCL_chemotherapy/master_cyctotoxicity_info_130311_plus_igrowth.txt", header = T)
     YRI_master_phenos <- subset(master_phenos, pop == "YRI")
@@ -63,7 +63,7 @@
     YRI_drug_pheno <- select(YRI_master_phenos_ordered, 1:13, - Pheno, contains("DRUGABBREV"))
      
     
-#4 Run (univariate mixed linear) GWAS in gemma using GRM
+#4 Run (univariate mixed linear) GWAS in gemma using GRM:
     #Template: gemma -g genotype.geno -p phenotype.txt -a anno_snp.info -k relationship_matrix.txt  -lmm 4 -o pop_GWAS_drug
     #For cisplatin: pheno IC50, use rank normalized (Rn)
     
@@ -112,13 +112,13 @@
     ##repeat the steps above with other drugs and populations
 
 
-#5 Make QQ and Manhattan plots in R
+#5 Make QQ and Manhattan plots in R:
     #Script: 05_GWAS_plots.R
         #Creates qq and manhattan plots for each drug in each population
         #Run three times, once per pop (loops through drugs)
 
   
-#6 Run Predixcan
+#6 Run Predixcan:
    
 #6.1 Get files/info needed for Predixcan:
     #Dosagefile_path: need a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
@@ -128,12 +128,10 @@
                 #input files:
                 geno: YRI.TGP_and_imputed.rmBAD.20130526.geno
                 snp: YRI.TGP_and_imputed.rmBAD.20130526.snp.info
-            #Run: 
-                python 99_BIMBAM_to_PX_dosages.py --anno YRI.TGP_and_imputed.rmBAD.20130526.snp.info --BIMBAM YRI.TGP_and_imputed.rmBAD.20130526.geno --output dosages.txt
+            #Run: python 99_BIMBAM_to_PX_dosages.py --anno YRI.TGP_and_imputed.rmBAD.20130526.snp.info --BIMBAM YRI.TGP_and_imputed.rmBAD.20130526.geno --output dosages.txt
             #output: combined file in dosage format, which is sebsquently split into 22 files
             #use awk command: awk '$1 == #' dosages.txt > chr#.txt, where # is 1 through 22, run 22 times
-                #output files, chr1-22:
-                predixcan_dosages/chr#.txt
+                #output files, chr1-22: predixcan_dosages/chr#.txt
                 #must zip files for PrediXcan to run, use gzip     
     #Dosage_prefix: always chr!
     #Samples_file: Must make!
@@ -151,36 +149,32 @@
         #Make a prefix for each db:
             #Example for YRI and db 1: YRI_results_Adipose_Subcutaneous
     
-#6.2 Run PrediXcan with GTEx V7 tissue dbs
+#6.2 Run PrediXcan with GTEx V7 tissue dbs:
     #Script: 06a_PrediXcan1_loop.sh
         #Goes through each tissue db, run once per pop
-        #Template for step one:
-            PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
-        #YRI Example with 1st db:
-            PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Subcutaneous_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Adipose_Subcutaneous    
+        #Template for step one: PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
+        #YRI Example with 1st db: PrediXcan.py --predict --dosages /home/ashley/LCL_chemotherapy/YRI/YRI_predixcan_dosages --dosages_prefix chr --samples /home/ashley/LCL_chemotherapy/YRI/samples.txt --weights /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/gtex_v7_Adipose_Subcutaneous_imputed_europeans_tw_0.5_signif.db --output_prefix YRI_results_Adipose_Subcutaneous    
     #Convert PrediXcan Step one output to "geno" input for GEMMA
         #Script: 03_pred_exp_to_GEMMA_input.R (found in px_his_chol, forked from WheelerLab)
             #Creates "geno" input files for gemma
     #Run gemma to account for relatedness:
         #Script: 06b_PrediXcan2_loop.sh
         #Goes through each tissue db, drug, and pop; must run ASN separtely though as it has 4 of 8 drugs
-        #YRI example with 1st db and carboplatin:
-            gemma -g /home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/YRI/YRI_phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
+        #YRI example with 1st db and carboplatin: gemma -g /home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/YRI/YRI_phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
             #YRI has 8 drugs phenos
          
 #6.3 Run PrediXcan with MESA dbs:
     #Same process as above but pulls dbs from diff directory
 
 
-#7 Run MulTiXcan
+#7 Run MulTiXcan:
     #Measures across all tissues, use only GTEx v7, no MESA
     #Script: 07a_MulTiXcan_phenos.R
         #Create pheno files in R: three columns: FID, IID, Pheno (include headers)
     #Script: 07b_MulTiXcan_loop.sh
         #Uses output from PrediXcan step one to measure expression across all tissues
         #outputs one file per drug per pop
-        #Template for MultiXcan:
-            MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
+        #Template for MultiXcan: MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
     
 
 #Analyze results:
@@ -309,18 +303,18 @@
         #files with all pops are orderd: ASN (201 people, though only 90 have pheno info), CEU (178 people), and YRI (178 people)
 
 
-#12 Create relationship matrix in GEMMA
+#12 Create relationship matrix in GEMMA:
     #Template: gemma -g genotype.geno.gz -p phenotype.txt -gk 1 -maf 0.05 -o output_name
         #geno must be zipped
     #Make pheno file with any individual drug
-        #ex: arac
+        #ex with arac:
         ALL_pheno<-fread("/home/ashley/LCL_chemotherapy/ALL/ALL_pheno_orderedbyfam_ASN_CEU_YRI.txt")
         ALL_arac<-select(ALL_pheno, 29)
         fwrite(ALL_arac, "/home/ashley/LCL_chemotherapy/ALL/ALL_phenotypes/ALL_arac_bestpheno_noids.txt", na = "NA", col.names = F)
     #created files ALL_relationship_matrix_maf.cXX.txt & ALL_relationship_matrix_maf.log.txt
     
     
-#13 Run (univariate mixed linear) GWAS in gemma using GRM
+#13 Run (univariate mixed linear) GWAS in gemma using GRM:
     #Template: gemma -g genotype.geno -p phenotype.txt -a anno_snp.info -k relationship_matrix.txt  -lmm 4 -o pop_GWAS_drug
         #geno must be unzipped
     #Make individual drug pheno files for input
@@ -329,15 +323,15 @@
         #Script: 13b_GWAS_GEMMA_ALL_loop.sh
 
 
-#14 Make QQ and Manhattan plots in R
+#14 Make QQ and Manhattan plots in R:
     #Script: 05_GWAS_plots.R
         #Creates qq and manhattan plots for each drug
         #Run with pop ALL
-    #Genome wide significance for ALL: 
+    #Genome-wide significance for ALL: 
         Etoposide: chr 12: rs2711728, rs2711729 (same as YRI GWAS results)
         
     
-#15 Run PrediXcan
+#15 Run PrediXcan:
     #Make dosages: need a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
         #Convert files from bimbam format to dosage format:
         #Script: 99_BIMBAM_to_PX_dosages.py (found in Ad_PX_pipe, forked from aandaleon)
@@ -353,22 +347,33 @@
             #Located in: /home/wheelerlab3/Data/PrediXcan_db/GTEx-V7_HapMap-2017-11-29/
         #5 additional multi-ethnic predictors derived from white blood cell samples
             #Located in: /home/ryan/enet_scripts/new_MESA/dbs/  use: filtered_rsid_hg19.db  
-    #Template for step one:
-        PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
-    
-    For WheelerLab2:
-    git clone https://github.com/hakyimlab/PrediXcan
-    wget https://s3.amazonaws.com/predictdb2/GTEx-V7_HapMap-2017-11-29.tar.gz
+    #For WheelerLab2, must download PrediXcan script and dbs (weights):
+        git clone https://github.com/hakyimlab/PrediXcan
+        wget https://s3.amazonaws.com/predictdb2/GTEx-V7_HapMap-2017-11-29.tar.gz
+    #Step one: Predict:
+        #Template for step one: PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
+        #Script: 15a_PrediXcan1_loop.sh
+            #Goes through each tissue db    
+    #Convert PrediXcan Step one output to "geno" input for GEMMA
+        #Script: 03_pred_exp_to_GEMMA_input.R (found in px_his_chol, forked from WheelerLab)
+            #Creates "geno" input files for gemma
+    #Step two: Associate: Run through GEMMA to account for relatedness:
+        #Script: 15b_PrediXcan2_loop.sh
+            #Goes through each tissue db and drug
     
 
-#16 Run MulTiXcan
+#16 Run MulTiXcan:
     #Measures across all tissues, use only GTEx v7, no MESA
     #Script: 16a_MulTiXcan_phenos_ALL.R
         #Create pheno files in R: three columns: FID, IID, Pheno (include headers)
     #Script: 16b_MulTiXcan_loop_ALL.sh
         #Uses output from PrediXcan step one to measure expression across all tissues
         #outputs one file per drug per pop
-        #Template for MultiXcan:
-            MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
+        #Template for MultiXcan: MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
+    
+    
+    
+    
+    
     
 
