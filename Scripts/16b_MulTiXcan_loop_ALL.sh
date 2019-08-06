@@ -1,5 +1,5 @@
 #Create list of drugs
-declare -a drugs=("arac" "capecitabine" "carboplatin" "cisplatin" "daunorubicin" "etoposide" "paclitaxel" "pemetrexed")
+declare -a drugs=("arac" "cape" "carbo" "cis" "dauno" "etop" "pacl" "peme")
 
 #Use loop to run MulTiXcan
 for drug in ${drugs[@]}
