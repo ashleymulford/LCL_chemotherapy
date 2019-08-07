@@ -7,8 +7,7 @@ library(dplyr)
 "%&%" = function(a,b) paste(a,b,sep="")
 
 #Create list of drugs for file input
-#For ALL: no carbo, dauno, or pacl, nothing significant, will break script if included in list
-drug_list <- c("arac", "cape", "cis", "etop", "peme")
+drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 
 #Make a data frame with significant results
   #Read in file
