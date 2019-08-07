@@ -11,10 +11,10 @@ library(dplyr)
 drug_list <- c("arac", "cape", "carbo", "dauno", "peme")
 
 #Make a data frame with significant results
-#Read in file
-#Add column containing drug name
-#Subset for significance, threshold = BF<1
-#Compile significant subsets into single data frame
+  #Read in file
+  #Add column containing drug name
+  #Subset for significance, threshold = BF<1
+  #Compile significant subsets into single data frame
 for(drug in drug_list){
   ALL_mult <- fread("/home/ashley/LCL_chemotherapy/ALL/ALL_multixcan_output/ALL_" %&% drug %&% "_multixcan_bonferroni_wchr.txt")
   ALL_mult<-select(ALL_mult, 1:9, 11:13)
@@ -29,11 +29,15 @@ for(drug in drug_list){
   }
 }
 
+#Pull out gene column and create vector (significant genes only)
 genes<-select(ALL_mult_sign, 1)
 genes<-as.vector(unlist(genes))
 
+#Remove gene column from data frame
 ALL_mult_sign<-select(ALL_mult_sign, 2:13)
 
+#Create list of genes for column in data frame with significant results
+  #Create a substring of original gene name, leaving out everything after the decimal (for FUMA input)
 for (gene in genes) {
   gene<-substr(gene,0,15)
   if(exists("gene_list_fuma")){
@@ -44,12 +48,15 @@ for (gene in genes) {
   }
 }
 
+#Add new gene column to data frame
 ALL_mult_sign<-add_column(ALL_mult_sign, gene = gene_list_fuma, .before = "drug")
 
-
+#Pull out gene column and create vector (all genes tested)
 genes_list<-select(ALL_mult, 1)
 genes_list<-as.vector(unlist(genes_list))
 
+#Create list of genes for FUMA
+  #Create a substring of original gene name, leaving out everything after the decimal
 for (gn in genes_list) {
   gn<-substr(gn,0,15)
   if(exists("gn_list_fuma")){
@@ -60,6 +67,7 @@ for (gn in genes_list) {
   }
 }
 
+#Turn list into data frame
 gn_list_fuma<-as.data.frame(gn_list_fuma)
 
 #Output data frames into directory
