@@ -48,6 +48,28 @@ for (gene in genes) {
 #Add new gene column to data frame
 YRI_pred_sign6<-add_column(YRI_pred_sign6, gene = gene_list_fuma, .before = "drug")
 
+#Pull out gene column and create vector (all genes tested)
+genes_list<-select(YRI_pred, 1)
+genes_list<-as.vector(unlist(genes_list))
+
+#Create list of genes for FUMA
+  #Create a substring of original gene name, leaving out everything after the decimal
+for (gn in genes_list) {
+  gn<-substr(gn,0,15)
+  if(exists("gn_list_fuma")){
+    gn_list_fuma<-append(gn_list_fuma, gn)
+  }
+  else{
+    gn_list_fuma<-c(gn)
+  }
+}
+
+#Turn list into data frame
+gn_list_fuma<-as.data.frame(gn_list_fuma)
+
+#Output data frame into directory
+fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_predixcan_genes_FUMA.txt", na = "NA", quote = F, sep = "\t", col.names = T)
+
 #Subset again for significance, threshold = .3, .2, and .075
 YRI_pred_sign3 <- subset(YRI_pred_sign6, pvalues_adjusted_fdr <= .3)
 YRI_pred_sign2 <- subset(YRI_pred_sign6, pvalues_adjusted_fdr <= .2)
