@@ -278,7 +278,7 @@
     #Plot with FUMA: https://fuma.ctglab.nl/gene2func
         #Takes two gene lists, with Ensembl IDs, must remove decimals for FUMA to read gene IDs
         #Script: 10d_MulTiXcan_BF_output_condenser_FUMA.R
-            #Ouptus gene list one: significant genes (p-values meet a given threshold)
+            #Outputs gene list one: significant genes (p-values meet a given threshold)
                 #Want about 100 genes in input file
             #Outputs gene list two: all genes tested
             #removes decimals in gene IDs
@@ -329,6 +329,7 @@
         #Run with pop ALL
     #Genome-wide significance for ALL: 
         Etoposide: chr 12: rs2711728, rs2711729 (same as YRI GWAS results)
+        #made LocusZoom plots for these snps
         
     
 #15 Run PrediXcan:
@@ -373,8 +374,69 @@
         #Template for MultiXcan: MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
     
     
+#17 Go through PrediXcan results:
+    #Combine Predixcan results:
+        #Script: 09a_PrediXcan_output_combiner.R
+            #Combine all tissue files into one file (per drug per pop)
+            #run with pop set to ALL, 8 times one per drug
+        #Script: 17a_PrediXcan_total_gene_count_ALL.R
+            #Creates data frame of the number of genes measured in each tissue per population
+    #Adjust p-values by running FDR
+        #Script: 09c1_PrediXcan_BH_adjuster.R
+            #input: combined files (one per drug per pop)
+            #adjust p-values to account for false discovery, method: BH
+            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
+            #run with ALL pop (loops through drugs)
+        #Script:09c2_PrediXcan_Bonferroni_adjuster.R
+            #input: combined files (one per drug per pop)
+            #adjust p-values to account for false discovery, method: Bonferroni
+            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
+            #run with ALL pop (loops through drugs)            
+    #Make Plots:
+        #Script: 09d_PrediXcan_plots.R
+            #Creates QQ and Manhattan plots for each drug
+            #Run with ALL pop (loops through drugs)
+    #Go through top hits:
+        #capecitabine and etoposide have bonferroni adj p-values <.075
+    #Compile top hits into single file, one per pop
+        #Script: 17b_PrediXcan_adj_output_condenser_BF_FUMA_ALL.R
+    #Look up top hits by ID on NCBI:
+
     
-    
-    
+#18 Go through MulTiXcan results:
+    #Adjust p-values by running FDR:
+        #Script: 10a1_MulTiXcan_BH_adjuster.R
+            #adjust p-values to account for false discovery, method: BH
+            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
+            #run with ALL pop (loops through drugs)
+        #Script: 10a2_MulTiXcan_Bonferroni_adjuster.R
+            #adjust p-values to account for false discovery, mehtod: Bonferroni
+            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
+            #run with ALL pop (loops through drugs)
+    #Make Plots:
+        #Script: 10b_MulTiXcan_plots.R
+            #Creates QQ and Manhattan plots for each drug in each population
+            #Run three times, once per pop (loops through drugs)
+    #Go through top hits:     
+       #arac has bonferroni adj p-values <.05
+       #pemetrexed has bonferroni adj p-values <.08
+    #Compile top hits into single file
+        #Script: 18_MulTiXcan_condenser_BF_FUMA_ALL.R
+            #Condenses all drug results into one file
+            #Thresholds for p-values adj FDR = BF<1
+    #Look up top hits by ID on NCBI:
+    #Plot with FUMA: https://fuma.ctglab.nl/gene2func
+        #Takes two gene lists, with Ensembl IDs, must remove decimals for FUMA to read gene IDs
+        #Script: 18_MulTiXcan_condenser_BF_FUMA_ALL.R 
+            #Outputs gene list one: significant genes (p-values meet a given threshold)
+                #Want about 100 genes in input file
+            #Outputs gene list two: all genes tested
+            #removes decimals in gene IDs
+        #Use GTEx v7
+        #Ran FUMA
+
+
+
+
     
 
