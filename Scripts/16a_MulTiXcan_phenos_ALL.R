@@ -20,7 +20,7 @@ colnames(ALL_etop_ids) <- c("FID", "IID", "Pheno")
 ALL_pacl_ids<-select(ALL_pheno, 1:2, 41)
 colnames(ALL_pacl_ids) <- c("FID", "IID", "Pheno")
 ALL_peme_ids<-select(ALL_pheno, 1:2, 42)
-colnames(ALL_pacl_ids) <- c("FID", "IID", "Pheno")
+colnames(ALL_peme_ids) <- c("FID", "IID", "Pheno")
 
 #Ouput data frames into directory
 fwrite(ALL_arac_ids, "/home/ashley/LCL_chemotherapy/ALL/ALL_multixcan_phenos/ALL_arac.txt", na = "NA", col.names = T, quote = F, sep = "\t")
