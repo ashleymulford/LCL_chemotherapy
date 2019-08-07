@@ -13,7 +13,7 @@ drug_list <- c("arac", "cape", "cis", "etop", "peme")
 #Make a data frame with significant results
   #Read in file
   #Add column containing drug name
-  #Subset for significance, threshold = 1
+  #Subset for significance, threshold = BF<1
   #Compile significant subsets into single data frame
 for(drug in drug_list){
   ALL_pred <- fread("/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_assoc_adjusted_bonferroni_" %&% drug %&% ".txt")
