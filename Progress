@@ -302,6 +302,12 @@
         #BIMBAM format: columns: rsID allele1 allele0 p1 p2 ... p(n), n = 557 in this study
         #files with all pops are orderd: ASN (201 people, though only 90 have pheno info), CEU (178 people), and YRI (178 people)
 
+#12 Run Principle Components Analysis in PLINK 
+    #Convert from BIMBAM to PED/MAP
+        #Script:
+    #Run PCA
+    #Make PCA plots
+
 
 #12 Create relationship matrix in GEMMA:
     #Template: gemma -g genotype.geno.gz -p phenotype.txt -gk 1 -maf 0.05 -o output_name
