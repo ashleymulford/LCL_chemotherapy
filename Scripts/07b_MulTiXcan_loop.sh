@@ -1,5 +1,5 @@
 #Create lists, one of drugs and on of populations 
-declare -a drugs=("arac" "capecitabine" "carboplatin" "cisplatin" "daunorubicin" "etoposide" "paclitaxel" "pemetrexed")
+declare -a drugs=("arac" "cape" "carbo" "cis" "dauno" "etop" "pacl" "peme")
 declare -a pops=("CEU" "YRI")
 
 #Use loop to run MulTiXcan
