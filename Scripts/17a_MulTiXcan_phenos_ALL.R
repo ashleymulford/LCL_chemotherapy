@@ -1,5 +1,6 @@
 #Import necessary libraries
 library(data.table)
+library(dplyr)
 
 #Read in pheno file
 ALL_pheno<-fread("/home/ashley/LCL_chemotherapy/ALL/ALL_pheno_orderedbyfam_ASN_CEU_YRI.txt")
