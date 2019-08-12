@@ -304,8 +304,9 @@
 
 #12 Run Principle Components Analysis in PLINK 
     #Convert from BIMBAM to PED/MAP
-        #Script:
+        #Script: 12_ALL_map.R & 12_ALL_ped.R
     #Run PCA
+    plink --
     #Make PCA plots
 
 
