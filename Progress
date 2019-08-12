@@ -310,7 +310,7 @@
     #Make PCA plots
 
 
-#12 Create relationship matrix in GEMMA:
+#13 Create relationship matrix in GEMMA:
     #Template: gemma -g genotype.geno.gz -p phenotype.txt -gk 1 -maf 0.05 -o output_name
         #geno must be zipped
     #Make pheno file with any individual drug
@@ -321,16 +321,16 @@
     #created files ALL_relationship_matrix_maf.cXX.txt & ALL_relationship_matrix_maf.log.txt
     
     
-#13 Run (univariate mixed linear) GWAS in gemma using GRM:
+#14 Run (univariate mixed linear) GWAS in gemma using GRM:
     #Template: gemma -g genotype.geno -p phenotype.txt -a anno_snp.info -k relationship_matrix.txt  -lmm 4 -o pop_GWAS_drug
         #geno must be unzipped
     #Make individual drug pheno files for input
-        #Script: 13a_GWAS_phenos_ALL.R
+        #Script: 14a_GWAS_phenos_ALL.R
     #Run GWAS for all drugs
-        #Script: 13b_GWAS_GEMMA_ALL_loop.sh
+        #Script: 14b_GWAS_GEMMA_ALL_loop.sh
 
 
-#14 Make QQ and Manhattan plots in R:
+#15 Make QQ and Manhattan plots in R:
     #Script: 05_GWAS_plots.R
         #Creates qq and manhattan plots for each drug
         #Run with pop ALL
@@ -339,7 +339,7 @@
         #made LocusZoom plots for these snps
         
     
-#15 Run PrediXcan:
+#16 Run PrediXcan:
     #Make dosages: need a directory as the input. Must make 22 dosage files (one for each chr) and put in that directory!
         #Convert files from bimbam format to dosage format:
         #Script: 99_BIMBAM_to_PX_dosages.py (found in Ad_PX_pipe, forked from aandaleon)
@@ -360,33 +360,33 @@
         wget https://s3.amazonaws.com/predictdb2/GTEx-V7_HapMap-2017-11-29.tar.gz
     #Step one: Predict:
         #Template for step one: PrediXcan.py --predict --dosages dosagefile_path --dosages_prefix chr --samples samples_file --weights prediction_db --output_prefix results/tissue
-        #Script: 15a_PrediXcan1_loop.sh
+        #Script: 16a_PrediXcan1_loop.sh
             #Goes through each tissue db    
     #Convert PrediXcan Step one output to "geno" input for GEMMA
         #Script: 03_pred_exp_to_GEMMA_input.R (found in px_his_chol, forked from WheelerLab)
             #Creates "geno" input files for gemma
     #Step two: Associate: Run through GEMMA to account for relatedness:
         #Template: gemma -g tissue.geno -notsnp -p pheno.txt -k relationship_matrix.txt -lmm 4 -o pop_drug_tissue
-        #Script: 15b_PrediXcan2_loop.sh
+        #Script: 16b_PrediXcan2_loop.sh
             #Goes through each tissue db and drug
     
 
-#16 Run MulTiXcan:
+#17 Run MulTiXcan:
     #Measures across all tissues, use only GTEx v7, no MESA
-    #Script: 16a_MulTiXcan_phenos_ALL.R
+    #Script: 17a_MulTiXcan_phenos_ALL.R
         #Create pheno files in R: three columns: FID, IID, Pheno (include headers)
-    #Script: 16b_MulTiXcan_loop_ALL.sh
+    #Script: 17b_MulTiXcan_loop_ALL.sh
         #Uses output from PrediXcan step one to measure expression across all tissues
         #outputs one file per drug per pop
         #Template for MultiXcan: MulTiXcan.py --expression_folder /home/ashley/LCL_chemotherapy/${pop}/${pop}_predixcan_predict_output --expression_pattern "${pop}_results_(.*)_predicted_expression.txt" --input_phenos_file /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_phenos/${pop}_${drug}_pheno --input_phenos_column Pheno --mode linear --output /home/ashley/LCL_chemotherapy/${pop}/${pop}_multixcan_output/${pop}_${drug}_multixcan
     
     
-#17 Go through PrediXcan results:
+#18 Go through PrediXcan results:
     #Combine Predixcan results:
         #Script: 09a_PrediXcan_output_combiner.R
             #Combine all tissue files into one file (per drug per pop)
             #run with pop set to ALL, 8 times one per drug
-        #Script: 17a_PrediXcan_total_gene_count_ALL.R
+        #Script: 18a_PrediXcan_total_gene_count_ALL.R
             #Creates data frame of the number of genes measured in each tissue per population
     #Adjust p-values by running FDR
         #Script: 09c1_PrediXcan_BH_adjuster.R
@@ -406,11 +406,11 @@
     #Go through top hits:
         #capecitabine and etoposide have bonferroni adj p-values <.075
     #Compile top hits into single file, one per pop
-        #Script: 17b_PrediXcan_adj_output_condenser_BF_FUMA_ALL.R
+        #Script: 18b_PrediXcan_adj_output_condenser_BF_FUMA_ALL.R
     #Look up top hits by ID on NCBI:
 
     
-#18 Go through MulTiXcan results:
+#19 Go through MulTiXcan results:
     #Adjust p-values by running FDR:
         #Script: 10a1_MulTiXcan_BH_adjuster.R
             #adjust p-values to account for false discovery, method: BH
@@ -428,13 +428,13 @@
        #arac has bonferroni adj p-values <.05
        #pemetrexed has bonferroni adj p-values <.08
     #Compile top hits into single file
-        #Script: 18_MulTiXcan_condenser_BF_FUMA_ALL.R
+        #Script: 19_MulTiXcan_condenser_BF_FUMA_ALL.R
             #Condenses all drug results into one file
             #Thresholds for p-values adj FDR = BF<1
     #Look up top hits by ID on NCBI:
     #Plot with FUMA: https://fuma.ctglab.nl/gene2func
         #Takes two gene lists, with Ensembl IDs, must remove decimals for FUMA to read gene IDs
-        #Script: 18_MulTiXcan_condenser_BF_FUMA_ALL.R 
+        #Script: 19_MulTiXcan_condenser_BF_FUMA_ALL.R 
             #Outputs gene list one: significant genes (p-values meet a given threshold)
                 #Want about 100 genes in input file
             #Outputs gene list two: all genes tested
