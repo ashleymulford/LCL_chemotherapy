@@ -10,7 +10,7 @@ library(colorspace)
 colors<-sequential_hcl(4,"SunsetDark")
 
 #Create list of drugs for file input
-drug_list <- c("arac", "capecitabine", "carboplatin", "cisplatin", "daunorubicin", "etoposide", "paclitaxel", "pemetrexed")
+drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 
 #Make QQ and Manhattan plots using loop
 for(drug in drug_list){
