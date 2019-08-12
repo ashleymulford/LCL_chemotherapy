@@ -47,10 +47,10 @@ for column in ALL_geno_transposed:
       snp_allele2.append(minor_allele)
   
   #Add columns to ped file    
-  ALL_ped["snp_allele1"]=snp_allele1
-  ALL_ped["snp_allele2"]=snp_allele2
+  ALL_ped["snp_allele1"] = snp_allele1
+  ALL_ped["snp_allele2"] = snp_allele2
   #Rename columns (can't add a new column with the name of an existing column)
-  ALL_ped=ALL_ped.rename(columns={"snp_allele1" : "A1", "snp_allele2" : "A2"})
+  ALL_ped = ALL_ped.rename(columns = {"snp_allele1" : "A1", "snp_allele2" : "A2"})
 
 #Output data frame to directory
 ALL_ped.to_csv("/home/ashley/LCL_chemotherapy/ALL.ped", sep = "\t", header = None, index = None)
