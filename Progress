@@ -77,31 +77,31 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     
     #In R: 
     #file with ids and phenotype (for reference)
-    YRI_cisplatin_bestpheno <- select(YRI_cisplatin_pheno, 1:12, contains("CIS_RnIC50"))
-    write.table(YRI_cisplatin_bestpheno, "/home/ashley/LCL_chemotherapy/YRI_cisplatin_bestpheno.txt", col.names = T, row.names = F, sep = "/t")
+    YRI_cis_bestpheno <- select(YRI_cis_pheno, 1:12, contains("CIS_RnIC50"))
+    write.table(YRI_cis_bestpheno, "/home/ashley/LCL_chemotherapy/YRI_cis_bestpheno.txt", col.names = T, row.names = F, sep = "/t")
     #file phenotype only (for gemma)
-    YRI_cisplatin_bestpheno_noids <- select(YRI_cisplatin_bestpheno, contains("CIS"))
-    write.table(YRI_cisplatin_bestpheno_noids, "/home/ashley/LCL_chemotherapy/YRI_cisplatin_bestpheno_noids.txt", col.names = F, row.names = F, sep = "/t")
+    YRI_cis_bestpheno_noids <- select(YRI_cis_bestpheno, contains("CIS"))
+    write.table(YRI_cis_bestpheno_noids, "/home/ashley/LCL_chemotherapy/YRI_cis_bestpheno_noids.txt", col.names = F, row.names = F, sep = "/t")
     
     #In Gemma:
-    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cisplatin_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info.gz -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cisplatin
+    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cis_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info.gz -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cis
     
     #error: segmentation fault
     
     #Unzip snp file with:
     gunzip filename.snp.info.gz
     run again
-    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cisplatin_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cisplatin
+    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno.gz -p YRI_cis_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_cis
     
     #Code is running...
-    created files: YRI_GWAS_cisplatin.assoc.txt & YRI_GWAS_cisplatin.log.txt
+    created files: YRI_GWAS_cis.assoc.txt & YRI_GWAS_cis.log.txt
     
     #p-value is nan/-nan.
     #try with carboplatin
     #wanted to try unzipping genotype file, as this worked with snp file
     gunzip filename.geno.gz
     #run with unzipped geno
-    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno -p YRI_carboplatin_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_carboplatin
+    gemma -g YRI.TGP_and_imputed.rmBAD.20130526.geno -p YRI_carbo_bestpheno_noids.txt -a YRI.TGP_and_imputed.rmBAD.20130526.snp.info -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_GWAS_carbo
     
     #code ran and sure enough I got p-values this time!!
     
@@ -168,7 +168,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #Run gemma to account for relatedness:
         #Script: 06b_PrediXcan2_loop.sh
         #Goes through each tissue db, drug, and pop; must run ASN separtely though as it has 4 of 8 drugs
-        #YRI example with 1st db and carboplatin: gemma -g /home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/YRI/YRI_phenotypes/YRI_carboplatin_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carboplatin_[tissue]
+        #YRI example with 1st db and carboplatin: gemma -g /home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_input/Adipose_Subcutaneous -notsnp -p /home/ashley/LCL_chemotherapy/YRI/YRI_phenotypes/YRI_carbo_bestpheno_noids.txt -k YRI_relationship_matrix_maf.cXX.txt -lmm 4 -o YRI_assoc_carbo_[tissue]
             #YRI has 8 drugs phenos
          
 #6.3 Run PrediXcan with MESA dbs:
