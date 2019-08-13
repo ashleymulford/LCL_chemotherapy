@@ -6,7 +6,7 @@ library(tibble)
 "%&%" = function(a,b) paste(a,b,sep="")
 
 #Create list of drugs for file input
-drug_list <- c("arac", "capecitabine", "carboplatin", "cisplatin", "daunorubicin", "etoposide", "paclitaxel", "pemetrexed")
+drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 
 #Make a data frame with significant results
   #Read in file
