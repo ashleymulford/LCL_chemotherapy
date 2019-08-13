@@ -6,7 +6,7 @@
 
     Drug            populations         uM_concentrations               best_phenotype  hrs_drug_treatment      serum_used      phenotype               commercial_assay   exception_populations   exception_uM_concentrations
 1.  ara-c            CEU,YRI,ASN         0,1,5,10,40                     AUC             72                      FBS             cell_growth_inhibition  alamarBlue
-Ara-C is a triphosphate nucleotide analog which is the biologically active form of CYTARABINE. It inhibits nuclear DNA synthesis. (PHARMGKB)
+Ara-C is a triphosphate nucleotide analog that inhibits nuclear DNA synthesis. (PHARMGKB)
 2.  capecitabine    CEU,YRI,ASN         0,2.5,10,20,40                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
 Capecitabine inhibits thymidylate synthase (TYMS) and incorporates drug metabolites into DNA and RNA. (PHARMGKB)
 3.  carboplatin     CEU,YRI,ASN         0,10,20,40,80                   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
