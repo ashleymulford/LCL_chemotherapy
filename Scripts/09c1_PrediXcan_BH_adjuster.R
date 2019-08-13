@@ -10,7 +10,7 @@ library(tibble)
 bp_chrome <- fread("/home/ashley/LCL_chemotherapy/BP_Chrome.txt")
 
 #Create list of drugs for file input
-drug_list <- c("arac", "capecitabine", "carboplatin", "cisplatin", "daunorubicin", "etoposide", "paclitaxel", "pemetrexed")
+drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 
 #Make a data frame from combined PrediXcan results that includes chr #, bp, and FDR adj p-value
   #Read in combined output file
