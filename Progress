@@ -5,14 +5,22 @@
 #1 Explored data available in /home/wheelerlab3/Data/LCL_chemotherapy/
 
     Drug            populations         uM_concentrations               best_phenotype  hrs_drug_treatment      serum_used      phenotype               commercial_assay   exception_populations   exception_uM_concentrations
-1.  arac            CEU,YRI,ASN         0,1,5,10,40                     AUC             72                      FBS             cell_growth_inhibition  alamarBlue
+1.  ara-c            CEU,YRI,ASN         0,1,5,10,40                     AUC             72                      FBS             cell_growth_inhibition  alamarBlue
+Ara-C is a triphosphate nucleotide analog which is the biologically active form of CYTARABINE. It inhibits nuclear DNA synthesis. (PHARMGKB)
 2.  capecitabine    CEU,YRI,ASN         0,2.5,10,20,40                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
+Capecitabine inhibits thymidylate synthase (TYMS) and incorporates drug metabolites into DNA and RNA. (PHARMGKB)
 3.  carboplatin     CEU,YRI,ASN         0,10,20,40,80                   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
+Carboplatin acts by forming platinum-DNA adducts, which leads to cell-cycle arrest and apoptosis. (PHARMGKB)
 4.  cisplatin       CEU,YRI,ASN         0,1,2.5,5,10,20                 IC50            48                      FBS             cell_growth_inhibition  alamarBlue         ASN                     0,0.1,0.5,1,5,10,20,40
+Cisplatin is an alkylating agent which destroys cancerous cells through DNA crosslinking, thereby preventing cell division and growth. (PHARMGKB)
 5.  daunorubicin    CEU,YRI             0,0.0125,0.025,0.05,0.1,0.2,1   IC50            72                      FBS             cell_growth_inhibition  alamarBlue
+Daunorubicin is an antineoplastic drug that inhibits topoisomerase II activity by stabilizing the DNA-topoisomerase II complex, preventing the religation portion of the ligation-religation reaction catalyzed by topoisomerase II. (DRUGBANK)
 6.  etoposide       CEU,YRI             0,0.02,0.1,0.5,2.5              IC50            72                      FBS             cell_growth_inhibition  alamarBlue
+Etoposide stabilizes the double stranded DNA cleavage normally catalyzed by topoisomerase II and inhibits faithful religation of DNA breaks creating antitumor effects. (PHARMGKB)
 7.  paclitaxel      CEU,YRI             0,0.00625,0.0125,0.05           AUC             72                      BGS             cell_growth_inhibition  alamarBlue
+Paclitaxel blocks cell division by binding to α-tubulin, which stabilizes the microtubules, leading to cell death. (PHARMGKB)
 8.  pemetrexed      CEU,YRI             0,0.02,0.1,0.5                  AUC             72                      FBS             cell_growth_inhibition  alamarBlue
+Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is essential for synthesis and various cellular functions. (PHARMGKB)
 
 #Working with: YRI (8 drugs), CEU (8 drugs), and ASN (4 drugs) 
 
