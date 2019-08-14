@@ -376,6 +376,8 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #Script: 14a_GWAS_phenos_ALL.R
     #Run GWAS for all drugs
         #Script: 14b_GWAS_GEMMA_ALL_loop.sh
+        #include covariates file with -c, generated in pca 
+            #format for GEMMA, rows are people, columns are covariates
 
 
 #15 Make QQ and Manhattan plots in R:
