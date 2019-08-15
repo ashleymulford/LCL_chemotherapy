@@ -308,6 +308,8 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #create geno file (BIMBAM format) with all three populations
         #Script: 11d_ALL_geno.R
         #BIMBAM format: columns: rsID allele1 allele0 p1 p2 ... p(n), n = 557 in this study
+            #allele1 = reference allele, allele0 = alternate allele
+            #dosages are of the ref allele (0 = 0 of the reference allele and 2 of the alternate allele; 2 = 2 of the reference allele and 0 of the alternate allele, 1 = 1 reference allele and 1 alternate allele)
         #files with all pops are orderd: ASN (201 people, though only 90 have pheno info), CEU (178 people), and YRI (178 people)
 
 #12 Run Principle Components Analysis in PLINK 
