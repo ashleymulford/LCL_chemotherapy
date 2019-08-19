@@ -46,4 +46,4 @@ ALL_map_sample<-add_column(ALL_map_sample, rs = snp_sample, .before = "cm")
 
 #Output data frames into directory
 fwrite(ALL_geno_sample, "/home/ashley/LCL_chemotherapy/ALL/ALL_orderedby_ASN_CEU_YRI_snpsubset.geno", na = "NA", quote = F, col.names = F)
-fwrite(ALL_map_sample, "/home/ashley/LCL_chemotherapy/ALL/ALL_subset.map", na = "NA", quote = F, col.names = F)
+fwrite(ALL_map_sample, "/home/ashley/LCL_chemotherapy/ALL/ALL_subset.map", sep = "\t", na = "NA", quote = F, col.names = F)
