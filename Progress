@@ -313,8 +313,8 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #files with all pops are orderd: ASN (201 people, though only 90 have pheno info), CEU (178 people), and YRI (178 people)
 
 #12 Run Principle Components Analysis in PLINK 
-    #Convert from BIMBAM to PED/MAP
-        #Script: 12a_ALL_map.R & 12b_ALL_ped.py
+    #Convert from BIMBAM to PED/MAP, only need a subset of 100000 snps
+        #Script: 12a_ALL_subset_map.R & 12b_ALL_subset_ped.py
     #Run PCA
         Ryan has a Shellscript that runs PCA in plink
         03MergeHapMap.sh
