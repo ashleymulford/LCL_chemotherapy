@@ -3,7 +3,7 @@ import pandas as pd
 
 #Read in fam and geno files
 ALL_fam = pd.read_csv('/home/ashley/LCL_chemotherapy/ALL/ALL_orderedby_ASN_CEU_YRI.fam', delimiter = " ", header=None)
-ALL_geno = pd.read_csv('/home/ashley/LCL_chemotherapy/ALL/ALL_orderedby_ASN_CEU_YRI.geno', delimiter = "\t", header=None)
+ALL_geno = pd.read_csv('/home/ashley/LCL_chemotherapy/ALL/ALL_orderedby_ASN_CEU_YRI_snpsubset.geno', delimiter = "\t", header=None)
 
 #Create ped file from subset of fam file
 ALL_ped = ALL_fam.iloc[0:, 1:7]
@@ -53,4 +53,4 @@ for column in ALL_geno_transposed:
   ALL_ped = ALL_ped.rename(columns = {"snp_allele1" : "A1", "snp_allele0" : "A0"})
 
 #Output data frame to directory
-ALL_ped.to_csv("/home/ashley/LCL_chemotherapy/ALL.ped", sep = "\t", header = None, index = None)
+ALL_ped.to_csv("/home/ashley/LCL_chemotherapy/ALL_subset.ped", sep = "\t", header = None, index = None)
