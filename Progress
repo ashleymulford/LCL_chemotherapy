@@ -314,15 +314,18 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
 
 
 #12 Run Principle Components Analysis in PLINK and/or in KING
+    #Both PLINK and KING require bed/bim/fam input
     #Convert from BIMBAM to PED/MAP, only need a subset of 100000 snps
         #Script: 12a_ALL_subset_map.R & 12b_ALL_subset_ped.py
     #Run PCA
-        Ryan has a Shellscript that runs PCA in plink
+        #Ryan has a script that runs PCA in plink
         03MergeHapMap.sh
         or
         plink --ped ALL.ped --map ALL.map --make-bed --out ALL
         plink --file ALL --make-bed --out ALL
         plink --bfile ALL --pca --out ALL
+        #Anglea has a script that runs PCA in KING
+        02_related_matrix_PCs.R --bfile (optional: --king)
     #Make PCA plots
         Ryan has an RScript for PCA in gwasqc pipeline:
         RScript PCA.R
