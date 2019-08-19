@@ -368,7 +368,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #created files ALL_relationship_matrix_maf.cXX.txt & ALL_relationship_matrix_maf.log.txt
     
     
-#14 Run (univariate mixed linear) GWAS in gemma using GRM:
+#14 Run (univariate mixed linear) GWAS in gemma with relationship matrix and covariates:
     #Template: gemma -g genotype.geno -p phenotype.txt -a anno_snp.info -k relationship_matrix.txt  -lmm 4 -o pop_GWAS_drug
         #geno must be unzipped
     #Make individual drug pheno files for input
