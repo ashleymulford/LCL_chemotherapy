@@ -310,9 +310,10 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #BIMBAM format: columns: rsID allele1 allele0 p1 p2 ... p(n), n = 557 in this study
             #allele1 = reference allele, allele0 = alternate allele
             #dosages are of the ref allele (0 = 0 of the reference allele and 2 of the alternate allele; 2 = 2 of the reference allele and 0 of the alternate allele, 1 = 1 reference allele and 1 alternate allele)
-        #files with all pops are orderd: ASN (201 people, though only 90 have pheno info), CEU (178 people), and YRI (178 people)
+        #files with all pops are orderd: ASN (201 people), CEU (178 people), and YRI (178 people)
 
-#12 Run Principle Components Analysis in PLINK 
+
+#12 Run Principle Components Analysis in PLINK and/or in KING
     #Convert from BIMBAM to PED/MAP, only need a subset of 100000 snps
         #Script: 12a_ALL_subset_map.R & 12b_ALL_subset_ped.py
     #Run PCA
@@ -322,7 +323,6 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         plink --ped ALL.ped --map ALL.map --make-bed --out ALL
         plink --file ALL --make-bed --out ALL
         plink --bfile ALL --pca --out ALL
-    
     #Make PCA plots
         Ryan has an RScript for PCA in gwasqc pipeline:
         RScript PCA.R
@@ -335,24 +335,21 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         Example with AFA, repeat with HIS and CAU:
             hapmappopinfo <- read.table("/home/lauren/MESA_dbGaP_55081/all_mesa_merged/hapmap_hg19/pop_HM3_hg19_forPCA.txt") %>% select(V1,V3)
             colnames(hapmappopinfo) <- c("pop","IID")
-
             fam_h<- read.table('/home/ashley/Plinkfiles/MESAfiles/MESAnewfiles/MESA_AFA_merged_hapmap.4pca.fam') %>% select(V1,V2)
             colnames(fam_h) <- c("FID","IID")
             popinfo <- left_join(fam_h,hapmappopinfo,by="IID")
             popinfo <- mutate(popinfo, pop=ifelse(grepl('T',IID),'Norway',as.character(pop))) %>% mutate(pop=ifelse(is.na(pop),'AFA',as.character(pop)))
             table(popinfo$pop)
-
             pcs_afahap <- read.table("/home/ashley/Plinkfiles/MESAfiles/MESAnewfiles/afa_hap_autosome.evec",skip=1)
             pcdf_afahap <- data.frame(popinfo,pcs_afahap[,2:11]) %>% rename(PC1=V2,PC2=V3,PC3=V4,PC4=V5,PC5=V6,PC6=V7,PC7=V8,PC8=V9,PC9=V10,PC10=V11)
             gwas_afahap <- filter(pcdf_afahap,pop=='AFA') %>% mutate(PATNO=IID)
             hm3 <- filter(pcdf_afahap,grepl('NA',IID))
             table(gwas_afahap$pop)
             table(hm3$pop)
-
-        Calcuate proportion variance explained by each PC:
+            Calcuate proportion variance explained by each PC:
             eval_afahap <- scan("/home/ashley/Plinkfiles/MESAfiles/MESAnewfiles/afa_hap_autosome.eval")[1:10]
             round(eval_afahap/sum(eval_afahap),3)
-        Output PDF of PCA plot:
+            Output PDF of PCA plot:
             pdf(file=my.dir %&% "MESA_PCA.pdf")
             ggplot() + geom_point(data=pcdf_afahap,aes(x=PC1,y=PC2,col=pop,shape=pop))+geom_point(data=hm3,aes(x=PC1,y=PC2,col=pop,shape=pop))+ theme_bw()+ scale_colour_brewer(palette="Set1")
             ggplot() + geom_point(data=gwas_afahap,aes(x=PC1,y=PC3,col=pop,shape=pop))+geom_point(data=hm3,aes(x=PC1,y=PC3,col=pop,shape=pop))+ theme_bw() + scale_colour_brewer(palette="Set1")
