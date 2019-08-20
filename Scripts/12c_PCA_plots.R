@@ -8,7 +8,7 @@ fam<-fread("/home/ashley/LCL_chemotherapy/ALL/ALL_orderedby_ASN_CEU_YRI.fam") %>
 colnames(fam)<-c("pop", "FID", "IID")
 
 #Read in pcs (king output)
-pcs <- fread("/home/ashley/LCL_chemotherapy/ALL/ALL_plinkfiles_PCA/kingpc.txt")
+pcs <- fread("/home/ashley/LCL_chemotherapy/ALL/ALL_PCA/kingpc.txt")
 
 #Join fam and pcs to reorder pcs and add pop 
 pcdf <- left_join(fam, pcs)
@@ -18,7 +18,7 @@ covariates<-select(pcdf, 8:17)
 fwrite(covariates, "/home/ashley/LCL_chemotherapy/ALL/ALL_covariates_king.txt")
 
 #Make PCA plots:
-pdf("/home/ashley/LCL_chemotherapy/ALL/ALL_plinkfiles_PCA/ALL_PCA_plots_king.pdf")
+pdf("/home/ashley/LCL_chemotherapy/ALL/ALL_PCA/ALL_PCA_plots_king.pdf")
 
 #PCA Plot 1 (PC1 vs PC2)
 ggplot() + geom_point(data=pcdf,aes(x=PC1,y=PC2,col=pop,shape=pop)) + theme_bw() + scale_colour_brewer(palette="Set1") + ggtitle("PC1 vs PC2")
