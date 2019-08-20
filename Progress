@@ -314,27 +314,22 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
 
 
 #12 Run Principle Components Analysis in PLINK and/or in KING
-    #Both PLINK and KING require bed/bim/fam input
+    #Must account for population stratification when running association tests in later steps, calculating covariates does this
+    #Use both PLINK and KING to do this as KING requires bed/bim/fam input
     #Convert from BIMBAM to PED/MAP, only need a subset of 100000 snps
         #Script: 12a_ALL_subset_map.R & 12b_ALL_subset_ped.py
     #Run PCA
-        #In PLINK:
+        #In PLINK, get bed/bim/fam from ped/map:
         plink --ped ALL_subset.ped --map ALL_subset.map --make-bed --out ALL_subset
-        plink --bfile ALL_subset --pca --ALL_subset
-        #Outputs: ALL_subset.eigenval & ALL_subset.eigenvec
-        #Anglea has a script that runs PCA in KING
-        02_related_matrix_PCs.R --bfile (optional: --king)
-    #Make PCA plots
+        #In KING, run pca (accounts for relatedness amongst individuals):
+        king --pca -b ALL_subset.bed
+        #Output: kingpc.txt
+    #Make PCA plots and covariates file for gemma
         #Script: 12c_PCA_plots.R
-            #modifed from Ryan's script PCA.R
-            #uses pcas from PLINK
+            #uses pcas from KING
 
 
 #13 Create covariates file and relationship matrix:
-    #Make covariates file from eigenvec file in R:
-        vec<-fread("/home/ashley/LCL_chemotherapy/ALL/ALL_plinkfiles_&_PCA/ALL_subset.eigenvec")
-        covariates<-select(vec, 3:12)
-        fwrite(covariates, "/home/ashley/LCL_chemotherapy/ALL/ALL_covariates.txt", col.names = F, sep = "\t")    
     #Make relationship matrix with GEMMA:
     #Template for relationship matrix: gemma -g genotype.geno.gz -p phenotype.txt -gk 1 -maf 0.05 -o output_name
         #geno must be zipped
