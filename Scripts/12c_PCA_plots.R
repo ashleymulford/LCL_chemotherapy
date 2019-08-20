@@ -30,7 +30,7 @@ colnames(skree)<-c("percent_var", "PC")
 
 
 #Make 6 PCA plots:
-pdf("/home/ashley/LCL_chemotherapy/ALL/ALL_pca_plots.pdf")
+pdf("/home/ashley/LCL_chemotherapy/ALL/ALL_PCA_plots.pdf")
 
 #Proportion Variance Plot
 ggplot(data=skree, aes(x=PC, y=percent_var)) + geom_point() + geom_line() + scale_x_continuous(breaks = 1:10) + ggtitle("Proportion of variance explained")
