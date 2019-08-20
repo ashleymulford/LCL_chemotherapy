@@ -15,7 +15,7 @@ pcdf <- left_join(fam, pcs)
 
 #Make covariate file for gemma input
 covariates<-select(pcdf, 8:17)
-fwrite(covariates, "/home/ashley/LCL_chemotherapy/ALL/ALL_covariates_king.txt")
+fwrite(covariates, "/home/ashley/LCL_chemotherapy/ALL/ALL_covariates.txt", col.names = F, sep = "\t")
 
 #Make PCA plots:
 pdf("/home/ashley/LCL_chemotherapy/ALL/ALL_PCA/ALL_PCA_plots_king.pdf")
