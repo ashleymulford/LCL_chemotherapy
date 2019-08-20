@@ -318,12 +318,9 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #Convert from BIMBAM to PED/MAP, only need a subset of 100000 snps
         #Script: 12a_ALL_subset_map.R & 12b_ALL_subset_ped.py
     #Run PCA
-        #Ryan has a script that runs PCA in plink
-        03MergeHapMap.sh
-        or
-        plink --ped ALL.ped --map ALL.map --make-bed --out ALL
-        plink --file ALL --make-bed --out ALL
-        plink --bfile ALL --pca --out ALL
+        #In PLINK:
+        plink --ped ALL_subset.ped --map ALL_subset.map --make-bed --out ALL_subset
+        plink --bfile ALL_subset --pca --ALL_subset
         #Anglea has a script that runs PCA in KING
         02_related_matrix_PCs.R --bfile (optional: --king)
     #Make PCA plots
