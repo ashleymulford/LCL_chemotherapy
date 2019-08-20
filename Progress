@@ -324,7 +324,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #Anglea has a script that runs PCA in KING
         02_related_matrix_PCs.R --bfile (optional: --king)
     #Make PCA plots
-        #Script: 12c_ryan_PCA_plots.R
+        #Script: 12c_PCA_plots.R
             #modifed from Ryan's script PCA.R
             #uses pcas from PLINK
 
