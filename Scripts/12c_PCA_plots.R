@@ -14,7 +14,7 @@ popinfo <- left_join(ALL_fam, hapmappopinfo, by="IID")
 popinfo <- mutate(popinfo, pop=ifelse(is.na(pop),'GWAS', as.character(pop)))
 
 #Read in pcs (plink output)
-pcs <- fread("/home/ashley/LCL_chemotherapy/ALL/ALL_subset.eigenvec", header=F)
+pcs <- fread("/home/ashley/LCL_chemotherapy/ALL/ALL_plinkfiles_&_PCA/ALL_subset.eigenvec", header=F)
 
 #Merge and rename columns with first 10 pcs
 pcdf <- data.frame(popinfo, pcs[,3:ncol(pcs)]) %>% rename(PC1=V3,PC2=V4,PC3=V5,PC4=V6,PC5=V7,PC6=V8,PC7=V9,PC8=V10,PC9=V11,PC10=V12)
@@ -23,14 +23,14 @@ pcdf <- data.frame(popinfo, pcs[,3:ncol(pcs)]) %>% rename(PC1=V3,PC2=V4,PC3=V5,P
 gwas <- filter(pcdf,pop=='GWAS')
 
 #Calcuate proportion variance explained by each PC
-eval <- scan("/home/ashley/LCL_chemotherapy/ALL/ALL_subset.eigenval")[1:10]
+eval <- scan("/home/ashley/LCL_chemotherapy/ALL/ALL_plinkfiles_&_PCA/ALL_subset.eigenval")[1:10]
 skree<-round(eval/sum(eval),3)
 skree<-cbind.data.frame(skree,c(1,2,3,4,5,6,7,8,9,10))
 colnames(skree)<-c("percent_var", "PC")
 
 
 #Make 6 PCA plots:
-pdf("/home/ashley/LCL_chemotherapy/ALL/ALL_PCA_plots.pdf")
+pdf("/home/ashley/LCL_chemotherapy/ALL/ALL_plinkfiles_&_PCA/ALL_PCA_plots_yri.pdf")
 
 #Proportion Variance Plot
 ggplot(data=skree, aes(x=PC, y=percent_var)) + geom_point() + geom_line() + scale_x_continuous(breaks = 1:10) + ggtitle("Proportion of variance explained")
