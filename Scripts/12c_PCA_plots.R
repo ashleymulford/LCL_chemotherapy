@@ -17,7 +17,7 @@ pcdf <- left_join(fam, pcs)
 covariates<-select(pcdf, 8:17)
 fwrite(covariates, "/home/ashley/LCL_chemotherapy/ALL/ALL_covariates.txt", col.names = F, sep = "\t")
 
-#Create vector with eigen values (appear in output process as king runs pca, no file produced)
+#Create vector with eigen values (they appear in output process as king runs pca, no file produced)
 eval<-c(2206.37, 1655.92, 491.55, 468.26, 380.01, 369.98, 348.94, 343.41, 340.54, 339.70)
 
 #Calcuate proportion variance explained by each PC:
