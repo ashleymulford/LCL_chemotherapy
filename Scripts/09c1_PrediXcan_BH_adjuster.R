@@ -25,7 +25,7 @@ for (drug in drug_list) {
   pvalues <- select(CEU_predixcan, contains("p_wald"))
   pvalues <- as.vector(unlist(pvalues))
   pvalues_adjusted_fdr <- p.adjust(pvalues, method = "BH")
-  CEU_predixcan <- add_column(CEU_predixcan,  pvalues_adjusted_fdr = pvalues_adjusted_fdr , .before = "p_lrt")
+  CEU_predixcan <- add_column(CEU_predixcan,  pvalues_adjusted_fdr = pvalues_adjusted_BH , .before = "p_lrt")
   CEU_predixcan <- left_join(CEU_predixcan, bp_chrome, by = c("rs" = "gene"))
   CEU_predixcan <- select(CEU_predixcan, - chr, - ps)
   fwrite(CEU_predixcan, "/home/ashley/LCL_chemotherapy/CEU/CEU_assoc_gemma_output_combined/CEU_predixcan_" %&% drug %&% "_adj_BH.txt")
