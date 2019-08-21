@@ -16,7 +16,7 @@ drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
   #Subset for significance, threshold = BF<1
   #Compile significant subsets into single data frame
 for(drug in drug_list){
-  YRI_mult <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_" %&% drug %&% "_multixcan_bonferroni_wchr.txt")
+  YRI_mult <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_multixcan_" %&% drug %&% "_adj_bonferroni.txt")
   YRI_mult<-select(YRI_mult, 1:9, 11:13)
   YRI_mult<-na.omit(YRI_mult)
   YRI_mult<-add_column(YRI_mult, drug = drug, .before = "pvalue")
