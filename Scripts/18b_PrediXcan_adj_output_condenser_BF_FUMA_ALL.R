@@ -16,7 +16,7 @@ drug_list <- c("arac", "cape", "cis", "etop", "peme")
   #Subset for significance, threshold = BF<1
   #Compile significant subsets into single data frame
 for(drug in drug_list){
-  ALL_pred <- fread("/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_assoc_adjusted_bonferroni_" %&% drug %&% ".txt")
+  ALL_pred <- fread("/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_predixcan_adjusted_bonferroni_" %&% drug %&% ".txt")
   ALL_pred<-add_column(ALL_pred, drug = drug, .before = "tissue")
   ALL_pred_significant<-subset(ALL_pred, pvalues_adjusted_BF < 1)
   if(exists("ALL_pred_sign")){
@@ -69,6 +69,6 @@ for (gn in genes_list) {
 gn_list_fuma<-as.data.frame(gn_list_fuma)
 
 #Output data frames into directory
-fwrite(ALL_pred_sign, "/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_assoc_adj_bonferroni_FUMA", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(ALL_pred_sign, "/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_predixcan_adj_bonferroni_FUMA", na = "NA", quote = F, sep = "\t", col.names = T) 
 fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_predixcan_genes_FUMA", na = "NA", quote = F, sep = "\t", col.names = T)
 
