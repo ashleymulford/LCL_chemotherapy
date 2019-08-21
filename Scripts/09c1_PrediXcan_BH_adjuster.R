@@ -28,5 +28,5 @@ for (drug in drug_list) {
   CEU_predixcan <- add_column(CEU_predixcan,  pvalues_adjusted_fdr = pvalues_adjusted_fdr , .before = "p_lrt")
   CEU_predixcan <- left_join(CEU_predixcan, bp_chrome, by = c("rs" = "gene"))
   CEU_predixcan <- select(CEU_predixcan, - chr, - ps)
-  fwrite(CEU_predixcan, "/home/ashley/LCL_chemotherapy/CEU/CEU_assoc_gemma_output_combined/CEU_predixcan_adjusted_" %&% drug %&% ".txt")
+  fwrite(CEU_predixcan, "/home/ashley/LCL_chemotherapy/CEU/CEU_assoc_gemma_output_combined/CEU_predixcan_" %&% drug %&% "_adj_BH.txt")
 }
