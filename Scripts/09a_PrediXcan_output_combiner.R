@@ -24,4 +24,4 @@ for(tiss in tiss_list){
 }
 
 #Output data frames into directory
-fwrite(YRI_assoc_arac, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_assoc_arac", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(YRI_assoc_arac, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_predixcan_arac", na = "NA", quote = F, sep = "\t", col.names = T) 
