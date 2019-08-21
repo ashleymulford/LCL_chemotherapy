@@ -388,7 +388,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #Script: 03_pred_exp_to_GEMMA_input.R (found in px_his_chol, forked from WheelerLab)
             #Creates "geno" input files for gemma
     #Step two: Associate: Run through GEMMA to account for relatedness:
-        #Template: gemma -g tissue.geno -notsnp -p pheno.txt -k relationship_matrix.txt -lmm 4 -o pop_drug_tissue
+        #Template: gemma -g tissue_file -notsnp -p pheno.txt -k relationship_matrix.txt -c covariates.txt -lmm 4 -o pop_drug_tissue
         #Script: 16b_PrediXcan2_loop.sh
             #Goes through each tissue db and drug
     
