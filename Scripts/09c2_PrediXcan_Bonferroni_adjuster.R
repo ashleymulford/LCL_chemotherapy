@@ -21,12 +21,12 @@ drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
   #Remove old/inaccurate chr and bp columns
   #Ouput data frame into directory
 for (drug in drug_list) {
-  YRI_predixcan <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_assoc_" %&% drug)
+  YRI_predixcan <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_predixcan_" %&% drug)
   pvalues <- select(YRI_predixcan, contains("p_wald"))
   pvalues <- as.vector(unlist(pvalues))
   pvalues_adjusted_fdr <- p.adjust(pvalues, method = "bonferroni")
   YRI_predixcan <- add_column(YRI_predixcan,  pvalues_adjusted_BF = pvalues_adjusted_fdr , .before = "p_lrt")
   YRI_predixcan <- left_join(YRI_predixcan, bp_chrome, by = c("rs" = "gene"))
   YRI_predixcan <- select(YRI_predixcan, - chr, - ps)
-  fwrite(YRI_predixcan, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_assoc_adjusted_bonferroni_" %&% drug %&% ".txt")
+  fwrite(YRI_predixcan, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_predixcan_adjusted_bonferroni_" %&% drug %&% ".txt")
 }
