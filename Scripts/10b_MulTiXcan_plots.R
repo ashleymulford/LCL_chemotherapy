@@ -14,7 +14,7 @@ drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 
 #Make QQ and Manhattan plots using loop
 for(drug in drug_list){
-  Multixcan_YRI <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_" %&% drug %&% "_multixcan_BH_wchr.txt")
+  Multixcan_YRI <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_multixcan_" %&% drug %&% "_adj_BH.txt")
   #Remove status column (empty for all measured genes)
   Multixcan_YRI<-select(Multixcan_YRI, 1:9, 11:13)
   #Remove all rows with NAs
