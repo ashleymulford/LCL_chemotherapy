@@ -28,5 +28,5 @@ for (drug in drug_list) {
   YRI_predixcan <- add_column(YRI_predixcan,  pvalues_adjusted_BF = pvalues_adjusted_fdr , .before = "p_lrt")
   YRI_predixcan <- left_join(YRI_predixcan, bp_chrome, by = c("rs" = "gene"))
   YRI_predixcan <- select(YRI_predixcan, - chr, - ps)
-  fwrite(YRI_predixcan, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_predixcan_adjusted_bonferroni_" %&% drug %&% ".txt")
+  fwrite(YRI_predixcan, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_predixcan_" %&% drug %&% "_adj_boferroni.txt")
 }
