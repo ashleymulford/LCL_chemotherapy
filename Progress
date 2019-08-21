@@ -401,6 +401,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #Uses output from PrediXcan step one to measure expression across all tissues
         #outputs one file per drug per pop
         #Template for MultiXcan: MulTiXcan.py --expression_folder pop_predixcan_predict_output --expression_pattern "pop_results_(.*)_predicted_expression.txt" --input_phenos_file pop_drug_pheno --input_phenos_column Pheno --covariates_file covariates.txt --mode linear --output pop_drug_multixcan
+            #include covariates to account for population stratification
     
     
 #18 Go through PrediXcan results:
