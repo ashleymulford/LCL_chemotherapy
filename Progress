@@ -313,7 +313,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #files with all pops are orderd: ASN (201 people), CEU (178 people), and YRI (178 people)
 
 
-#12 Run Principle Components Analysis in KING
+#12 Run Principle Components Analysis in KING and create covariates file:
     #Must account for population stratification when running association tests in later steps, calculating covariates does this
     #Use both PLINK and KING to do this as KING requires bed/bim/fam input
     #Convert from BIMBAM to PED/MAP, only need a subset of 100000 snps
@@ -329,7 +329,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #uses pcas from KING
 
 
-#13 Create covariates file and relationship matrix:
+#13 Create relationship matrix:
     #Make relationship matrix with GEMMA:
     #Template for relationship matrix: gemma -g genotype.geno.gz -p phenotype.txt -gk 1 -maf 0.05 -o output_name
         #geno must be zipped
@@ -387,7 +387,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #Convert PrediXcan Step one output to "geno" input for GEMMA
         #Script: 03_pred_exp_to_GEMMA_input.R (found in px_his_chol, forked from WheelerLab)
             #Creates "geno" input files for gemma
-    #Step two: Associate: Run through GEMMA to account for relatedness:
+    #Step two: Associate: Run through GEMMA to account for relatedness and population stratification:
         #Template: gemma -g tissue_file -notsnp -p pheno.txt -k relationship_matrix.txt -c covariates.txt -lmm 4 -o pop_drug_tissue
         #Script: 16b_PrediXcan2_loop.sh
             #Goes through each tissue db and drug
