@@ -14,7 +14,7 @@ drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
   #Subset for significance, threshold = .3
   #Compile significant subsets into single data frame
 for(drug in drug_list){
-  YRI_mult <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_" %&% drug %&% "_multixcan_BH_wchr.txt")
+  YRI_mult <- fread("/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_multixcan_" %&% drug %&% "_adj_BH.txt")
   YRI_mult<-add_column(YRI_mult, drug = drug, .before = "pvalue")
   YRI_mult_significant<-subset(YRI_mult, pvalues_adjusted_BH <= .3)
   if(exists("YRI_mult_sign3")){
