@@ -14,7 +14,7 @@ drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 
 #Make QQ and Manhattan plots using loop
 for(drug in drug_list){
-  CEU_assoc_adj <- fread("/home/ashley/LCL_chemotherapy/CEU/CEU_assoc_gemma_output_combined/CEU_assoc_adjusted_" %&% drug %&% ".txt")
+  CEU_assoc_adj <- fread("/home/ashley/LCL_chemotherapy/CEU/CEU_assoc_gemma_output_combined/CEU_predixcan_adjusted_" %&% drug %&% ".txt")
   #Remove alleles columns (empty since GEMMA was used for PrediXcan assoc instead of GWAS)
   CEU_assoc_adj<-select(CEU_assoc_adj, 1:3, 6:17)
   #Remove all rows with NAs
