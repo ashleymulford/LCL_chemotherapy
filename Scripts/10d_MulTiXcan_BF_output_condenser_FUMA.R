@@ -74,6 +74,6 @@ for (gn in genes_list) {
 gn_list_fuma<-as.data.frame(gn_list_fuma)
 
 #Output data frame into directory
-fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_multixcan_genes_FUMA.txt", na = "NA", quote = F, sep = "\t", col.names = T)
+fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/YRI/YRI_multixcan_output/YRI_multixcan_genes_bonferroni_FUMA.txt", na = "NA", quote = F, sep = "\t", col.names = T)
 
 
