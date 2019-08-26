@@ -69,4 +69,4 @@ gn_list_fuma<-as.data.frame(gn_list_fuma)
 
 #Output data frames into directory
 fwrite(ALL_pred_sign, "/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_assoc_adj_BH_FUMA", na = "NA", quote = F, sep = "\t", col.names = T) 
-fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_predixcan_genes_FUMA", na = "NA", quote = F, sep = "\t", col.names = T)
+fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_predixcan_genes_BH_FUMA", na = "NA", quote = F, sep = "\t", col.names = T)
