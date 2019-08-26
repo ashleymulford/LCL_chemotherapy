@@ -72,5 +72,5 @@ gn_list_fuma<-as.data.frame(gn_list_fuma)
 
 #Output data frames into directory
 fwrite(ALL_mult_sign, "/home/ashley/LCL_chemotherapy/ALL/ALL_multixcan_output/ALL_multixcan_bonferroni_FUMA", na = "NA", quote = F, sep = "\t", col.names = T) 
-fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/ALL/ALL_multixcan_output/ALL_multixcan_genes_FUMA.txt", na = "NA", quote = F, sep = "\t", col.names = T)
+fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/ALL/ALL_multixcan_output/ALL_multixcan_genes_bonferroni_FUMA.txt", na = "NA", quote = F, sep = "\t", col.names = T)
 
