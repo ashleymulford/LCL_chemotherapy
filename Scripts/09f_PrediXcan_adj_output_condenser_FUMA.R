@@ -68,7 +68,7 @@ for (gn in genes_list) {
 gn_list_fuma<-as.data.frame(gn_list_fuma)
 
 #Output data frame into directory
-fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_predixcan_genes_FUMA.txt", na = "NA", quote = F, sep = "\t", col.names = T)
+fwrite(gn_list_fuma, "/home/ashley/LCL_chemotherapy/YRI/YRI_assoc_gemma_output_combined/YRI_predixcan_genes_BH_FUMA.txt", na = "NA", quote = F, sep = "\t", col.names = T)
 
 #Subset again for significance, threshold = .3, .2, and .075
 YRI_pred_sign3 <- subset(YRI_pred_sign6, pvalues_adjusted_BH <= .3)
