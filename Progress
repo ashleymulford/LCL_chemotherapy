@@ -213,17 +213,12 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #run twenty times total
         #Script: 09b_PrediXcan_total_gene_count.R
             #Creates data frame of the number of genes measured in each tissue per population
-    #Adjust p-values by running FDR
-        #Script: 09c1_PrediXcan_BH_adjuster.R
+    #Adjust p-values by running FDR adjustments:
+        #Script: 09c_PrediXcan_pvalue_adjuster.R
             #input: combined files (one per drug per pop)
-            #adjust p-values to account for false discovery, method: BH
+            #adjust p-values to account for false discovery, with BH and Bonferroni methods
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
-            #run three times, once per pop (loops through drugs)
-        #Script:09c2_PrediXcan_Bonferroni_adjuster.R
-            #input: combined files (one per drug per pop)
-            #adjust p-values to account for false discovery, method: Bonferroni
-            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
-            #run three times, once per pop (loops through drugs)            
+            #run three times, once per pop (loops through drugs)         
     #Make QQ and Manhattan plots in R:
         #Script: 09d_PrediXcan_plots.R
             #Creates QQ and Manhattan plots for each drug in each population
@@ -242,7 +237,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #In ASN: carboplatin has FDR<.075
                  capecitabine has FDR<.2
     #Compile top hits into single file, one per pop
-        #Script: 09e_PrediXcan_adj_output_condenser.R
+        #Script: 
             #Thresholds for p-values adj FDR: .3, .2, and .075
     #Look up top hits by ID on NCBI:
       #ASN Carboplatin top hit:
@@ -251,13 +246,9 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         
 
 #10 MulTiXcan results:
-    #Adjust p-values by running FDR:
-        #Script: 10a1_MulTiXcan_BH_adjuster.R
-            #adjust p-values to account for false discovery, method: BH
-            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
-            #run three times, once per pop (loops through drugs)
-        #Script: 10a2_MulTiXcan_Bonferroni_adjuster.R
-            #adjust p-values to account for false discovery, mehtod: Bonferroni
+    #Adjust p-values by running FDR adjustments:
+        #Script: 10a_MulTiXcan_pvalue_adjuster.R
+            #adjust p-values to account for false discovery, with BH and Bonferroni methods
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
             #run three times, once per pop (loops through drugs)
     #Make QQ and Manhattan plots in R:
@@ -279,7 +270,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #For Gene expression data sets select both GTEx v7 options
         #Title according to pop, software, and drug; ex: YRI_MulTiXcan_arac
     #Compile top hits into single file, one per pop (just YRI and CEU)
-        #Script: 10c_MulTiXcan_BH_output_condenser.R
+        #Script: 
             #Condenses all drug results into one file
             #Thresholds for p-values adj FDR: .3, .15, .075, and .05
     #Look up top hits by ID on NCBI:
@@ -414,17 +405,12 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #run with pop set to ALL, 8 times one per drug
         #Script: 18a_PrediXcan_total_gene_count_ALL.R
             #Creates data frame of the number of genes measured in each tissue per population
-    #Adjust p-values by running FDR
-        #Script: 09c1_PrediXcan_BH_adjuster.R
+    #Adjust p-values by running FDR adjustments:
+        #Script: 09c_PrediXcan_pvalue_adjuster.R
             #input: combined files (one per drug per pop)
-            #adjust p-values to account for false discovery, method: BH
+            #adjust p-values to account for false discovery, with BH and Bonferroni methods
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
-            #run with ALL pop (loops through drugs)
-        #Script:09c2_PrediXcan_Bonferroni_adjuster.R
-            #input: combined files (one per drug per pop)
-            #adjust p-values to account for false discovery, method: Bonferroni
-            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
-            #run with ALL pop (loops through drugs)            
+            #run with ALL pop (loops through drugs)           
     #Make QQ and Manhattan plots in R:
         #Script: 09d_PrediXcan_plots.R
             #Creates QQ and Manhattan plots for each drug
@@ -438,18 +424,14 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #Go through top hits:
         #capecitabine and etoposide have bonferroni adj p-values <.075
     #Compile top hits into single file, one per pop
-        #Script: 18b_PrediXcan_adj_output_condenser_BF_FUMA_ALL.R
+        #Script: 
     #Look up top hits by ID on NCBI:
 
     
 #19 Go through MulTiXcan results:
-    #Adjust p-values by running FDR:
-        #Script: 10a1_MulTiXcan_BH_adjuster.R
-            #adjust p-values to account for false discovery, method: BH
-            #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
-            #run with ALL pop (loops through drugs)
-        #Script: 10a2_MulTiXcan_Bonferroni_adjuster.R
-            #adjust p-values to account for false discovery, mehtod: Bonferroni
+    #Adjust p-values by running FDR adjustments:
+        #Script: 10a_MulTiXcan_pvalue_adjuster.R
+            #adjust p-values to account for false discovery, with BH and Bonferroni methods
             #join with bp_chrome file, which contains the chr # and bp position for each gene (needed for plotting)
             #run with ALL pop (loops through drugs)
     #Make QQ and Manhattan plots in R:
@@ -466,7 +448,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
        #arac has bonferroni adj p-values <.05
        #pemetrexed has bonferroni adj p-values <.08
     #Compile top hits into single file
-        #Script: 19_MulTiXcan_condenser_BF_FUMA_ALL.R
+        #Script: 
             #Condenses all drug results into one file
             #Thresholds for p-values adj FDR = BF<1
     #Look up top hits by ID on NCBI:
