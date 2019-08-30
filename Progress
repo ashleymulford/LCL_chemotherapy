@@ -229,16 +229,10 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #Creates file with list of all genes tested in multixcan - this is the input file for: Background genes
         #For Gene expression data sets select both GTEx v7 options
         #Title according to pop, software, and drug; ex: YRI_PrediXcan_arac
-    #Go through top hits:
-        #In YRI: carboplatin and paclitaxel have FDR<.2
-                 etoposide has FDR<.3
-        #In CEU: carboplatin has FDR<.2
-                 cisplatin, paclitaxel, and pemetrexed have FDR<.3
-        #In ASN: carboplatin has FDR<.075
-                 capecitabine has FDR<.2
     #Compile top hits into single file, one per pop
-        #Script: 
-            #Thresholds for p-values adj FDR: .3, .2, and .075
+        #Script: 09f_PrediXcan_top_genes.R
+            #Run with each pop, compiles top results across drugs into single file
+            #Threshold: adj bonferroni p-values < 1
     #Look up top hits by ID on NCBI:
       #ASN Carboplatin top hit:
         #chr 5: FAM173B aka ATPSCKMT - ATP synthase c subunit lysine N-methyltransferase
@@ -255,24 +249,16 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
         #Script: 10b_MulTiXcan_plots.R
             #Creates QQ and Manhattan plots for each drug in each population
             #Run three times, once per pop (loops through drugs)
-    #Go through top hits:     
-        #In YRI: capecitabine has FDR<.05
-                 cisplatin and paclitaxel have FDR<.075
-                 arac and pemetrexed have FDR<.15
-                 carboplatin has FDR<.3        
-        #In CEU: daunorubicin has FDR<.15
-                 cisplatin, etoposide, and paclitaxel have FDR<.3
-        #In ASN: nothing remotely significant
     #Run FUMA, gene2func: https://fuma.ctglab.nl/gene2func
         #Script: 10c_MulTiXcan_FUMA.R
             #Creates files with top hits for each drug (approx 100 genes) - this is the input file for: Genes of interest
             #Creates file with list of all genes tested in multixcan - this is the input file for: Background genes
         #For Gene expression data sets select both GTEx v7 options
         #Title according to pop, software, and drug; ex: YRI_MulTiXcan_arac
-    #Compile top hits into single file, one per pop (just YRI and CEU)
-        #Script: 
-            #Condenses all drug results into one file
-            #Thresholds for p-values adj FDR: .3, .15, .075, and .05
+    #Compile top hits into single file, one per pop
+        #Script: 10d_MulTiXcan_top_genes.R
+            #Run with each pop, compiles top results across drugs into single file
+            #Threshold: adj bonferroni p-values < 1
     #Look up top hits by ID on NCBI:
       #YRI Capecitabine top hits:
         #chr 10: CCAR1 - cell division cycle and apoptosis regulator 1
@@ -421,10 +407,10 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #Creates file with list of all genes tested in multixcan - this is the input file for: Background genes
         #For Gene expression data sets select both GTEx v7 options
         #Title according to pop, software, and drug; ex: ALL_PrediXcan_arac
-    #Go through top hits:
-        #capecitabine and etoposide have bonferroni adj p-values <.075
-    #Compile top hits into single file, one per pop
-        #Script: 
+    #Compile top hits into single file
+        #Script: 09f_PrediXcan_top_genes.R
+            #Run with each pop, compiles top results across drugs into single file
+            #Threshold: adj bonferroni p-values < 1
     #Look up top hits by ID on NCBI:
 
     
@@ -444,13 +430,10 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #Creates file with list of all genes tested in multixcan - this is the input file for: Background genes
         #For Gene expression data sets select both GTEx v7 options
         #Title according to pop, software, and drug; ex: ALL_PrediXcan_arac
-    #Go through top hits:     
-       #arac has bonferroni adj p-values <.05
-       #pemetrexed has bonferroni adj p-values <.08
     #Compile top hits into single file
-        #Script: 
-            #Condenses all drug results into one file
-            #Thresholds for p-values adj FDR = BF<1
+        #Script: 10d_MulTiXcan_top_genes.R
+            #Run with each pop, compiles top results across drugs into single file
+            #Threshold: adj bonferroni p-values < 1
     #Look up top hits by ID on NCBI:
  
 
