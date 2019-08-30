@@ -12,12 +12,13 @@ drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 #Make a data frame with significant results for every drug
   #Read in file
   #Add column containing drug name
-  #Subset for significance using unadjusted p-value, want about 100 top genes
+  #Subset for significance using unadjusted p-value, want about 100 top genes, threshold accordingly
   #Remove decimals from gene ids, necessary for FUMA to read input
   #Output data frame into directory
 for(drug in drug_list){
   ALL_pred <- fread("/home/ashley/LCL_chemotherapy/ALL/ALL_assoc_gemma_output_combined/ALL_predixcan_" %&% drug %&% "_adj_bonferroni.txt")
   ALL_pred<-add_column(ALL_pred, drug = drug, .before = "tissue")
+  #Use p_wald < .0005 for all pops, will subset about top 100 genes for all pop/drug
   ALL_pred_sign<-subset(ALL_pred, p_wald < .0005)
   
   genes<-select(ALL_pred_sign, 3)
