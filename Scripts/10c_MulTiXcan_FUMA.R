@@ -12,7 +12,7 @@ drug_list <- c("arac", "cape", "carbo", "cis", "dauno", "etop", "pacl", "peme")
 #Make a data frame with significant results for every drug
   #Read in file
   #Add column containing drug name
-  #Subset for significance using unadjusted p-value, want about 100 top genes
+  #Subset for significance using unadjusted p-value, want about 100 top genes, threshold accordingly
   #Remove decimals from gene ids, necessary for FUMA to read input
   #Output data frame into directory
 for(drug in drug_list){
@@ -20,6 +20,7 @@ for(drug in drug_list){
   ALL_mult<-select(ALL_mult, 1:9, 11:13)
   ALL_mult<-na.omit(ALL_mult)
   ALL_mult<-add_column(ALL_mult, drug = drug, .before = "pvalue")
+  #for YRI, pvalue < .001; for CEU and ALL pvalue < .0025; for ASN pvalue < .005 - this will subset top ~100 genes for all pop/drug
   ALL_mult_sign<-subset(ALL_mult, pvalue < .0005)
   
   genes<-select(ALL_mult_sign, 1)
