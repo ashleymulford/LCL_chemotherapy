@@ -229,6 +229,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #Creates file with list of all genes tested in multixcan - this is the input file for: Background genes
         #For Gene expression data sets select both GTEx v7 options
         #Title according to pop, software, and drug; ex: YRI_PrediXcan_arac
+        #Look through gene sets
     #Compile top hits into single file, one per pop
         #Script: 09f_PrediXcan_top_genes.R
             #Run with each pop, compiles top results across drugs into single file
@@ -255,6 +256,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #Creates file with list of all genes tested in multixcan - this is the input file for: Background genes
         #For Gene expression data sets select both GTEx v7 options
         #Title according to pop, software, and drug; ex: YRI_MulTiXcan_arac
+        #Look through gene sets
     #Compile top hits into single file, one per pop
         #Script: 10d_MulTiXcan_top_genes.R
             #Run with each pop, compiles top results across drugs into single file
@@ -407,6 +409,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #Creates file with list of all genes tested in multixcan - this is the input file for: Background genes
         #For Gene expression data sets select both GTEx v7 options
         #Title according to pop, software, and drug; ex: ALL_PrediXcan_arac
+        #Look through gene sets
     #Compile top hits into single file
         #Script: 09f_PrediXcan_top_genes.R
             #Run with each pop, compiles top results across drugs into single file
@@ -430,6 +433,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #Creates file with list of all genes tested in multixcan - this is the input file for: Background genes
         #For Gene expression data sets select both GTEx v7 options
         #Title according to pop, software, and drug; ex: ALL_PrediXcan_arac
+        #Look through gene sets
     #Compile top hits into single file
         #Script: 10d_MulTiXcan_top_genes.R
             #Run with each pop, compiles top results across drugs into single file
