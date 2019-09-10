@@ -443,5 +443,8 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
 
 
 
+#Make Predicted expression plots of PrediXcan and MulTiXcan top hits
+    #need affect size (af column in pred output bc it was run through gemma, not in mult output tho...)
+    #Look at angela's github
     
 
