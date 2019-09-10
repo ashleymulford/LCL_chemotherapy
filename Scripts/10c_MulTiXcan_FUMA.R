@@ -20,7 +20,7 @@ for(drug in drug_list){
   ALL_mult<-select(ALL_mult, 1:9, 11:13)
   ALL_mult<-na.omit(ALL_mult)
   ALL_mult<-add_column(ALL_mult, drug = drug, .before = "pvalue")
-  #for YRI, pvalue < .001; for CEU and ALL pvalue < .0025; for ASN pvalue < .005 - this will subset top ~100 genes for all pop/drug
+  #Use pvalue < .0005 for all pops - this will subset top ~100 genes for all pop/drug
   ALL_mult_sign<-subset(ALL_mult, pvalue < .0005)
   
   genes<-select(ALL_mult_sign, 1)
