@@ -441,12 +441,12 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #Look up top hits by ID on NCBI:
  
 
-
 #20 Make Predicted expression plots of PrediXcan and MulTiXcan top hits
-    #need affect size (af column in pred output bc it was run through gemma, not in mult output tho...)
-    #Look at angela's github
-    #Angela uses predicted expression file not assoc file (same for PrediXcan and MulTiXcan)
     #Script: 20_Predicted_Expression_plots.R
+        #Plot predicted expression against actual expression (pheno data)
+        #Use predicted expression file (tissue/pop specific based on top hit) from PrediXcan step one: predict
+            #same files for PrediXcan and MulTiXcan
+        #Use pheno data for corresponding drug/pop (based on top hit)
     
     
     
