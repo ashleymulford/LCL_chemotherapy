@@ -450,28 +450,29 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     
     
 #21 Perform fine-mapping with FOCUS:
-    #info on FOCUS: https://github.com/bogdanlab/focus
-    #want to compare GWAS results (significant snps) with PrediXcan/MulTiXcan results (significant genes)
-    #inputs: GWAS results, PLINK-formatted genotype data for computing reference LD, eQTL weight database
-        #GWAS resuls:
+    #Info on FOCUS: https://github.com/bogdanlab/focus
+    #Want to compare GWAS results (significant snps) with PrediXcan/MulTiXcan results (significant genes)
+    #Inputs: GWAS results, PLINK-formatted genotype data for computing reference LD, eQTL weight database
+        #GWAS results:
             #I have these!!
             #Gives option to munge with focus software, not sure if this is necessary??
-        #PLINK genotype data: comes from 1000 genomes (Phase 3), premade files for EUR on focus github
-            #93 individuals overlap with my bimbam geno CEU
-            #bed/bim/fam for each chr (fam is the same for all chrs, 489 unrelated europeans)
-            #need bed/bim/fam for ALL ASN and YRI for top hits I have, not sure if I need all 22 chrs or just chrs with hits
+        #PLINK genotype data: 
+            #Premade files for EUR on focus github - comes from 1000 genomes (Phase 3)
+                #bed/bim/fam for each chr (fam is the same for all chrs, 489 unrelated europeans)
+                #93 (of 489) individuals overlap with my bimbam geno data for CEU
+            #Need bed/bim/fam for ALL ASN and YRI for top hits I have, not sure if I need all 22 chrs or just chrs with hits
                 #ALL chrs - 12 (GWAS); 1, 15, (PrediXcan); 2, 11 (MulTiXcan)
                 #ASN chrs - 9 (GWAS); 5 (PrediXcan)
                 #YRI chrs - 3, 4, 12 (GWAS); 6, 10, 11 (MulTiXcan)
-            #trying to find other 1000G plink files online: 
+            #Trying to find other 1000G plink files online: 
                 #https://www.cog-genomics.org/plink/1.9/resources
-                    #has 1000G genotype data in plink format (Phase 1 though)
-                    #all three pops: 186 ASN, 85 CEU, 88 YRI (overlap with my bimbam geno data)
+                    #Has 1000G genotype data in plink format (Phase 1 though)
+                    #All three pops: 186 ASN, 85 CEU, 88 YRI (overlap with my bimbam geno data)
                 #https://www.cog-genomics.org/plink/2.0/resources#1kg_phase3
-                    #has 1000G gentoype data (Phase 3) but idk if this is in plink or vcf format or what pops it has
+                    #Has 1000G gentoype data (Phase 3) but idk if this is in plink or vcf format or what pops it has
         #eQTL weight database: not really sure what this is
-            #premade database available on focus github, downloaded but cant look into it
-            #instructions on how to make a custom db with gtex PrediXcan tissues on focus github
+            #Premade database available on focus github, downloaded but cant look into it
+            #Instructions on how to make a custom db with gtex PrediXcan tissues on focus github
     #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db (optional flags) --chr --tissue --out
     #Script: 21_FOCUS.R
 
