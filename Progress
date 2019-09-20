@@ -471,7 +471,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
                     #has 1000G gentoype data (Phase 3) but idk if this is in plink or vcf format or what pops it has
         #eQTL weight database: not really sure what this is
             #premade database available on focus github, downloaded but cant look into it
-            #instructions on how to make with gtex PrediXcan tissues
+            #instructions on how to make a custom db with gtex PrediXcan tissues on focus github
     #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db (optional flags) --chr --tissue --out
     #Script: 21_FOCUS.R
 
