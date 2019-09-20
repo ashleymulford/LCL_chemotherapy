@@ -453,7 +453,13 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #info on FOCUS: https://github.com/bogdanlab/focus
     #want to compare GWAS results (significant snps) with PrediXcan/MulTiXcan results (significant genes)
     #inputs: GWAS results, PLINK-formatted genotype data for computing reference LD, eQTL weight database
-    #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db --chr --tissue --out
+        #plink genotype data: comes from 1000 genomes, premade files for EUR on focus github
+            #bed/bim/fam for each chr (fam is the same for all chrs, 489 unrelated europeans)
+            #need bed/bim/fam for ALL ASN and YRI for top hits I have, not sure if I need all 22 chrs or just chrs with hits
+                #ALL chrs - 12 (GWAS); 1, 15, (PrediXcan); 2, 11 (MulTiXcan)
+                #ASN chrs - 9 (GWAS); 5 (PrediXcan)
+                #YRI chrs - 3, 4, 12 (GWAS); 6, 10, 11 (MulTiXcan)
+    #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db (optional flags) --chr --tissue --out
     #Script: 21_FOCUS.R
 
     
