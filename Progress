@@ -450,6 +450,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     
     
 #21 Perform fine-mapping with FOCUS:
+    #Software is installed here: /usr/bin/anaconda3/bin/focus
     #Info on FOCUS: https://github.com/bogdanlab/focus
     #Want to compare GWAS results (significant snps) with PrediXcan/MulTiXcan results (significant genes)
     #Inputs: GWAS results, PLINK-formatted genotype data for computing reference LD, eQTL weight database
