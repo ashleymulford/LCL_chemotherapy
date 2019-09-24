@@ -469,11 +469,13 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
                 #https://www.cog-genomics.org/plink/1.9/resources
                     #Has 1000G genotype data in plink format (Phase 1 though)
                     #All three pops: 186 ASN, 85 CEU, 88 YRI (overlap with my bimbam geno data)
+                    #Use plink to keep only the individuals that overlap https://www.cog-genomics.org/plink/1.9/filter
                 #https://www.cog-genomics.org/plink/2.0/resources#1kg_phase3
                     #Has 1000G gentoype data (Phase 3) but idk if this is in plink or vcf format or what pops it has
         #eQTL weight database: not really sure what this is
             #Premade database available on focus github, downloaded but cant look into it
             #Instructions on how to make a custom db with gtex PrediXcan tissues on focus github
+            #https://github.com/WheelerLab/DivPop use sqlite to look into db file
     #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db (optional flags) --chr --tissue --out
     #Script: 21_FOCUS.R
 
