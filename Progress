@@ -455,13 +455,13 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #Want to compare GWAS results (significant snps) with PrediXcan/MulTiXcan results (significant genes)
     #Inputs: GWAS results, PLINK-formatted genotype data for computing reference LD, eQTL weight database
         #GWAS results:
-            #I have these!!
+            #I have these!
             #Gives option to munge with focus software, not sure if this is necessary??
         #PLINK genotype data: 
             #Premade files for EUR on focus github - comes from 1000 genomes (Phase 3)
                 #bed/bim/fam for each chr (fam is the same for all chrs, 489 unrelated europeans)
                 #93 (of 489) individuals overlap with my bimbam geno data for CEU
-            #Need bed/bim/fam for ALL ASN and YRI for top hits I have, not sure if I need all 22 chrs or just chrs with hits
+            #Need bed/bim/fam for ALL ASN and YRI for top hits I have:
                 #ALL chrs - 12 (GWAS); 1, 15, (PrediXcan); 2, 11 (MulTiXcan)
                 #ASN chrs - 9 (GWAS); 5 (PrediXcan)
                 #YRI chrs - 3, 4, 12 (GWAS); 6, 10, 11 (MulTiXcan)
@@ -470,12 +470,18 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
                     #Has 1000G genotype data in plink format (Phase 1 though)
                     #All three pops: 186 ASN, 85 CEU, 88 YRI (overlap with my bimbam geno data)
                     #Use plink to keep only the individuals that overlap https://www.cog-genomics.org/plink/1.9/filter
-                #https://www.cog-genomics.org/plink/2.0/resources#1kg_phase3
-                    #Has 1000G gentoype data (Phase 3) but idk if this is in plink or vcf format or what pops it has
-        #eQTL weight database: not really sure what this is
-            #Premade database available on focus github, downloaded but cant look into it
+                        #plink 
+        #eQTL weight database:
+            #Premade database available on focus github, downloaded
+                #Use sqlite to look into db file:
+                sqlite3 focus.db #read in database
+                sqlite3> .schema #lists all the tables in the database and coumn names
+                sqlite> .headers on
+                sqlite> .mode tabs
+                sqlite> .output table1.txt #create output file for table1
+                sqlite> select col1, col2, col3 from table1; #select columns from table1 to put in output file
+                sqlite> .quit
             #Instructions on how to make a custom db with gtex PrediXcan tissues on focus github
-            #https://github.com/WheelerLab/DivPop use sqlite to look into db file
     #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db (optional flags) --chr --tissue --out
     #Script: 21_FOCUS.R
 
