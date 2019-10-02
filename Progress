@@ -468,7 +468,8 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
                 #https://www.cog-genomics.org/plink/1.9/resources
                     #Has 1000G genotype data in plink format (Phase 1)
                     #All three pops: 186 ASN, 82 CEU, 87 YRI, 355 total/ALL (overlap with my bimbam geno data)
-                    #Use plink to keep only the individuals that overlap
+                    #Use plink to --keep only the individuals that overlap, also separate by pop
+                    #files contain indels, remove with --snps-only
         #eQTL weight database:
             #Premade database available on focus github, downloaded
                 #Use sqlite to look into db file:
