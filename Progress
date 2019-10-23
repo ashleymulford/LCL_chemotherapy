@@ -481,27 +481,14 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
                 sqlite> select col1, col2, col3 from table1; #select columns from table1 to put in output file
                 sqlite> .quit
             #Instructions on how to make a custom db with gtex PrediXcan tissues on focus github
-    #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db (optional flags) --chr --tissue --out
-    #Script: 21_FOCUS.R
-
+    #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db (optional flags) --chr --tissue --p-threshold --out
     
-    #Ran finemap.py, got chr col error, changed column names abnd error went away, replaced with z score col error
-    #Ran munge script, got N col error, added --N flag with sample size and ran again, outputed sumstats file with z-score
-        #munge output has about 500,000 fewer SNPs than input, also has no P col
-    #Ran finemap.py with munge output file, got unspecified error, even when running with --verbose flag for better explanation
-        Error Message:
-        focus finemap
-            /home/ashley/ALL_GWAS_etop_testsumstats_focus.txt.gz
-            /home/ashley/LCL_chemotherapy/1000G_ALL_Phase1_plink/focus_all
-            /home/ashley/Focus_DB/focus.db
-            --output all_etop_brain_cortex
-            --verbose
-        Starting log...
-        [2019-09-30 15:09:40 - INFO] Preparing GWAS summary file
-        [2019-09-30 15:09:47 - INFO] Preparing reference SNP data
-        [2019-09-30 15:10:41 - ERROR]
-        [2019-09-30 15:10:41 - INFO] Finished twas & fine-mapping   
-    #Tried combining input/output with inner join (fewer SNPs, both P and Z columns), got same unspecifed error as above
+    #Ran FOCUS with default p-threshold (5e-08) - no hits, then with adjusted thresholds (5e-05: ~50-200 hits; 5e-02: ~ hits)
+        #Script: 21_FOCUS_finemap.R
+    
+    
+    
+    
     
     
     
