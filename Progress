@@ -456,9 +456,11 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     #Inputs: GWAS results, PLINK-formatted genotype data for computing reference LD, eQTL weight database
         #GWAS results:
             #My GWAS output files
-            #Gives option to munge with focus software, not sure if this is necessary
+            #Gives option to munge with focus software, do this
             #to munge: focus munge /home/ashley/LCL_chemotherapy/ALL/ALL_GWAS_results/ALL_GWAS_etop_focus.assoc.txt --N 557 --output ALL_GWAS_etop_focus
                 #will produce a Z column, which is needed for finemapping
+            #Script: 21a_Focus_makesumstats.R
+                #outputs files for focus input
         #PLINK genotype data: 
             #Need bed/bim/fam for ALL ASN and YRI for top hits I have:
                 #ALL chrs - 12 (GWAS); 1, 15, (PrediXcan); 2, 11 (MulTiXcan)
@@ -470,9 +472,11 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
                     #All three pops: 186 ASN, 82 CEU, 87 YRI, 355 total/ALL (overlap with my bimbam geno data)
                     #Use plink to --keep only the individuals that overlap, also separate by pop
                     #files contain indels, remove with --snps-only
+            #Script: 21b_Focus_makeLDref_plink.R
+                #outputs file for focus input
         #eQTL weight database:
             #Premade database available on focus github, downloaded
-                #Use sqlite to look into db file:
+                #Use sqlite3 to create individual files for each table in the db:
                 sqlite3 focus.db #read in database
                 sqlite3> .schema #lists all the tables in the database and coumn names
                 sqlite> .headers on
@@ -480,11 +484,11 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
                 sqlite> .output table1.txt #create output file for table1
                 sqlite> select col1, col2, col3 from table1; #select columns from table1 to put in output file
                 sqlite> .quit
-            #Instructions on how to make a custom db with gtex PrediXcan tissues on focus github
     #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db (optional flags) --chr --tissue --p-threshold --out
     
     #Ran FOCUS with default p-threshold (5e-08) - no hits, then with adjusted thresholds (5e-05: ~50-200 hits; 5e-02: ~ hits)
-        #Script: 21_FOCUS_finemap.R
+        #Script: 21c_Focus_finemap.R
+            #contains commands to run focus for all top hits, change output name to account for p-threshold chosen
     
     
     
