@@ -494,7 +494,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
             #made histogram of pip column for each output file:
                 #all look very similar with most pips being close to 0 and a very small amount close to 1, basically none in between 
     
-    
+    ##focus seems to match predixcan results but not multixcan results. top gene hits from multixcan do not show up in focus output...
     
     
     
