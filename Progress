@@ -486,7 +486,7 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
                 sqlite> .quit
     #Template: focus finemap gwas_output.gz plink_reference_LD_pop gtex_v7.db (optional flags) --chr --tissue --p-threshold --out
     
-    #Ran FOCUS with default p-threshold (5e-08) - no hits, then with adjusted thresholds (5e-05: ~50-200 hits; 5e-02: ~ hits)
+    #Ran FOCUS with default p-threshold (5e-08) - no hits, then with adjusted thresholds (5e-05: ~50-200 hits; 5e-02: ~500-2000 hits)
         #Script: 21c_Focus_finemap.R
             #contains commands to run focus for all top hits, change output name to account for p-threshold chosen
     
