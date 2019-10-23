@@ -1,6 +1,6 @@
 #Run finemap:
 
-#--p-threshold to chnage p-value, default is 5e-08, switch to --p-threshold 5e-05, then with 5e-02 = .05
+#--p-threshold to change p-value, default is 5e-08, switch to --p-threshold 5e-05, then with 5e-02 = .05
 
 #PrediXcan Results:
 
