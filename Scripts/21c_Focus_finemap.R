@@ -5,7 +5,7 @@
 #PrediXcan Results:
 
 #For STARD5: ALL, etop, chr 15, Brain Cortex:
-#focus finemap /home/ashley/LCL_chemotherapy/ALL/ALL_GWAS_results/ALL_GWAS_etop_focus.sumstats.gz /home/ashley/LCL_chemotherapy/1000G_ALL_Phase1_plink/focus_all /home/ashley/Focus_DB/focus.db --chr 15 --tissue brain_cortex --out all_etop_brain_cortex_chr15
+#focus finemap /home/ashley/LCL_chemotherapy/ALL/ALL_GWAS_results/ALL_GWAS_etop_focus.sumstats.gz /home/ashley/LCL_chemotherapy/1000G_ALL_Phase1_plink/focus_all /home/ashley/Focus_DB/focus.db --chr 15 --tissue brain_cortex --out all_etop_braincortex_chr15
 
 
 #For USF1: ALL, cape, chr 1, Liver:
@@ -13,7 +13,7 @@
 
 
 #For FAM137B: ASN, carbo, chr 5, Minor Salivary Gland:
-#focus finemap /home/ashley/LCL_chemotherapy/ASN/ASN_GWAS_results/ASN_GWAS_carbo_focus.sumstats.gz /home/ashley/LCL_chemotherapy/1000G_ALL_Phase1_plink/focus_asn /home/ashley/Focus_DB/focus.db --chr 5 --tissue minor_salivary_gland --out asn_cape_minorsalivarygland_chr5
+#focus finemap /home/ashley/LCL_chemotherapy/ASN/ASN_GWAS_results/ASN_GWAS_carbo_focus.sumstats.gz /home/ashley/LCL_chemotherapy/1000G_ALL_Phase1_plink/focus_asn /home/ashley/Focus_DB/focus.db --chr 5 --tissue minor_salivary_gland --out asn_carbo_minorsalivarygland_chr5
 
 
 #For AHCTF1: ALL, cape, chr 1, Thyroid:
