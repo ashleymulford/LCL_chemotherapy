@@ -35,13 +35,38 @@ Etop_IC50<-fread("/home/ashley/IC50_etop.txt")
 #Merge STARD5 mRNA expression and Etop IC50 data
 STARD5_cell_lines_Etop_IC50<-inner_join(STARD5_cell_lines, Etop_IC50, by = c("cell_line" = "Cell line"))
 STARD5_cell_lines_Etop_IC50<-na.omit(STARD5_cell_lines_Etop_IC50)
-STARD5_cell_lines_Etop_IC50<-select(STARD5_cell_lines_Etop_IC50, 1, 3:7)
+
+#Convert mRNA exp from chr to num
+STARD5_mrna_exp<-STARD5_cell_lines_Etop_IC50$STARD5_mRNA_exp
+for (val in STARD5_mrna_exp) {
+  val_num <- as.numeric(val)
+  if (exists("mrna_exp")) {
+    mrna_exp <- append(mrna_exp, val_num)
+  }
+  else {
+    mrna_exp <- val_num
+  }
+}
+
+STARD5_cell_lines_Etop_IC50<-add_column(STARD5_cell_lines_Etop_IC50, mrna_exp, .before = "TCGA classification")
+STARD5_cell_lines_Etop_IC50<-select(STARD5_cell_lines_Etop_IC50, 1:2, 4:8)
+
 
 #Plot
 pdf("/home/ashley/STARD5_cell_lines_plot.pdf")
 ggplot(STARD5_cell_lines_Etop_IC50, aes(x = STARD5_cell_lines_Etop_IC50$cell_line, y = STARD5_cell_lines_Etop_IC50$IC50 )) +
   geom_point(size = 0.75, color = "#ec328c") + 
   scale_x_discrete(name = "Cell Line") + 
+  scale_y_continuous(name = "ETOP_IC50") + 
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1), text = element_text(size = 10), plot.title = element_text(hjust = 0.5)) +
+  ggtitle("STARD5 Cell Lines")
+dev.off()
+
+pdf("/home/ashley/STARD5_mRNA_plot.pdf")
+ggplot(STARD5_cell_lines_Etop_IC50, aes(x = STARD5_cell_lines_Etop_IC50$mrna_exp, y = STARD5_cell_lines_Etop_IC50$IC50 )) +
+  geom_point(size = 0.75, color = "#ec328c") + 
+  scale_x_continuous(name = "mRNA Expression") + 
   scale_y_continuous(name = "ETOP_IC50") + 
   theme_bw() + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1), text = element_text(size = 10), plot.title = element_text(hjust = 0.5)) +
