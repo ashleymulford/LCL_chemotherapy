@@ -1,8 +1,10 @@
 #Finding other Cell Lines to use - STARD5
 
+#STARD5 data from expression database: https://portals.broadinstitute.org/ccle
 STARD5_cell_lines<-fread("/home/ashley/mRNA expression (RNAseq)_ STARD5.txt")
 STARD5_tissues<-colnames(STARD5_cell_lines)
 
+#Separate cell line from tissue
 for (tiss in STARD5_tissues) {
   tiss_list <- regmatches(tiss, regexpr("_", tiss), invert = TRUE )
   tiss_list <- unlist(tiss_list)
@@ -20,19 +22,22 @@ for (tiss in STARD5_tissues) {
   }
 }
 
+#Three column dataframe with cell line, tissue, and mRNA exp
 STARD5_cell_lines<-transpose(STARD5_cell_lines)
 STARD5_cell_lines<-add_column(STARD5_cell_lines, STARD5_tiss, .before = "V1")
 STARD5_cell_lines<-add_column(STARD5_cell_lines, STARD5_cell_line, .before = "STARD5_tiss")
 colnames(STARD5_cell_lines)<- c("cell_line", "tissue", "STARD5_mRNA_exp")
 STARD5_cell_lines<-STARD5_cell_lines[-1,]
 
+#Etop IC50 data from drug database: https://www.cancerrxgene.org/
 Etop_IC50<-fread("/home/ashley/IC50_etop.txt")
 
+#Merge STARD5 mRNA expression and Etop IC50 data
 STARD5_cell_lines_Etop_IC50<-inner_join(STARD5_cell_lines, Etop_IC50, by = c("cell_line" = "Cell line"))
 STARD5_cell_lines_Etop_IC50<-na.omit(STARD5_cell_lines_Etop_IC50)
 STARD5_cell_lines_Etop_IC50<-select(STARD5_cell_lines_Etop_IC50, 1, 3:7)
 
-
+#Plot
 pdf("/home/ashley/STARD5_cell_lines_plot.pdf")
 ggplot(STARD5_cell_lines_Etop_IC50, aes(x = STARD5_cell_lines_Etop_IC50$cell_line, y = STARD5_cell_lines_Etop_IC50$IC50 )) +
   geom_point(size = 0.75, color = "#ec328c") + 
