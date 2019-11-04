@@ -1,0 +1,44 @@
+#Finding other Cell Lines to use - STARD5
+
+STARD5_cell_lines<-fread("/home/ashley/mRNA expression (RNAseq)_ STARD5.txt")
+STARD5_tissues<-colnames(STARD5_cell_lines)
+
+for (tiss in STARD5_tissues) {
+  tiss_list <- regmatches(tiss, regexpr("_", tiss), invert = TRUE )
+  tiss_list <- unlist(tiss_list)
+  if (exists("STARD5_cell_line")) {
+    STARD5_cell_line <- append(STARD5_cell_line, tiss_list[1])
+  }
+  else {
+    STARD5_cell_line <- tiss_list[1]
+  }
+  if (exists("STARD5_tiss")) {
+    STARD5_tiss <- append(STARD5_tiss, tiss_list[2])
+  }
+  else {
+    STARD5_tiss <- tiss_list[2]
+  }
+}
+
+STARD5_cell_lines<-transpose(STARD5_cell_lines)
+STARD5_cell_lines<-add_column(STARD5_cell_lines, STARD5_tiss, .before = "V1")
+STARD5_cell_lines<-add_column(STARD5_cell_lines, STARD5_cell_line, .before = "STARD5_tiss")
+colnames(STARD5_cell_lines)<- c("cell_line", "tissue", "STARD5_mRNA_exp")
+STARD5_cell_lines<-STARD5_cell_lines[-1,]
+
+Etop_IC50<-fread("/home/ashley/IC50_etop.txt")
+
+STARD5_cell_lines_Etop_IC50<-inner_join(STARD5_cell_lines, Etop_IC50, by = c("cell_line" = "Cell line"))
+STARD5_cell_lines_Etop_IC50<-na.omit(STARD5_cell_lines_Etop_IC50)
+STARD5_cell_lines_Etop_IC50<-select(STARD5_cell_lines_Etop_IC50, 1, 3:7)
+
+
+pdf("/home/ashley/STARD5_cell_lines_plot.pdf")
+ggplot(STARD5_cell_lines_Etop_IC50, aes(x = STARD5_cell_lines_Etop_IC50$cell_line, y = STARD5_cell_lines_Etop_IC50$IC50 )) +
+  geom_point(size = 0.75, color = "#ec328c") + 
+  scale_x_discrete(name = "Cell Line") + 
+  scale_y_continuous(name = "ETOP_IC50") + 
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1), text = element_text(size = 10), plot.title = element_text(hjust = 0.5)) +
+  ggtitle("STARD5 Cell Lines")
+dev.off()
