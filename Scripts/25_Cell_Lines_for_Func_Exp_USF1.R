@@ -26,7 +26,7 @@ USF1_cell_lines<-add_column(USF1_cell_lines, USF1_cell_line, .before = "USF1_tis
 colnames(USF1_cell_lines)<- c("cell_line", "tissue", "USF1_mRNA_exp")
 USF1_cell_lines<-USF1_cell_lines[-1,]
 
-cape_AUC<-fread("/home/ashley/Cape_IC50_AUC.txt")
+cape_AUC<-fread("/home/ashley/LCL_chemotherapy/Cell_Line_followup/Cape_IC50_AUC.txt")
 
 USF1_cell_lines_cape_AUC<-inner_join(USF1_cell_lines, cape_AUC, by = c("cell_line" = "Cell line"))
 USF1_cell_lines_cape_AUC<-na.omit(USF1_cell_lines_cape_AUC)
