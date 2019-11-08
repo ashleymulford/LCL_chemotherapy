@@ -30,7 +30,7 @@ colnames(STARD5_cell_lines)<- c("cell_line", "tissue", "STARD5_mRNA_exp")
 STARD5_cell_lines<-STARD5_cell_lines[-1,]
 
 #Etop IC50 data from drug database: https://www.cancerrxgene.org/
-Etop_IC50<-fread("/home/ashley/Etop_IC50_AUC.txt")
+Etop_IC50<-fread("/home/ashley/LCL_chemotherapy/Cell_Line_followup/Etop_IC50_AUC.txt")
 
 #Merge STARD5 mRNA expression and Etop IC50 data
 STARD5_cell_lines_Etop_IC50<-inner_join(STARD5_cell_lines, Etop_IC50, by = c("cell_line" = "Cell line"))
