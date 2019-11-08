@@ -1,6 +1,6 @@
 #Finding other Cell Lines to use - USF1
 
-USF1_cell_lines<-fread("/home/ashley/mRNA expression (RNAseq)_ USF1.txt")
+USF1_cell_lines<-fread("/home/ashley/LCL_chemotherapy/Cell_Line_followup/mRNA expression (RNAseq)_ USF1.txt")
 USF1_tissues<-colnames(USF1_cell_lines)
 
 for (tiss in USF1_tissues) {
