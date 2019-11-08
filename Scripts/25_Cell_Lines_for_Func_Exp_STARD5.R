@@ -1,7 +1,7 @@
 #Finding other Cell Lines to use - STARD5
 
 #STARD5 data from expression database: https://portals.broadinstitute.org/ccle
-STARD5_cell_lines<-fread("/home/ashley/mRNA expression (RNAseq)_ STARD5.txt")
+STARD5_cell_lines<-fread("/home/ashley/LCL_chemotherapy/Cell_Line_followup/mRNA expression (RNAseq)_ STARD5.txt")
 STARD5_tissues<-colnames(STARD5_cell_lines)
 
 #Separate cell line from tissue
