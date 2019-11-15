@@ -498,8 +498,11 @@ Pemetrexed is an antineoplastic drug that disrupts the folate cycle, which is es
     
     
 #25 Cell Line Analysis for Functional Follow up
-    Script: 25
-    
+    Scripts: 25_Cell_Lines_for_Func_Exp_STARD5.R
+             25_Cell_Lines_for_Func_Exp_USF1.R
+             25_Cell_Lines_for_Func_Exp_FAM173B.R
+             25_Cell_Lines_for_Func_Exp_AHCTF1.R
+
     
     
     
